@@ -24,17 +24,26 @@ function Hex({ q, r, size }) {
   );
 }
 
-export default function HexMap({ rows = 10, cols = 10, size = 30 }) {
+export default function HexMap({ radius = 5, size = 30 }) {
   const hexes = [];
 
-  for (let r = 0; r < rows; r++) {
-    for (let q = 0; q < cols; q++) {
+  for (let q = -radius; q <= radius; q++) {
+    const r1 = Math.max(-radius, -q - radius);
+    const r2 = Math.min(radius, -q + radius);
+    for (let r = r1; r <= r2; r++) {
       hexes.push(<Hex key={`${q},${r}`} q={q} r={r} size={size} />);
     }
   }
 
+  const mapWidth = Math.sqrt(3) * size * (2 * radius + 1);
+  const mapHeight = 1.5 * size * (2 * radius + 1);
+
   return (
-    <svg width="100%" height="100%" viewBox="0 0 1000 1000">
+    <svg
+      width="100%"
+      height="100%"
+      viewBox={`-${mapWidth / 2} -${mapHeight / 2} ${mapWidth} ${mapHeight}`}
+    >
       {hexes}
     </svg>
   );

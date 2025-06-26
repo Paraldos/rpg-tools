@@ -1,5 +1,5 @@
 import React from "react";
-import HexMap from "./components/hex_maps/HexMap";
+import HexMap from "./components/hex-map/HexMap";
 
 export default function App() {
   return (
