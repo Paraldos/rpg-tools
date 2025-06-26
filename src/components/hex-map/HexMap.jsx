@@ -1,5 +1,5 @@
-// src/HexMap.jsx
 import React from "react";
+import Hexfield from "../svgs/HexField";
 
 function Hex({ q, r, size }) {
   const width = Math.sqrt(3) * size;
@@ -7,20 +7,10 @@ function Hex({ q, r, size }) {
   const x = width * (q + r / 2);
   const y = (3 / 2) * size * r;
 
-  const points = Array.from({ length: 6 }).map((_, i) => {
-    const angle = (Math.PI / 180) * (60 * i - 30);
-    const px = x + size * Math.cos(angle);
-    const py = y + size * Math.sin(angle);
-    return `${px},${py}`;
-  });
-
   return (
-    <polygon
-      points={points.join(" ")}
-      stroke="#333"
-      fill="#ddd"
-      strokeWidth="1"
-    />
+    <g transform={`translate(${x}, ${y})`}>
+      <Hexfield size={size} />
+    </g>
   );
 }
 
