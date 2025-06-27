@@ -1,6 +1,12 @@
 .hex-map {
   background-color: red;
 
-  display: grid;
-  grid-template-columns: repeat(3, 50px);
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.hex-row {
+  display: flex;
+  justify-content: center;
 }
