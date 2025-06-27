@@ -1,9 +1,15 @@
 .hex-map {
-  background-color: red;
+  background-color: black;
 
   display: flex;
   flex-direction: column;
   padding: 30px;
+
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .hex-row {
