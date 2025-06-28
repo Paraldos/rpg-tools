@@ -2,7 +2,7 @@ import "./HexMap.css";
 import Hexagon from "../hexagon/Hexagon";
 
 export default function HexMap() {
-  const widthOfMap = 7;
+  const widthOfMap = 3;
   const heightOfMap = widthOfMap;
   const hexMapArray = [];
 
@@ -14,8 +14,8 @@ export default function HexMap() {
 
     for (let col = 0; col < fieldsInRow; col++) {
       const colOffset = col + distanceFromMiddle / 2;
-      const columnStart = colOffset * 2 + 1;
-      const columnEnd = colOffset * 2 + 3;
+      const columnStart = colOffset * 4 + 1;
+      const columnEnd = colOffset * 4 + 5;
 
       let rowOffset = row;
       const rowStart = row * 4 + 1 - rowOffset;
@@ -30,8 +30,9 @@ export default function HexMap() {
     <div
       className="hex-map"
       style={{
-        gridTemplateColumns: `repeat(${widthOfMap * 2}, 1fr)`,
-        gridTemplateRows: `repeat(${heightOfMap * 4}, 1fr)`,
+        gridTemplateColumns: `repeat(${widthOfMap * 4} , 1fr)`,
+        gridTemplateRows: `repeat(${heightOfMap * 4 - widthOfMap + 1}, 1fr)`,
+        aspectRatio: `${widthOfMap * 4} / ${heightOfMap * 4 - widthOfMap + 1}`,
       }}
     >
       {hexMapArray.map((hexagon, index) => (
