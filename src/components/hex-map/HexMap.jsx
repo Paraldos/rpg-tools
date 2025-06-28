@@ -1,57 +1,47 @@
-import { useEffect, useState } from "react";
 import "./HexMap.css";
 import Hexagon from "../hexagon/Hexagon";
 
 export default function HexMap() {
-  const widthOfField = 7;
-  const heightOfField = widthOfField;
+  const widthOfMap = 7;
+  const heightOfMap = widthOfMap;
+  const hexMapArray = [];
 
-  const [hexagonWidth, setHexagonWidth] = useState(
-    () => Math.min(window.innerWidth, window.innerHeight) / widthOfField
-  );
-
-  useEffect(() => {
-    const handleResize = () => {
-      setHexagonWidth(
-        Math.min(window.innerWidth, window.innerHeight) / widthOfField
-      );
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [widthOfField]);
-
-  const hexFieldArray = [];
-  for (let row = 0; row < heightOfField; row++) {
-    const middleRow = Math.floor(widthOfField / 2);
+  for (let row = 0; row < heightOfMap; row++) {
+    const middleRow = Math.floor(widthOfMap / 2);
     const distanceFromMiddle = Math.abs(row - middleRow);
-    const fieldsInRow = widthOfField - distanceFromMiddle;
+    const fieldsInRow = widthOfMap - distanceFromMiddle;
+    let hexagon = { row: 0, col: 0 };
 
-    const rowArray = [];
     for (let col = 0; col < fieldsInRow; col++) {
-      rowArray.push(1);
-    }
+      const colOffset = col + distanceFromMiddle / 2;
+      const columnStart = colOffset * 2 + 1;
+      const columnEnd = colOffset * 2 + 3;
 
-    hexFieldArray.push(rowArray);
+      let rowOffset = row;
+      const rowStart = row * 4 + 1 - rowOffset;
+      const rowEnd = row * 4 + 5 - rowOffset;
+
+      hexagon = { columnStart, columnEnd, rowStart, rowEnd };
+      hexMapArray.push(hexagon);
+    }
   }
 
   return (
-    <div className="hex-map">
-      {hexFieldArray.map((row, rowIndex) => (
-        <div
-          className="hex-row"
-          key={rowIndex}
-          style={{
-            transform: `translateY(-${rowIndex * 25}%)`,
-          }}
-        >
-          {row.map((cell, colIndex) => (
-            <Hexagon
-              key={`${rowIndex}-${colIndex}`}
-              hexagonWidth={hexagonWidth}
-            />
-          ))}
-        </div>
+    <div
+      className="hex-map"
+      style={{
+        gridTemplateColumns: `repeat(${widthOfMap * 2}, 1fr)`,
+        gridTemplateRows: `repeat(${heightOfMap * 4}, 1fr)`,
+      }}
+    >
+      {hexMapArray.map((hexagon, index) => (
+        <Hexagon
+          key={index}
+          columnStart={hexagon.columnStart}
+          columnEnd={hexagon.columnEnd}
+          rowStart={hexagon.rowStart}
+          rowEnd={hexagon.rowEnd}
+        />
       ))}
     </div>
   );

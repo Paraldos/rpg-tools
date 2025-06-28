@@ -1,8 +1,18 @@
+.hexagon-border {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
+  background-color: white;
+  padding: 1px;
+}
+
 .hexagon {
-  background-color: #007bff;
+  background-color: black;
   aspect-ratio: cos(30deg);
   clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
-  margin: 3px;
+  height: 100%;
+  width: 100%;
 }
 
 .hexagon:hover {
