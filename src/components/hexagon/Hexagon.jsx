@@ -5,7 +5,7 @@ export default function HexField({
   columnEnd,
   rowStart,
   rowEnd,
-  hexNumber,
+  hexNumber = 0,
 }) {
   return (
     <>
@@ -18,9 +18,7 @@ export default function HexField({
           gridRowEnd: rowEnd,
         }}
       >
-        <div className="hexagon">
-          <p>{hexNumber}</p>
-        </div>
+        <div className="hexagon">{hexNumber > 0 && <p>{hexNumber}</p>}</div>
       </div>
     </>
   );
