@@ -42,6 +42,7 @@ export default function HexMap() {
           columnEnd={hexagon.columnEnd}
           rowStart={hexagon.rowStart}
           rowEnd={hexagon.rowEnd}
+          hexNumber={index + 1}
         />
       ))}
     </div>
