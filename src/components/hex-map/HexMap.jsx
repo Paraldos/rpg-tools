@@ -6,22 +6,36 @@ export default function HexMap() {
   const heightOfMap = widthOfMap;
   const hexMapArray = [];
 
+  const getColumnStart = (col, distanceFromMiddle) => {
+    const colOffset = col + distanceFromMiddle / 2;
+    return colOffset * 4 + 1;
+  };
+
+  const getColumnEnd = (col, distanceFromMiddle) => {
+    const colOffset = col + distanceFromMiddle / 2;
+    return colOffset * 4 + 5;
+  };
+
+  const getRowStart = (row) => {
+    return row * 4 + 1 - row;
+  };
+
+  const getRowEnd = (row) => {
+    return row * 4 + 5 - row;
+  };
+
   for (let row = 0; row < heightOfMap; row++) {
     const middleRow = Math.floor(widthOfMap / 2);
     const distanceFromMiddle = Math.abs(row - middleRow);
     const fieldsInRow = widthOfMap - distanceFromMiddle;
-    let hexagon = { row: 0, col: 0 };
 
     for (let col = 0; col < fieldsInRow; col++) {
-      const colOffset = col + distanceFromMiddle / 2;
-      const columnStart = colOffset * 4 + 1;
-      const columnEnd = colOffset * 4 + 5;
+      const columnStart = getColumnStart(col, distanceFromMiddle);
+      const columnEnd = getColumnEnd(col, distanceFromMiddle);
+      const rowStart = getRowStart(row);
+      const rowEnd = getRowEnd(row);
 
-      let rowOffset = row;
-      const rowStart = row * 4 + 1 - rowOffset;
-      const rowEnd = row * 4 + 5 - rowOffset;
-
-      hexagon = { columnStart, columnEnd, rowStart, rowEnd };
+      const hexagon = { columnStart, columnEnd, rowStart, rowEnd };
       hexMapArray.push(hexagon);
     }
   }
