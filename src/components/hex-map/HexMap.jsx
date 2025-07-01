@@ -34,9 +34,7 @@ export default function HexMap() {
       const columnEnd = getColumnEnd(col, distanceFromMiddle);
       const rowStart = getRowStart(row);
       const rowEnd = getRowEnd(row);
-
-      const hexagon = { columnStart, columnEnd, rowStart, rowEnd };
-      hexMapArray.push(hexagon);
+      hexMapArray.push({ columnStart, columnEnd, rowStart, rowEnd });
     }
   }
 
@@ -49,13 +47,13 @@ export default function HexMap() {
         aspectRatio: `${widthOfMap * 4} / ${heightOfMap * 4 - widthOfMap + 1}`,
       }}
     >
-      {hexMapArray.map((hexagon, index) => (
+      {hexMapArray.map((hexPosition, index) => (
         <Hexagon
           key={index}
-          columnStart={hexagon.columnStart}
-          columnEnd={hexagon.columnEnd}
-          rowStart={hexagon.rowStart}
-          rowEnd={hexagon.rowEnd}
+          columnStart={hexPosition.columnStart}
+          columnEnd={hexPosition.columnEnd}
+          rowStart={hexPosition.rowStart}
+          rowEnd={hexPosition.rowEnd}
           hexNumber={index + 1}
         />
       ))}
