@@ -55,6 +55,7 @@ export default function HexMap() {
           rowStart={hexPosition.rowStart}
           rowEnd={hexPosition.rowEnd}
           hexNumber={index + 1}
+          content=""
         />
       ))}
     </div>
