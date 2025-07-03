@@ -38,6 +38,15 @@ export default function HexMap() {
     }
   }
 
+  const worldTypes = [
+    "forest",
+    "desert",
+    "mountain",
+    "ocean",
+    "plains",
+    "swamp",
+  ];
+
   return (
     <div
       className="hex-map"
