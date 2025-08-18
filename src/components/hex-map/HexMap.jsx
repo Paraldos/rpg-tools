@@ -47,6 +47,8 @@ export default function HexMap() {
     "swamp",
   ];
 
+  const settlementTypes = ["village", "town", "city", "capital"];
+
   return (
     <div
       className="hex-map"
