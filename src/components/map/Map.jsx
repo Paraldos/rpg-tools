@@ -24,7 +24,7 @@ export default function HexMap() {
       }}
     >
       {fieldsArray.map((fieldData, index) => (
-        <Field key={index} fieldData={fieldData} />
+        <Field key={index} fieldData={fieldData} index={index} />
       ))}
     </div>
   );

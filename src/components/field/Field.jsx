@@ -1,8 +1,6 @@
 import "./Field.css";
 
-export default function Field({ fieldData }) {
-  console.log(fieldData);
-
+export default function Field({ fieldData, index }) {
   const getColumnStart = () => {
     const offset = fieldData.row % 2 !== 0 ? 2 : 0;
     return fieldData.column * 4 + offset + 1;
@@ -31,7 +29,8 @@ export default function Field({ fieldData }) {
         gridRowEnd: getRowEnd(),
       }}
     >
-      <div className="field-background"></div>
+      <div className="field-inside"></div>
+      <p className="field-number">{index + 1}</p>
     </div>
   );
 }
