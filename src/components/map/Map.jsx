@@ -20,7 +20,7 @@ export default function HexMap() {
       className="map"
       style={{
         gridTemplateColumns: `repeat(${columns * 4 + 2} , 1fr)`,
-        gridTemplateRows: `repeat(${rows * 3 + 2}, 1fr)`,
+        gridTemplateRows: `repeat(${rows * 3 + 1}, 1fr)`,
       }}
     >
       {fieldsArray.map((fieldData, index) => (
