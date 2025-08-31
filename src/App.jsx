@@ -1,7 +1,7 @@
 import "./App.css";
 
-import HexMap from "./components/hex-map/HexMap";
+import Map from "./components/map/Map";
 
 export default function App() {
-  return <HexMap />;
+  return <Map />;
 }
