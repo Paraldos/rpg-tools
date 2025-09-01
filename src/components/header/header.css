@@ -1,0 +1,9 @@
+header {
+  width: 100%;
+  min-height: var(--header-size);
+  border-bottom: 2px solid var(--color-primary);
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
