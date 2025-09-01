@@ -1,5 +1,15 @@
 .controlls {
-  height: 50px;
   width: 100%;
-  background-color: red;
+  padding: 15px;
+
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+button {
+  padding: 15px;
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
 }
