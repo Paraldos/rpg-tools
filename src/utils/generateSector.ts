@@ -60,5 +60,5 @@ export function generateSector({ rows = 10, columns = 8 } = {}) {
       fields[index].column = column;
     }
   }
-  return { rows, columns, fields };
+  return { rows, columns, fields, title: starNames.pop() };
 }
