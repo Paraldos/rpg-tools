@@ -1,4 +1,7 @@
 .map {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - var(--header-size));
+
+  display: grid;
+  grid-template-rows: auto 1fr;
 }

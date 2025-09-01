@@ -1,9 +1,7 @@
 .board {
   display: grid;
+  margin: auto;
 
-  background-color: black;
-  padding: 30px;
-
-  width: min(100%, 100vh);
-  height: min(100%, 100vw);
+  height: 100%;
+  aspect-ratio: 1;
 }
