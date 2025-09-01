@@ -1,9 +1,8 @@
 import "./board.css";
 import Field from "../field/Field";
-import { generateSector } from "../../../utils/generateSector";
 
-export default function Board() {
-  const sector = generateSector();
+export default function Board({ sector }) {
+  if (!sector) return <div className="board">Noch keine Karte generiert.</div>;
 
   return (
     <div
