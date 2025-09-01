@@ -6,14 +6,3 @@
   gap: 15px;
   justify-content: center;
 }
-
-button {
-  padding: 15px;
-  border: 2px solid white;
-  color: white;
-  background-color: transparent;
-
-  &:hover {
-    border-color: red;
-  }
-}
