@@ -1,6 +1,7 @@
 import "./fieldInfo.css";
 import AddWorldBtn from "../addWorldBtn/AddWorldBtn";
 import AddBlackHoleBtn from "../addBlackHoleBtn/AddBlackHoleBtn";
+import { ChevronRight } from "../../../utils/svgs";
 
 export default function FieldInfo({
   selectedField,
@@ -36,8 +37,9 @@ export default function FieldInfo({
         <p>Typ: Stern, Feld: {selectedField.index + 1}</p>
         <h2>{selectedField.title}</h2>
         {selectedField.worlds.map((world, i) => (
-          <button key={i} className="fieldInfo__world">
+          <button key={i} className="fieldInfo__worldBtn">
             <b>{world.name}</b> ({world.tags.join(", ")})
+            <ChevronRight />
           </button>
         ))}
         <div className="fieldInfo__btns">
