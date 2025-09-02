@@ -20,6 +20,7 @@
   width: 100%;
   text-align: left;
   display: flex;
+  gap: 10px;
   align-items: center;
   border: none;
   padding: 15px 10px 15px 0;
@@ -33,7 +34,8 @@
 
   svg {
     margin-left: auto;
-    height: 15px;
+    height: 20px;
+    min-width: 20px;
     transition: all 0.2s;
   }
 }
