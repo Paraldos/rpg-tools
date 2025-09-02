@@ -19,7 +19,12 @@
   }
 }
 
-.fieldInfo__addWorld {
-  width: 100%;
+.fieldInfo__btns {
   margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  button {
+    width: 100%;
+  }
 }

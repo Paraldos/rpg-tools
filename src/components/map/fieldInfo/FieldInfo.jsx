@@ -1,7 +1,12 @@
 import "./fieldInfo.css";
-import AddWorldButton from "../../addWorldButton/AddWorldButton";
+import AddWorldBtn from "../addWorldBtn/AddWorldBtn";
+import AddBlackHoleBtn from "../addBlackHoleBtn/AddBlackHoleBtn";
 
-export default function FieldInfo({ selectedField, onAddWorld }) {
+export default function FieldInfo({
+  selectedField,
+  onAddWorld,
+  onAddBlackHole,
+}) {
   if (!selectedField) return null;
 
   let content = null;
@@ -12,9 +17,10 @@ export default function FieldInfo({ selectedField, onAddWorld }) {
     content = (
       <>
         <p>Typ: Leere, Feld: {selectedField.index + 1}</p>
-        {canAddWorld && (
-          <AddWorldButton onAdd={() => onAddWorld?.(selectedField.index)} />
-        )}
+        <div className="fieldInfo__btns">
+          <AddBlackHoleBtn onClick={onAddBlackHole} />
+          {canAddWorld && <AddWorldBtn onClick={onAddWorld}></AddWorldBtn>}
+        </div>
       </>
     );
   } else if (selectedField.type == "Black Hole") {
@@ -34,9 +40,10 @@ export default function FieldInfo({ selectedField, onAddWorld }) {
             <b>{world.name}</b> ({world.tags.join(", ")})
           </button>
         ))}
-        {canAddWorld && (
-          <AddWorldButton onAdd={() => onAddWorld?.(selectedField.index)} />
-        )}
+        <div className="fieldInfo__btns">
+          <AddBlackHoleBtn onClick={onAddBlackHole} />
+          {canAddWorld && <AddWorldBtn onClick={onAddWorld}></AddWorldBtn>}
+        </div>
       </>
     );
   }

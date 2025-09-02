@@ -2,7 +2,11 @@ import "./map.css";
 import { useState, useCallback } from "react";
 import Board from "./board/Board";
 import Controlls from "./controlls/Controlls";
-import { generateSector, generateWorld } from "../../utils/generateSector";
+import {
+  generateSector,
+  generateWorld,
+  generateBlackHole,
+} from "../../utils/generateSector";
 import FieldInfo from "./fieldInfo/FieldInfo";
 
 export default function Map() {
@@ -45,6 +49,15 @@ export default function Map() {
     });
   }, []);
 
+  const handleAddBlackHole = useCallback((index) => {
+    setSector((previousSector) => {
+      const updatedSector = { ...previousSector };
+      updatedSector.fields[index].type = "Black Hole";
+      updatedSector.fields[index].worlds = undefined;
+      return updatedSector;
+    });
+  }, []);
+
   const selectedField =
     selectedIndex != null && sector ? sector.fields[selectedIndex] : null;
 
@@ -58,6 +71,9 @@ export default function Map() {
           selectedField={selectedField}
           onAddWorld={() =>
             selectedIndex != null && handleAddWorld(selectedIndex)
+          }
+          onAddBlackHole={() =>
+            selectedIndex != null && handleAddBlackHole(selectedIndex)
           }
         />
       </div>

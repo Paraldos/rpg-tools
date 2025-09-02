@@ -8,12 +8,12 @@ import { SOCIETY_TAGS, WORLD_TYPES, GENERAL_TAGS } from "../data/worldTags";
 import { STAR_NAMES } from "../data/starNames";
 
 export type World = { name: string; tags: string[] };
+export type Star = { type: "Star"; title: string; worlds: World[] };
+export type BlackHole = { type: "Black Hole"; title: string };
+export type Empty = { type: "Empty"; title: string };
+export type FieldCore = { index: number; row: number; column: number };
+export type Field = (Star | BlackHole | Empty) & Partial<FieldCore>;
 
-/**
- * Erzeugt eine Welt für ein Sternsystem.
- * @param starName  Name des Sterns (Systemnamens)
- * @param ordinal   0-basierter Index der Welt im System (für Nummerierung)
- */
 export function generateWorld(starName: string, ordinal: number): World {
   const planetNumber = ordinal * 2 + rollDice(2);
   return {
@@ -26,39 +26,50 @@ export function generateWorld(starName: string, ordinal: number): World {
   };
 }
 
+export function generateStar(name?: string): Star {
+  const title = name ?? "Nova";
+  const n = rollDice(3); // 1..3
+  return {
+    type: "Star",
+    title,
+    worlds: Array.from({ length: n }, (_, i) => generateWorld(title, i)),
+  };
+}
+
+export function generateBlackHole(name?: string): BlackHole {
+  return {
+    type: "Black Hole",
+    title: name ?? "Singularis",
+  };
+}
+
+export function generateEmpty(name?: string): Empty {
+  return {
+    type: "Empty",
+    title: name ?? "Void",
+  };
+}
+
 export function generateSector({ rows = 10, columns = 8 } = {}) {
   const amountOfFields = rows * columns;
   const amountOfStars = Math.floor(amountOfFields / 4);
   const amountOfBlackHoles = Math.floor(amountOfFields / 20);
+
   const starNames = shuffleArray([...STAR_NAMES]);
-  let fields: any[] = [];
 
-  const getStar = (starName?: string) => {
-    const n = rollDice(3);
-    return {
-      type: "Star",
-      title: starName ?? "Nova",
-      worlds: Array.from({ length: n }, (_, i) =>
-        generateWorld(starName ?? "Nova", i)
-      ),
-    };
-  };
+  let fields: Field[] = [];
 
-  const getBlackHole = (starName?: string) => ({
-    type: "Black Hole",
-    title: starNames.pop(),
-  });
+  for (let i = 0; i < amountOfBlackHoles; i++) {
+    fields.push(generateBlackHole(starNames.pop()));
+  }
 
-  const getEmpty = () => ({
-    type: "Empty",
-    title: starNames.pop(),
-  });
+  for (let i = 0; i < amountOfStars; i++) {
+    fields.push(generateStar(starNames.pop()));
+  }
 
-  for (let i = 0; i < amountOfBlackHoles; i++) fields.push(getBlackHole());
-
-  for (let i = 0; i < amountOfStars; i++) fields.push(getStar(starNames.pop()));
-
-  while (fields.length < amountOfFields) fields.push(getEmpty());
+  while (fields.length < amountOfFields) {
+    fields.push(generateEmpty(starNames.pop()));
+  }
 
   fields = shuffleArray(fields);
 
@@ -70,5 +81,6 @@ export function generateSector({ rows = 10, columns = 8 } = {}) {
       fields[index].column = column;
     }
   }
+
   return { rows, columns, fields, title: starNames.pop() };
 }
