@@ -6,7 +6,12 @@ export default function FieldInfo({ selectedField }) {
   let content = null;
 
   if (selectedField.type == "Empty") {
-    content = <p>Typ: Leere, Feld: {selectedField.number}</p>;
+    content = (
+      <>
+        <p>Typ: Leere, Feld: {selectedField.number}</p>
+        <button className="fieldInfo__addWorld">Welt hinzufügen</button>
+      </>
+    );
   } else if (selectedField.type == "Black Hole") {
     content = (
       <>
@@ -20,14 +25,14 @@ export default function FieldInfo({ selectedField }) {
         <p>Typ: Stern, Feld: {selectedField.number}</p>
         <h2>{selectedField.title}</h2>
         {selectedField.worlds.map((world, i) => (
-          <div key={i}>
-            <h3>{world.name}</h3>
-            <p>{world.tags.join(", ")}</p>
-          </div>
+          <button key={i} className="fieldInfo__world">
+            <b>{world.name}</b> ({world.tags.join(", ")})
+          </button>
         ))}
+        <button className="fieldInfo__addWorld">Welt hinzufügen</button>
       </>
     );
   }
 
-  return <div className="field-info">{content}</div>;
+  return <div className="fieldInfo">{content}</div>;
 }
