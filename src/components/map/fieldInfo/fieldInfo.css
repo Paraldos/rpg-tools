@@ -15,6 +15,7 @@
   b {
     font-size: 1.2rem;
     margin-right: 15px;
+    white-space: nowrap;
   }
 }
 
