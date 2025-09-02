@@ -30,7 +30,7 @@ export function generateStar(name?: string): Star {
   const title = name ?? "Nova";
   const n = rollDice(3); // 1..3
   return {
-    type: "Star",
+    type: "Stern",
     title,
     worlds: Array.from({ length: n }, (_, i) => generateWorld(title, i)),
   };
@@ -38,14 +38,14 @@ export function generateStar(name?: string): Star {
 
 export function generateBlackHole(name?: string): BlackHole {
   return {
-    type: "Black Hole",
+    type: "Schwarzes Loch",
     title: name ?? "Singularis",
   };
 }
 
 export function generateEmpty(name?: string): Empty {
   return {
-    type: "Empty",
+    type: "Leere",
     title: name ?? "Void",
   };
 }

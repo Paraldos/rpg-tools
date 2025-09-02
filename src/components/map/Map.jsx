@@ -23,7 +23,7 @@ export default function Map() {
     setSector((previousSector) => {
       const selectedField = previousSector.fields[index];
       const updatedWorlds =
-        selectedField.type === "Star"
+        selectedField.type === "Stern"
           ? [
               ...selectedField.worlds,
               generateWorld(selectedField.title, selectedField.worlds.length),
@@ -61,8 +61,12 @@ export default function Map() {
 
   return (
     <div className="map">
-      <Board sector={sector} onField={handleField} />
-      <div className="map__boadControlls">
+      <Board
+        sector={sector}
+        selectedIndex={selectedIndex}
+        onField={handleField}
+      />
+      <div className="map__boardControlls">
         <Controlls onNew={handleNew} />
         <h2 className="sectorTitle">Sektor: {sector ? sector.title : ""}</h2>
         <div className="info-box">

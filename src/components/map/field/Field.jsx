@@ -1,7 +1,7 @@
 import "./Field.css";
 import { BlackHole, Star } from "../../../utils/svgs";
 
-export default function Field({ field, index, onField }) {
+export default function Field({ field, index, selectedIndex, onField }) {
   const getColumnStart = () => {
     const offset = field.row % 2 !== 0 ? 2 : 0;
     return field.column * 4 + offset + 1;
@@ -21,15 +21,15 @@ export default function Field({ field, index, onField }) {
   };
 
   let svg = null;
-  if (field.type === "Star") {
+  if (field.type === "Stern") {
     svg = <Star />;
-  } else if (field.type === "Black Hole") {
+  } else if (field.type === "Schwarzes Loch") {
     svg = <BlackHole />;
   }
 
   return (
     <div
-      className="field"
+      className={`field ${selectedIndex === index && "field--selected"}`}
       style={{
         gridColumnStart: getColumnStart(),
         gridColumnEnd: getColumnEnd(),
@@ -38,7 +38,7 @@ export default function Field({ field, index, onField }) {
       }}
     >
       <div className="field-inside" onClick={() => onField(field.index)}></div>
-      <p className="field-number">{index + 1}</p>
+      <p className="field-number">{field.index + 1}</p>
       {svg}
     </div>
   );

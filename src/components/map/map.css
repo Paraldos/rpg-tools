@@ -1,17 +1,14 @@
 .map {
   width: 100%;
   height: calc(100vh - var(--header-size));
-
   display: grid;
   grid-template-columns: 2fr 1fr;
 }
 
-.map__boadControlls {
+.map__boardControlls {
   height: 100%;
-}
-
-.sectorTitle {
-  margin: 0 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .info-box {
@@ -19,4 +16,8 @@
   padding: 15px;
   border: 2px solid var(--color-primary);
   height: 100%;
+}
+
+.sectorTitle {
+  text-align: center;
 }
