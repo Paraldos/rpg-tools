@@ -52,6 +52,7 @@ export default function Map() {
     <div className="map">
       <Board sector={sector} onField={handleField} />
       <Controlls onNew={handleNew} />
+      <h2 className="sectorTitle">{sector ? sector.title : ""}</h2>
       <div className="info-box">
         <FieldInfo
           selectedField={selectedField}

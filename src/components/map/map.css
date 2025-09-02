@@ -4,11 +4,18 @@
 
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
 }
 
 .info-box {
   margin: 15px;
   padding: 15px;
   border: 2px solid var(--color-primary);
+}
+
+.sectorTitle {
+  font-family: Asimovian;
+  text-align: center;
+  font-size: 40px;
+  margin: 0;
 }
