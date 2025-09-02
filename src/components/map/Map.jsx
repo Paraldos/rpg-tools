@@ -52,14 +52,16 @@ export default function Map() {
 
   return (
     <div className="map">
-      <Board
-        sector={sector}
-        selectedIndex={selectedIndex}
-        onField={handleField}
-      />
-      <div className="map__boardControlls">
-        <Controlls onNew={handleNew} />
+      <div className="map__left">
         <h2 className="sectorTitle">Sektor: {sector ? sector.title : ""}</h2>
+        <Board
+          sector={sector}
+          selectedIndex={selectedIndex}
+          onField={handleField}
+        />
+      </div>
+      <div className="map__right">
+        <Controlls onNew={handleNew} />
         <div className="info-box">
           <FieldInfo
             selectedField={selectedField}

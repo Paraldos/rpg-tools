@@ -2,20 +2,29 @@
   width: 100%;
   height: calc(100vh - var(--header-size));
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 400px;
 }
 
-.map__boardControlls {
+.map__left {
   height: 100%;
+  max-height: 100%;
+  width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.info-box {
-  margin: 15px;
-  padding: 15px;
-  border: 2px solid var(--color-primary);
+.map__right {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .info-box {
+    margin: 15px;
+    padding: 15px;
+    border: 2px solid var(--color-primary);
+    height: 100%;
+  }
 }
 
 .sectorTitle {
