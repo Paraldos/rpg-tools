@@ -62,19 +62,21 @@ export default function Map() {
   return (
     <div className="map">
       <Board sector={sector} onField={handleField} />
-      <Controlls onNew={handleNew} />
-      <h2 className="sectorTitle">Sektor: {sector ? sector.title : ""}</h2>
-      <div className="info-box">
-        <FieldInfo
-          selectedField={selectedField}
-          onAddWorld={() =>
-            selectedIndex != null && handleAddWorld(selectedIndex)
-          }
-          onAddBlackHole={() =>
-            selectedIndex != null && handleAddBlackHole(selectedIndex)
-          }
-          onChangeType={handleChangeType}
-        />
+      <div className="map__boadControlls">
+        <Controlls onNew={handleNew} />
+        <h2 className="sectorTitle">Sektor: {sector ? sector.title : ""}</h2>
+        <div className="info-box">
+          <FieldInfo
+            selectedField={selectedField}
+            onAddWorld={() =>
+              selectedIndex != null && handleAddWorld(selectedIndex)
+            }
+            onAddBlackHole={() =>
+              selectedIndex != null && handleAddBlackHole(selectedIndex)
+            }
+            onChangeType={handleChangeType}
+          />
+        </div>
       </div>
     </div>
   );

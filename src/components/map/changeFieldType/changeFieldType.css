@@ -14,5 +14,6 @@
     height: 60px;
     aspect-ratio: 1;
     border-radius: 50px;
+    border-bottom-width: 5px;
   }
 }

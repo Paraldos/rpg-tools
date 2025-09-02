@@ -4,15 +4,19 @@
 
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto auto 1fr;
+}
+
+.map__boadControlls {
+  height: 100%;
+}
+
+.sectorTitle {
+  margin: 0 15px;
 }
 
 .info-box {
   margin: 15px;
   padding: 15px;
   border: 2px solid var(--color-primary);
-}
-
-.sectorTitle {
-  margin: 0 15px;
+  height: 100%;
 }
