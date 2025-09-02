@@ -15,8 +15,11 @@ button {
   border: 2px solid var(--color-primary);
   background-color: transparent;
   color: var(--color-primary);
+  transition: all 0.2s;
 
   &:hover {
-    border-color: var(--color-hover);
+    transform: translateX(5px);
+    color: var(--color-hover__light);
+    border-color: var(--color-hover__light);
   }
 }
