@@ -56,6 +56,7 @@ export function generateSector({ rows = 10, columns = 8 } = {}) {
   for (let row = 0; row < rows; row++) {
     for (let column = 0; column < columns; column++) {
       const index = row * columns + column;
+      fields[index].number = index + 1;
       fields[index].row = row;
       fields[index].column = column;
     }

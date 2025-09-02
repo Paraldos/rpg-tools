@@ -2,7 +2,8 @@
   width: 100%;
   padding: 15px;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 15px;
   justify-content: center;
 }

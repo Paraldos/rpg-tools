@@ -1,7 +1,7 @@
 import "./board.css";
 import Field from "../field/Field";
 
-export default function Board({ sector }) {
+export default function Board({ sector, onClickField }) {
   if (!sector) return <div className="board">Noch keine Karte generiert.</div>;
 
   return (
@@ -13,7 +13,12 @@ export default function Board({ sector }) {
       }}
     >
       {sector.fields.map((field, index) => (
-        <Field key={index} field={field} index={index} />
+        <Field
+          key={index}
+          field={field}
+          index={index}
+          onClickField={onClickField}
+        />
       ))}
     </div>
   );

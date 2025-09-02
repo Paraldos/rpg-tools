@@ -6,6 +6,10 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+p {
+  margin: 0 0 15px 0;
+}
+
 button {
   padding: 15px;
   border: 2px solid var(--color-primary);

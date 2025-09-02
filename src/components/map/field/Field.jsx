@@ -1,6 +1,6 @@
 import "./Field.css";
 
-export default function Field({ field, index }) {
+export default function Field({ field, index, onClickField }) {
   const getColumnStart = () => {
     const offset = field.row % 2 !== 0 ? 2 : 0;
     return field.column * 4 + offset + 1;
@@ -67,7 +67,7 @@ export default function Field({ field, index }) {
         gridRowEnd: getRowEnd(),
       }}
     >
-      <div className="field-inside"></div>
+      <div className="field-inside" onClick={() => onClickField(field)}></div>
       <p className="field-number">{index + 1}</p>
       {svg}
     </div>
