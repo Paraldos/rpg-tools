@@ -3,7 +3,7 @@ import { useState, useCallback } from "react";
 import Board from "./board/Board";
 import Controlls from "./controlls/Controlls";
 import { generateSector } from "../../utils/generateSector";
-import InfoBox from "./infoBox/InfoBox";
+import InfoBox from "./fieldInfo/FieldInfo";
 
 export default function Map() {
   const [sector, setSector] = useState(null);
@@ -23,7 +23,9 @@ export default function Map() {
     <div className="map">
       <Board sector={sector} onClickField={onClickField} />
       <Controlls onNew={handleNew} />
-      <InfoBox selectedField={selectedField} />
+      <div className="info-box">
+        <InfoBox selectedField={selectedField} />
+      </div>
     </div>
   );
 }
