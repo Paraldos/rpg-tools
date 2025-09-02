@@ -1,40 +1,21 @@
 import "./fieldInfo.css";
-import AddWorldBtn from "../addWorldBtn/AddWorldBtn";
-import AddBlackHoleBtn from "../addBlackHoleBtn/AddBlackHoleBtn";
 import { ChevronRight } from "../../../utils/svgs";
+import ChangeFieldType from "../changeFieldType/ChangeFieldType";
 
-export default function FieldInfo({
-  selectedField,
-  onAddWorld,
-  onAddBlackHole,
-}) {
+export default function FieldInfo({ selectedField, onAddWorld, onChangeType }) {
   if (!selectedField) return null;
 
   let content = null;
   const amountOfWorlds = selectedField.worlds?.length ?? 0;
   const canAddWorld = amountOfWorlds < 6;
 
-  if (selectedField.type == "Empty") {
+  if (selectedField.type == "Black Hole") {
+    content = <h2>{selectedField.title}</h2>;
+  }
+
+  if (selectedField.type == "Star") {
     content = (
       <>
-        <p>Typ: Leere, Feld: {selectedField.index + 1}</p>
-        <div className="fieldInfo__btns">
-          <AddBlackHoleBtn onClick={onAddBlackHole} />
-          {canAddWorld && <AddWorldBtn onClick={onAddWorld}></AddWorldBtn>}
-        </div>
-      </>
-    );
-  } else if (selectedField.type == "Black Hole") {
-    content = (
-      <>
-        <p>Typ: Schwarzes Loch, Feld: {selectedField.index + 1}</p>
-        <h2>{selectedField.title}</h2>
-      </>
-    );
-  } else {
-    content = (
-      <>
-        <p>Typ: Stern, Feld: {selectedField.index + 1}</p>
         <h2>{selectedField.title}</h2>
         {selectedField.worlds.map((world, i) => (
           <button key={i} className="fieldInfo__worldBtn">
@@ -42,13 +23,18 @@ export default function FieldInfo({
             <ChevronRight />
           </button>
         ))}
-        <div className="fieldInfo__btns">
-          <AddBlackHoleBtn onClick={onAddBlackHole} />
-          {canAddWorld && <AddWorldBtn onClick={onAddWorld}></AddWorldBtn>}
-        </div>
       </>
     );
   }
 
-  return <div className="fieldInfo">{content}</div>;
+  return (
+    <div className="fieldInfo">
+      <p>Typ: Schwarzes Loch, Feld: {selectedField.index + 1}</p>
+      {content}
+      <ChangeFieldType
+        fieldIndex={selectedField.index}
+        onChangeType={onChangeType}
+      />
+    </div>
+  );
 }

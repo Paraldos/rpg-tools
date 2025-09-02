@@ -1,0 +1,17 @@
+.changeFieldType {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  p {
+    margin: 0;
+  }
+
+  button {
+    height: 60px;
+    aspect-ratio: 1;
+    border-radius: 50px;
+  }
+}
