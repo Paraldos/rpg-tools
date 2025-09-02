@@ -16,7 +16,7 @@ export default function FieldInfo({ selectedField, onAddWorld, onChangeType }) {
   if (selectedField.type == "Star") {
     content = (
       <>
-        <h2>{selectedField.title}</h2>
+        <h3>{selectedField.title}</h3>
         {selectedField.worlds.map((world, i) => (
           <button key={i} className="fieldInfo__worldBtn">
             <b>{world.name}</b> ({world.tags.join(", ")})

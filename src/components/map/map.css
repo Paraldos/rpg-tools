@@ -14,8 +14,5 @@
 }
 
 .sectorTitle {
-  font-family: Asimovian;
-  text-align: center;
-  font-size: 40px;
-  margin: 0;
+  margin: 0 15px;
 }

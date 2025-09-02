@@ -6,6 +6,18 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+h2 {
+  font-family: Asimovian;
+  font-size: 40px;
+  margin: 0;
+}
+
+h3 {
+  font-family: Asimovian;
+  font-size: 30px;
+  margin: 0;
+}
+
 p {
   margin: 0 0 15px 0;
 }
