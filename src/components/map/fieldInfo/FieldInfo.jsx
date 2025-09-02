@@ -1,6 +1,7 @@
 import "./fieldInfo.css";
 import { ChevronRight } from "../../../utils/svgs";
 import ChangeFieldType from "../changeFieldType/ChangeFieldType";
+import { Planet } from "../../../utils/svgs";
 
 export default function FieldInfo({ selectedField, onAddWorld, onChangeType }) {
   if (!selectedField) return null;
@@ -23,6 +24,12 @@ export default function FieldInfo({ selectedField, onAddWorld, onChangeType }) {
             <ChevronRight />
           </button>
         ))}
+        <div className={"fieldInfo__addWorldBtn"}>
+          <p>Hinzufügen</p>
+          <button onClick={() => onAddWorld(selectedField.index)}>
+            <Planet />
+          </button>
+        </div>
       </>
     );
   }
@@ -35,10 +42,10 @@ export default function FieldInfo({ selectedField, onAddWorld, onChangeType }) {
 
   return (
     <div className="fieldInfo">
-      <p>
+      <p className="fieldInfo__baseInfo">
         Typ: {selectedField.type}, Feld: {selectedField.index + 1}
       </p>
-      {content}
+      <div className="fieldInfo__content">{content}</div>
       <ChangeFieldType
         fieldIndex={selectedField.index}
         onChangeType={onChangeType}

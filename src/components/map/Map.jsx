@@ -22,26 +22,17 @@ export default function Map() {
   const handleAddWorld = useCallback((index) => {
     setSector((previousSector) => {
       const selectedField = previousSector.fields[index];
-      const updatedWorlds =
-        selectedField.type === "Stern"
-          ? [
-              ...selectedField.worlds,
-              generateWorld(selectedField.title, selectedField.worlds.length),
-            ]
-          : [generateWorld(selectedField.title, 0)];
-
-      const updatedSector = {
-        ...previousSector,
-        fields: [...previousSector.fields],
-      };
-
-      updatedSector.fields[index] = {
+      const newWorld = generateWorld(
+        selectedField.title,
+        selectedField.worlds?.length ?? 0
+      );
+      const updatedField = {
         ...selectedField,
-        type: "Star",
-        worlds: updatedWorlds,
+        worlds: [...selectedField.worlds, newWorld],
       };
-
-      return updatedSector;
+      const newFields = [...previousSector.fields];
+      newFields[index] = updatedField;
+      return { ...previousSector, fields: newFields };
     });
   }, []);
 
@@ -72,12 +63,7 @@ export default function Map() {
         <div className="info-box">
           <FieldInfo
             selectedField={selectedField}
-            onAddWorld={() =>
-              selectedIndex != null && handleAddWorld(selectedIndex)
-            }
-            onAddBlackHole={() =>
-              selectedIndex != null && handleAddBlackHole(selectedIndex)
-            }
+            onAddWorld={handleAddWorld}
             onChangeType={handleChangeType}
           />
         </div>
