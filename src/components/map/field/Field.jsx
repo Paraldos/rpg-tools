@@ -1,5 +1,5 @@
 import "./Field.css";
-import { BlackHole, Star } from "../../icons/svgs";
+import { BlackHole, Star } from "../../../utils/svgs";
 
 export default function Field({ field, index, onField }) {
   const getColumnStart = () => {
