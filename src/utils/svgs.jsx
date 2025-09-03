@@ -1,5 +1,3 @@
-// src/components/icons/svgs.jsx
-
 export function BlackHole() {
   return (
     <svg
