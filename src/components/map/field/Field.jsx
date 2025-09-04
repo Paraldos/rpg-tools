@@ -1,40 +1,29 @@
 import "./Field.css";
 import { BlackHole, Star } from "../../../utils/svgs";
+import { useCallback } from "react";
+import { useSectorStore } from "../../../store";
 
-export default function Field({
-  field,
-  index,
-  selectedIndex,
-  onOpenFieldInfo,
-}) {
-  const getColumnStart = () => {
-    const offset = field.row % 2 !== 0 ? 2 : 0;
-    return field.column * 4 + offset + 1;
-  };
-
-  const getColumnEnd = () => {
-    const offset = field.row % 2 !== 0 ? 2 : 0;
-    return field.column * 4 + offset + 5;
-  };
-
-  const getRowStart = () => {
-    return field.row * 4 + 1 - field.row;
-  };
-
-  const getRowEnd = () => {
-    return field.row * 4 + 5 - field.row;
-  };
+export default function Field({ field, index }) {
+  const getColumnStart = () =>
+    field.column * 4 + (field.row % 2 !== 0 ? 2 : 0) + 1;
+  const getColumnEnd = () =>
+    field.column * 4 + (field.row % 2 !== 0 ? 2 : 0) + 5;
+  const getRowStart = () => field.row * 4 + 1 - field.row;
+  const getRowEnd = () => field.row * 4 + 5 - field.row;
 
   let svg = null;
-  if (field.type === "Stern") {
-    svg = <Star />;
-  } else if (field.type === "Schwarzes Loch") {
-    svg = <BlackHole />;
-  }
+  if (field.type === "Stern") svg = <Star />;
+  if (field.type === "Schwarzes Loch") svg = <BlackHole />;
+
+  const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
+  const setSelectedField = useSectorStore((s) => s.setSelectedFieldIndex);
+  const handleClick = useCallback(() => {
+    setSelectedField(index);
+  }, [index, setSelectedField]);
 
   return (
     <div
-      className={`field ${selectedIndex === index && "field--selected"}`}
+      className={`field ${selectedFieldIndex === index && "field--selected"}`}
       style={{
         gridColumnStart: getColumnStart(),
         gridColumnEnd: getColumnEnd(),
@@ -42,10 +31,7 @@ export default function Field({
         gridRowEnd: getRowEnd(),
       }}
     >
-      <div
-        className="field-inside"
-        onClick={() => onOpenFieldInfo(field.index)}
-      ></div>
+      <div className="field-inside" onClick={handleClick}></div>
       <p className="field-number">{field.index + 1}</p>
       {svg}
     </div>

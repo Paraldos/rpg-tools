@@ -1,18 +1,12 @@
+import { World, Star, BlackHole, Empty, Sector, Field } from "./types";
+import { WORLD_TYPES, SOCIETY_TAGS, GENERAL_TAGS } from "../sector/worldTags";
+import { STAR_NAMES } from "../sector/starNames";
+import { rollDice } from "./random";
 import {
   shuffleArray,
   getRandomArrayItem,
   getWeightedRandomArrayItem,
 } from "./array";
-import { rollDice } from "./random";
-import { SOCIETY_TAGS, WORLD_TYPES, GENERAL_TAGS } from "../data/worldTags";
-import { STAR_NAMES } from "../data/starNames";
-
-export type World = { name: string; tags: string[] };
-export type Star = { type: "Star"; title: string; worlds: World[] };
-export type BlackHole = { type: "Black Hole"; title: string };
-export type Empty = { type: "Empty"; title: string };
-export type FieldCore = { index: number; row: number; column: number };
-export type Field = (Star | BlackHole | Empty) & Partial<FieldCore>;
 
 export function generateWorld(starName: string, ordinal: number): World {
   const planetNumber = ordinal * 2 + rollDice(2);
@@ -28,7 +22,7 @@ export function generateWorld(starName: string, ordinal: number): World {
 
 export function generateStar(name?: string): Star {
   const title = name ?? "Nova";
-  const n = rollDice(3); // 1..3
+  const n = rollDice(3);
   return {
     type: "Stern",
     title,
@@ -37,27 +31,28 @@ export function generateStar(name?: string): Star {
 }
 
 export function generateBlackHole(name?: string): BlackHole {
-  return {
-    type: "Schwarzes Loch",
-    title: name ?? "Singularis",
-  };
+  return { type: "Schwarzes Loch", title: name ?? "Singularis" };
 }
 
 export function generateEmpty(name?: string): Empty {
-  return {
-    type: "Leere",
-    title: name ?? "Void",
-  };
+  return { type: "Leere", title: name ?? "Void" };
 }
 
-export function generateSector({ rows = 10, columns = 8 } = {}) {
+export function shuffledStarNames() {
+  return shuffleArray([...STAR_NAMES]);
+}
+
+export function generateSector({
+  rows = 10,
+  columns = 8,
+}: { rows?: number; columns?: number } = {}): Sector {
   const amountOfFields = rows * columns;
   const amountOfStars = Math.floor(amountOfFields / 4);
   const amountOfBlackHoles = Math.floor(amountOfFields / 20);
 
   const starNames = shuffleArray([...STAR_NAMES]);
 
-  let fields: Field[] = [];
+  let fields: any[] = [];
 
   for (let i = 0; i < amountOfBlackHoles; i++) {
     fields.push(generateBlackHole(starNames.pop()));
@@ -82,5 +77,5 @@ export function generateSector({ rows = 10, columns = 8 } = {}) {
     }
   }
 
-  return { rows, columns, fields, title: starNames.pop() };
+  return { rows, columns, fields: fields as Field[], title: starNames.pop() };
 }

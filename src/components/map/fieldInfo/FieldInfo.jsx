@@ -2,13 +2,20 @@ import "./fieldInfo.css";
 import ChangeFieldType from "../changeFieldType/ChangeFieldType";
 import { Planet } from "../../../utils/svgs";
 import WorldBtn from "../worldBtn/WorldBtn";
+import { useSectorStore } from "../../../store";
 
 export default function FieldInfo({
-  selectedField,
   onAddWorld,
   onChangeFieldType,
   onOpenWorldInfo,
 }) {
+  const sector = useSectorStore((s) => s.sector);
+  const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
+  const selectedField =
+    sector && selectedFieldIndex != null
+      ? sector.fields[selectedFieldIndex]
+      : null;
+
   if (!selectedField) return null;
 
   let content = null;
