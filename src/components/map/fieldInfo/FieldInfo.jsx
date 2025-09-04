@@ -1,9 +1,14 @@
 import "./fieldInfo.css";
-import { ChevronRight } from "../../../utils/svgs";
 import ChangeFieldType from "../changeFieldType/ChangeFieldType";
 import { Planet } from "../../../utils/svgs";
+import WorldBtn from "../worldBtn/WorldBtn";
 
-export default function FieldInfo({ selectedField, onAddWorld, onChangeType }) {
+export default function FieldInfo({
+  selectedField,
+  onAddWorld,
+  onChangeType,
+  onClickOnWorld,
+}) {
   if (!selectedField) return null;
 
   let content = null;
@@ -18,11 +23,14 @@ export default function FieldInfo({ selectedField, onAddWorld, onChangeType }) {
     content = (
       <>
         <h3>{selectedField.title}</h3>
-        {selectedField.worlds.map((world, i) => (
-          <button key={i} className="fieldInfo__worldBtn">
-            <b>{world.name}</b> ({world.tags.join(", ")})
-            <ChevronRight />
-          </button>
+        {selectedField.worlds.map((world, index) => (
+          <WorldBtn
+            key={index}
+            world={world}
+            fieldIndex={selectedField.index}
+            worldIndex={index}
+            onClickOnWorld={onClickOnWorld}
+          />
         ))}
         <div className={"fieldInfo__addWorldBtn"}>
           <p>Hinzufügen</p>

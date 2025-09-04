@@ -1,7 +1,7 @@
 import "./Field.css";
 import { BlackHole, Star } from "../../../utils/svgs";
 
-export default function Field({ field, index, selectedIndex, onField }) {
+export default function Field({ field, index, selectedIndex, onClickOnField }) {
   const getColumnStart = () => {
     const offset = field.row % 2 !== 0 ? 2 : 0;
     return field.column * 4 + offset + 1;
@@ -37,7 +37,10 @@ export default function Field({ field, index, selectedIndex, onField }) {
         gridRowEnd: getRowEnd(),
       }}
     >
-      <div className="field-inside" onClick={() => onField(field.index)}></div>
+      <div
+        className="field-inside"
+        onClick={() => onClickOnField(field.index)}
+      ></div>
       <p className="field-number">{field.index + 1}</p>
       {svg}
     </div>

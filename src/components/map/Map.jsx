@@ -15,7 +15,7 @@ export default function Map() {
     setSelectedIndex(null);
   }, []);
 
-  const handleField = useCallback((index) => {
+  const handleClickonClickOnField = useCallback((index) => {
     setSelectedIndex(index);
   }, []);
 
@@ -47,6 +47,10 @@ export default function Map() {
     });
   }, []);
 
+  const handleClickOnWorld = useCallback((indexField, indexWorld) => {
+    console.log(indexField, " / ", indexWorld);
+  }, []);
+
   const selectedField =
     selectedIndex != null && sector ? sector.fields[selectedIndex] : null;
 
@@ -57,7 +61,7 @@ export default function Map() {
         <Board
           sector={sector}
           selectedIndex={selectedIndex}
-          onField={handleField}
+          onClickOnField={handleClickonClickOnField}
         />
       </div>
       <div className="map__right">
@@ -67,6 +71,7 @@ export default function Map() {
             selectedField={selectedField}
             onAddWorld={handleAddWorld}
             onChangeType={handleChangeType}
+            onClickOnWorld={handleClickOnWorld}
           />
         </div>
       </div>
