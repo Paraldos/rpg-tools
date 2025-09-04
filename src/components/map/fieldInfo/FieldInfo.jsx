@@ -4,9 +4,11 @@ import { Planet } from "../../../utils/svgs";
 import WorldBtn from "../worldBtn/WorldBtn";
 import { useSectorStore } from "../../../store";
 
-export default function FieldInfo({ onAddWorld, onOpenWorldInfo }) {
+export default function FieldInfo({ onOpenWorldInfo }) {
+  const addWorld = useSectorStore((s) => s.addWorld);
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
+
   const selectedField =
     sector && selectedFieldIndex != null
       ? sector.fields[selectedFieldIndex]
@@ -35,12 +37,15 @@ export default function FieldInfo({ onAddWorld, onOpenWorldInfo }) {
             onOpenWorldInfo={onOpenWorldInfo}
           />
         ))}
-        <div className={"fieldInfo__addWorldBtn"}>
-          <p>Hinzufügen</p>
-          <button onClick={() => onAddWorld(selectedField.index)}>
-            <Planet />
-          </button>
-        </div>
+
+        {canAddWorld && (
+          <div className="fieldInfo__addWorldBtn">
+            <p>Hinzufügen</p>
+            <button onClick={() => addWorld(selectedField.index)}>
+              <Planet />
+            </button>
+          </div>
+        )}
       </>
     );
   }
