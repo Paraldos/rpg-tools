@@ -30,20 +30,6 @@ export default function Map() {
     [setSector]
   );
 
-  const handleChangeFieldType = useCallback(
-    (index, newType) => {
-      setSector((previousSector) => {
-        const updatedSector = { ...previousSector };
-        const field = { ...updatedSector.fields[index] };
-        field.type = newType;
-        field.worlds = field.worlds ?? [];
-        updatedSector.fields[index] = field;
-        return updatedSector;
-      });
-    },
-    [setSector]
-  );
-
   const handleOpenWorldInfo = useCallback((indexField, indexWorld) => {
     console.log(indexField, " / ", indexWorld);
   }, []);
@@ -59,7 +45,6 @@ export default function Map() {
         <div className="info-box">
           <FieldInfo
             onAddWorld={handleAddWorld}
-            onChangeFieldType={handleChangeFieldType}
             onOpenWorldInfo={handleOpenWorldInfo}
           />
         </div>

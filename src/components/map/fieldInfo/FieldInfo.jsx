@@ -4,11 +4,7 @@ import { Planet } from "../../../utils/svgs";
 import WorldBtn from "../worldBtn/WorldBtn";
 import { useSectorStore } from "../../../store";
 
-export default function FieldInfo({
-  onAddWorld,
-  onChangeFieldType,
-  onOpenWorldInfo,
-}) {
+export default function FieldInfo({ onAddWorld, onOpenWorldInfo }) {
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const selectedField =
@@ -55,10 +51,7 @@ export default function FieldInfo({
         Typ: {selectedField.type}, Feld: {selectedField.index + 1}
       </p>
       <div className="fieldInfo__content">{content}</div>
-      <ChangeFieldType
-        fieldIndex={selectedField.index}
-        onChangeFieldType={onChangeFieldType}
-      />
+      <ChangeFieldType />
     </div>
   );
 }
