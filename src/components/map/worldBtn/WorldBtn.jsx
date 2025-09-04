@@ -5,13 +5,13 @@ export default function WorldBtn({
   fieldIndex,
   worldIndex,
   world,
-  onClickOnWorld,
+  onOpenWorldInfo,
 }) {
   return (
     <button
       key={fieldIndex}
       className="worldBtn"
-      onClick={() => onClickOnWorld(fieldIndex, worldIndex)}
+      onClick={() => onOpenWorldInfo(fieldIndex, worldIndex)}
     >
       <b>{world.name}</b> ({world.tags.join(", ")})
       <ChevronRight />

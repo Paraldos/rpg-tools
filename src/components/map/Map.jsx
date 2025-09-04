@@ -9,13 +9,13 @@ export default function Map() {
   const [sector, setSector] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-  const handleNew = useCallback(() => {
+  const handleNewSector = useCallback(() => {
     const newSector = generateSector({ rows: 10, columns: 8 });
     setSector(newSector);
     setSelectedIndex(null);
   }, []);
 
-  const handleClickonClickOnField = useCallback((index) => {
+  const handleOpenFieldInfo = useCallback((index) => {
     setSelectedIndex(index);
   }, []);
 
@@ -36,7 +36,7 @@ export default function Map() {
     });
   }, []);
 
-  const handleChangeType = useCallback((index, newType) => {
+  const handleChangeFieldType = useCallback((index, newType) => {
     setSector((previousSector) => {
       const updatedSector = { ...previousSector };
       const field = { ...updatedSector.fields[index] };
@@ -47,7 +47,7 @@ export default function Map() {
     });
   }, []);
 
-  const handleClickOnWorld = useCallback((indexField, indexWorld) => {
+  const handleOpenWorldInfo = useCallback((indexField, indexWorld) => {
     console.log(indexField, " / ", indexWorld);
   }, []);
 
@@ -61,17 +61,17 @@ export default function Map() {
         <Board
           sector={sector}
           selectedIndex={selectedIndex}
-          onClickOnField={handleClickonClickOnField}
+          onOpenFieldInfo={handleOpenFieldInfo}
         />
       </div>
       <div className="map__right">
-        <Controlls onNew={handleNew} />
+        <Controlls onNewSector={handleNewSector} />
         <div className="info-box">
           <FieldInfo
             selectedField={selectedField}
             onAddWorld={handleAddWorld}
-            onChangeType={handleChangeType}
-            onClickOnWorld={handleClickOnWorld}
+            onChangeFieldType={handleChangeFieldType}
+            onOpenWorldInfo={handleOpenWorldInfo}
           />
         </div>
       </div>

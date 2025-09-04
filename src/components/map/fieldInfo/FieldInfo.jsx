@@ -6,8 +6,8 @@ import WorldBtn from "../worldBtn/WorldBtn";
 export default function FieldInfo({
   selectedField,
   onAddWorld,
-  onChangeType,
-  onClickOnWorld,
+  onChangeFieldType,
+  onOpenWorldInfo,
 }) {
   if (!selectedField) return null;
 
@@ -29,7 +29,7 @@ export default function FieldInfo({
             world={world}
             fieldIndex={selectedField.index}
             worldIndex={index}
-            onClickOnWorld={onClickOnWorld}
+            onOpenWorldInfo={onOpenWorldInfo}
           />
         ))}
         <div className={"fieldInfo__addWorldBtn"}>
@@ -42,12 +42,6 @@ export default function FieldInfo({
     );
   }
 
-  const fieldType = {
-    Empty: "Leere",
-    BlackHole: "Schwarzes Loch",
-    Star: "Stern",
-  };
-
   return (
     <div className="fieldInfo">
       <p className="fieldInfo__baseInfo">
@@ -56,7 +50,7 @@ export default function FieldInfo({
       <div className="fieldInfo__content">{content}</div>
       <ChangeFieldType
         fieldIndex={selectedField.index}
-        onChangeType={onChangeType}
+        onChangeFieldType={onChangeFieldType}
       />
     </div>
   );
