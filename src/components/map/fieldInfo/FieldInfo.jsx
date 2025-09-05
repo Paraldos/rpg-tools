@@ -1,14 +1,12 @@
 import "./fieldInfo.css";
 import ChangeFieldType from "../changeFieldType/ChangeFieldType";
-import { SvgPlanet } from "../../../utils/svgs";
 import WorldBtn from "../worldBtn/WorldBtn";
 import { useSectorStore } from "../../../store";
+import AddWorldBtn from "../addWorldBtn/AddWorldBtn";
 
 export default function FieldInfo({ onOpenWorldInfo }) {
-  const addWorld = useSectorStore((s) => s.addWorld);
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
-
   const selectedField =
     sector && selectedFieldIndex != null
       ? sector.fields[selectedFieldIndex]
@@ -17,8 +15,6 @@ export default function FieldInfo({ onOpenWorldInfo }) {
   if (!selectedField) return null;
 
   let content = null;
-  const amountOfWorlds = selectedField.worlds?.length ?? 0;
-  const canAddWorld = amountOfWorlds < 6;
 
   if (selectedField.type == "Schwarzes Loch") {
     content = <h3>{selectedField.title}</h3>;
@@ -29,23 +25,12 @@ export default function FieldInfo({ onOpenWorldInfo }) {
       <>
         <h3>{selectedField.title}</h3>
         {selectedField.worlds.map((world, index) => (
-          <WorldBtn
-            key={index}
-            world={world}
-            fieldIndex={selectedField.index}
-            worldIndex={index}
-            onOpenWorldInfo={onOpenWorldInfo}
-          />
+          <WorldBtn key={index} world={world} worldIndex={index} />
         ))}
-
-        {canAddWorld && (
-          <div className="fieldInfo__addWorldBtn">
-            <p>Hinzufügen</p>
-            <button onClick={() => addWorld(selectedField.index)}>
-              <SvgPlanet />
-            </button>
-          </div>
-        )}
+        <div className="fieldInfo__addWorldBtn">
+          <p>Hinzufügen</p>
+          <AddWorldBtn />
+        </div>
       </>
     );
   }
