@@ -5,25 +5,31 @@ import { generateSector, generateWorld } from "./sectorHelper";
 type SectorState = {
   sector: Sector | null;
   selectedFieldIndex: number | null;
+  selectedWorldIndex: [number, number] | null;
 
   setSector: (sector: Sector | null) => void;
   setSelectedFieldIndex: (index: number | null) => void;
+  setSelectedWorldIndex: (indices: [number, number] | null) => void;
+
   newSector: (rows: number, columns: number) => void;
 
   changeFieldType: (index: number, newType: FieldType) => void;
   addWorld: (index: number) => void;
+  resetSelection: () => void;
 };
 
 export const useSectorStore = create<SectorState>((set) => ({
   sector: null,
   selectedFieldIndex: null,
+  selectedWorldIndex: null,
 
   setSector: (sector) => set({ sector }),
   setSelectedFieldIndex: (index) => set({ selectedFieldIndex: index }),
+  setSelectedWorldIndex: (indices) => set({ selectedWorldIndex: indices }),
 
   newSector: (rows, columns) => {
     const sector = generateSector({ rows, columns });
-    set({ sector, selectedFieldIndex: null });
+    set({ sector, selectedFieldIndex: null, selectedWorldIndex: null });
   },
 
   addWorld: (index) =>
@@ -31,7 +37,6 @@ export const useSectorStore = create<SectorState>((set) => ({
       if (!state.sector) return state;
 
       const previousSector = state.sector;
-
       const selectedField = previousSector.fields[index];
       const newWorld = generateWorld(
         selectedField.title,
@@ -50,6 +55,7 @@ export const useSectorStore = create<SectorState>((set) => ({
   changeFieldType: (index, newType) =>
     set((state) => {
       if (!state.sector) return state;
+
       const updatedSector = { ...state.sector };
       const field: any = { ...updatedSector.fields[index] };
 
@@ -61,4 +67,7 @@ export const useSectorStore = create<SectorState>((set) => ({
 
       return { sector: { ...updatedSector, fields } };
     }),
+
+  resetSelection: () =>
+    set({ selectedFieldIndex: null, selectedWorldIndex: null }),
 }));

@@ -4,6 +4,10 @@ import { useCallback } from "react";
 import { useSectorStore } from "../../../utils/store";
 
 export default function Field({ field, index }) {
+  const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
+  const setSelectedFieldIndex = useSectorStore((s) => s.setSelectedFieldIndex);
+  const resetSelection = useSectorStore((s) => s.resetSelection);
+
   const getColumnStart = () =>
     field.column * 4 + (field.row % 2 !== 0 ? 2 : 0) + 1;
   const getColumnEnd = () =>
@@ -15,11 +19,10 @@ export default function Field({ field, index }) {
   if (field.type === "Stern") svg = <SvgStar />;
   if (field.type === "Schwarzes Loch") svg = <SvgBlackHole />;
 
-  const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
-  const setSelectedField = useSectorStore((s) => s.setSelectedFieldIndex);
   const handleClick = useCallback(() => {
-    setSelectedField(index);
-  }, [index, setSelectedField]);
+    resetSelection();
+    setSelectedFieldIndex(index);
+  }, [index, setSelectedFieldIndex]);
 
   return (
     <div

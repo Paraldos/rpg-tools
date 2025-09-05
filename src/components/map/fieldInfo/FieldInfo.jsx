@@ -38,7 +38,7 @@ export default function FieldInfo({ onOpenWorldInfo }) {
   return (
     <div className="fieldInfo">
       <p className="fieldInfo__baseInfo">
-        Typ: {selectedField.type}, Feld: {selectedField.index + 1}
+        Feld: {selectedField.index + 1}, Typ: {selectedField.type}
       </p>
       <div className="fieldInfo__content">{content}</div>
       <ChangeFieldType />

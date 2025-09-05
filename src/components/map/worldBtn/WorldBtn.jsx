@@ -5,6 +5,8 @@ import { useSectorStore } from "../../../utils/store";
 export default function WorldBtn({ worldIndex }) {
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
+  const setSelectedWorldIndex = useSectorStore((s) => s.setSelectedWorldIndex);
+  const resetSelection = useSectorStore((s) => s.resetSelection);
 
   if (!sector || selectedFieldIndex == null) return null;
 
@@ -13,7 +15,8 @@ export default function WorldBtn({ worldIndex }) {
   if (!world) return null;
 
   const handelClick = () => {
-    console.log("click!");
+    resetSelection();
+    setSelectedWorldIndex([selectedFieldIndex, worldIndex]);
   };
 
   return (
