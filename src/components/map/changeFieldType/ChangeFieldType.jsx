@@ -1,6 +1,6 @@
 import "./changeFieldType.css";
 import { SvgBlackHole, SvgStar } from "../../../utils/svgs";
-import { useSectorStore } from "../../../store";
+import { useSectorStore } from "../../../utils/store";
 
 export default function ChangeFieldType() {
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);

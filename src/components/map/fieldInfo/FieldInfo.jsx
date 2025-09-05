@@ -1,7 +1,7 @@
 import "./fieldInfo.css";
 import ChangeFieldType from "../changeFieldType/ChangeFieldType";
 import WorldBtn from "../worldBtn/WorldBtn";
-import { useSectorStore } from "../../../store";
+import { useSectorStore } from "../../../utils/store";
 import AddWorldBtn from "../addWorldBtn/AddWorldBtn";
 
 export default function FieldInfo({ onOpenWorldInfo }) {

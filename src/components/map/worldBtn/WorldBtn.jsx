@@ -1,6 +1,6 @@
 import "./worldBtn.css";
 import { SvgChevronRight } from "../../../utils/svgs";
-import { useSectorStore } from "../../../store";
+import { useSectorStore } from "../../../utils/store";
 
 export default function WorldBtn({ worldIndex }) {
   const sector = useSectorStore((s) => s.sector);

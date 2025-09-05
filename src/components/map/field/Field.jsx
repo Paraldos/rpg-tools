@@ -1,7 +1,7 @@
 import "./Field.css";
 import { SvgBlackHole, SvgStar } from "../../../utils/svgs";
 import { useCallback } from "react";
-import { useSectorStore } from "../../../store";
+import { useSectorStore } from "../../../utils/store";
 
 export default function Field({ field, index }) {
   const getColumnStart = () =>

@@ -1,6 +1,6 @@
 import "./controlls.css";
 import { useCallback } from "react";
-import { useSectorStore } from "../../../store";
+import { useSectorStore } from "../../../utils/store";
 
 export default function Controlls() {
   const newSector = useSectorStore((s) => s.newSector);

@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { Sector, FieldType } from "./utils/types";
-import { generateSector, generateWorld } from "./utils/sectorHelper";
+import { Sector, FieldType } from "./types";
+import { generateSector, generateWorld } from "./sectorHelper";
 
 type SectorState = {
   sector: Sector | null;
