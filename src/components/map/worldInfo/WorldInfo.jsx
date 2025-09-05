@@ -14,6 +14,11 @@ export default function WorldInfo() {
     <div className="worldInfo">
       <p className="fieldInfo__baseInfo">Feld: {selectedField.index + 1}</p>
       <h3>{selectedWorld.name}</h3>
+      <ul>
+        {selectedWorld.tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -1,22 +1,26 @@
 .worldBtn {
-  width: 100%;
-  text-align: left;
   display: flex;
-  grid-template-columns: 1fr auto;
-  gap: 10px;
+  gap: 20px;
+  justify-content: center;
   align-items: center;
+
+  width: 100%;
   border: none;
   padding: 15px 10px 15px 0;
   transition: all 0.2s;
 
   p {
     margin: 0;
+    text-align: left;
   }
 
   .worldBtn__title {
     font-size: 1.2rem;
-    margin-right: 15px;
     white-space: nowrap;
+  }
+
+  .worldBtn__tags {
+    width: 100%;
   }
 
   svg {
