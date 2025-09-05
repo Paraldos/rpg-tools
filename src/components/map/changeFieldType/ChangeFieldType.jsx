@@ -12,14 +12,19 @@ export default function ChangeFieldType() {
     <div className="changeFieldType">
       <p>Umwandeln</p>
       <button
+        className="symbolBtn"
         onClick={() => changeFieldType(selectedFieldIndex, "Schwarzes Loch")}
       >
         <SvgBlackHole />
       </button>
-      <button onClick={() => changeFieldType(selectedFieldIndex, "Stern")}>
+      <button
+        className="symbolBtn"
+        onClick={() => changeFieldType(selectedFieldIndex, "Stern")}
+      >
         <SvgStar />
       </button>
       <button
+        className="symbolBtn"
         onClick={() => changeFieldType(selectedFieldIndex, "Leere")}
       ></button>
     </div>

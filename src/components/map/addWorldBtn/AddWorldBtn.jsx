@@ -19,7 +19,10 @@ export default function AddWorldBtn() {
   if (!canAddWorld) return null;
 
   return (
-    <button onClick={() => addWorld(selectedField.index)}>
+    <button
+      className={"symbolBtn"}
+      onClick={() => addWorld(selectedField.index)}
+    >
       <SvgPlanet />
     </button>
   );

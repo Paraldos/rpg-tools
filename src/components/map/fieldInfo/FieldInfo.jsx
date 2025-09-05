@@ -27,7 +27,7 @@ export default function FieldInfo({ onOpenWorldInfo }) {
         {selectedField.worlds.map((world, index) => (
           <WorldBtn key={index} worldIndex={index} />
         ))}
-        <div className="fieldInfo__addWorldBtn">
+        <div className="fieldInfo__add">
           <p>Hinzufügen</p>
           <AddWorldBtn />
         </div>
