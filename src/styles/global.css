@@ -30,7 +30,7 @@ button {
   transition: all 0.2s;
 
   &:hover {
-    transform: translateY(4px) translateX(2px);
+    transform: translateY(2px) translateX(1px);
     color: var(--color-hover__light);
     border-color: var(--color-hover__light);
   }
@@ -41,4 +41,9 @@ button {
   aspect-ratio: 1;
   border-radius: 50px;
   border-bottom-width: 5px;
+}
+
+ul {
+  padding-left: 15px;
+  margin: 0;
 }

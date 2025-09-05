@@ -1,0 +1,25 @@
+.xBtn {
+  border-radius: 50px;
+  position: relative;
+  max-width: 30px;
+  aspect-ratio: 1;
+}
+
+.xBtn::before,
+.xBtn::after {
+  content: "";
+  display: inline-block;
+  width: 70%;
+  height: 2px;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 15px;
+  border: 1px solid white;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.xBtn::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
