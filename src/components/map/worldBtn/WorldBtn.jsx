@@ -1,5 +1,6 @@
 import "./worldBtn.css";
-import { ChevronRight } from "../../../utils/svgs";
+import { SvgChevronRight } from "../../../utils/svgs";
+import { useSectorStore } from "../../../store";
 
 export default function WorldBtn({
   fieldIndex,
@@ -14,7 +15,7 @@ export default function WorldBtn({
       onClick={() => onOpenWorldInfo(fieldIndex, worldIndex)}
     >
       <b>{world.name}</b> ({world.tags.join(", ")})
-      <ChevronRight />
+      <SvgChevronRight />
     </button>
   );
 }
