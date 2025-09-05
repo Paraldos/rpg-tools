@@ -1,6 +1,6 @@
 import "./fieldInfo.css";
 import ChangeFieldType from "../changeFieldType/ChangeFieldType";
-import { Planet } from "../../../utils/svgs";
+import { SvgPlanet } from "../../../utils/svgs";
 import WorldBtn from "../worldBtn/WorldBtn";
 import { useSectorStore } from "../../../store";
 
@@ -42,7 +42,7 @@ export default function FieldInfo({ onOpenWorldInfo }) {
           <div className="fieldInfo__addWorldBtn">
             <p>Hinzufügen</p>
             <button onClick={() => addWorld(selectedField.index)}>
-              <Planet />
+              <SvgPlanet />
             </button>
           </div>
         )}

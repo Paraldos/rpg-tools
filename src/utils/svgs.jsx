@@ -1,4 +1,4 @@
-export function BlackHole() {
+export function SvgBlackHole() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@ export function BlackHole() {
   );
 }
 
-export function Star() {
+export function SvgStar() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
       <path
@@ -33,7 +33,7 @@ export function Star() {
   );
 }
 
-export function Planet() {
+export function SvgPlanet() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

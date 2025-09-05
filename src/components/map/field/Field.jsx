@@ -1,5 +1,5 @@
 import "./Field.css";
-import { BlackHole, Star } from "../../../utils/svgs";
+import { SvgBlackHole, SvgStar } from "../../../utils/svgs";
 import { useCallback } from "react";
 import { useSectorStore } from "../../../store";
 
@@ -12,8 +12,8 @@ export default function Field({ field, index }) {
   const getRowEnd = () => field.row * 4 + 5 - field.row;
 
   let svg = null;
-  if (field.type === "Stern") svg = <Star />;
-  if (field.type === "Schwarzes Loch") svg = <BlackHole />;
+  if (field.type === "Stern") svg = <SvgStar />;
+  if (field.type === "Schwarzes Loch") svg = <SvgBlackHole />;
 
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const setSelectedField = useSectorStore((s) => s.setSelectedFieldIndex);

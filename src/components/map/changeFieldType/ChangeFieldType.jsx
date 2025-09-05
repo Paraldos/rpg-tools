@@ -1,6 +1,5 @@
-// ChangeFieldType.jsx
 import "./changeFieldType.css";
-import { BlackHole, Star } from "../../../utils/svgs";
+import { SvgBlackHole, SvgStar } from "../../../utils/svgs";
 import { useSectorStore } from "../../../store";
 
 export default function ChangeFieldType() {
@@ -15,10 +14,10 @@ export default function ChangeFieldType() {
       <button
         onClick={() => changeFieldType(selectedFieldIndex, "Schwarzes Loch")}
       >
-        <BlackHole />
+        <SvgBlackHole />
       </button>
       <button onClick={() => changeFieldType(selectedFieldIndex, "Stern")}>
-        <Star />
+        <SvgStar />
       </button>
       <button
         onClick={() => changeFieldType(selectedFieldIndex, "Leere")}
