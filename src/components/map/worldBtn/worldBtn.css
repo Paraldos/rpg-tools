@@ -30,10 +30,7 @@
 .worldBtn:hover {
   background-color: var(--color-hover__dark);
   padding-left: 5px;
+  padding-right: 5px;
   transform: unset;
   color: var(--color-primary);
-
-  svg {
-    transform: translateX(5px);
-  }
 }
