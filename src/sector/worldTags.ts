@@ -1,3 +1,17 @@
+export const WORLD_TYPES = [
+  "Kristallwelt",
+  "Raumstation",
+  "Sumpf",
+  "Felsig",
+  "Arktisch",
+  "Erdähnlich",
+  "Ozean",
+  "Wüste",
+  "Dschungel",
+  "Asteroid",
+  "Vulkanisch",
+] as const;
+
 export const SOCIETY_TAGS = [
   "Schwarmintelligenz",
   "KI-Kontrolle",
@@ -15,20 +29,6 @@ export const SOCIETY_TAGS = [
   "Militärjunta",
   "Technokratie",
   "Anarchie",
-] as const;
-
-export const WORLD_TYPES = [
-  "Kristallwelt",
-  "Raumstation",
-  "Sumpf",
-  "Felsig",
-  "Arktisch",
-  "Erdähnlich",
-  "Ozean",
-  "Wüste",
-  "Dschungel",
-  "Asteroid",
-  "Vulkanisch",
 ] as const;
 
 export const GENERAL_TAGS = [

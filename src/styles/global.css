@@ -25,7 +25,7 @@ p {
 button,
 .btn {
   padding: 15px;
-  border: 2px solid var(--color-primary);
+  border: 1px solid var(--color-primary);
   background-color: transparent;
   color: var(--color-primary);
   transition: all 0.2s;
@@ -54,4 +54,26 @@ button:disabled,
 ul {
   padding-left: 15px;
   margin: 0;
+}
+
+select {
+  background-color: transparent;
+  color: var(--color-primary);
+  outline: none;
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+  padding: 5px;
+  transition: all 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    transform: translate(2px, 1px);
+    color: var(--color-offsetLight);
+    border-color: var(--color-offsetLight);
+  }
+
+  &:open {
+    color: var(--color-offsetLight);
+    border-color: var(--color-offsetLight);
+  }
 }
