@@ -33,7 +33,8 @@ button,
 
 button:not(:disabled):hover,
 .btn:not(.btn__disabled):hover {
-  transform: translateY(2px) translateX(1px);
+  cursor: pointer;
+  transform: translate(2px, 1px);
   color: var(--color-hover__light);
   border-color: var(--color-hover__light);
 }

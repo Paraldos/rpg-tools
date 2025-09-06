@@ -7,10 +7,29 @@
   transition: all 0.2s;
 
   .worldInfo__title {
-    margin-bottom: var(--spacing-s);
-    text-align: left;
-    font-size: 1.2rem;
-    font-weight: bold;
+    display: flex;
+
+    p {
+      margin-bottom: var(--spacing-s);
+      text-align: left;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-right: auto;
+    }
+
+    button {
+      padding: 0;
+      border-radius: 50px;
+      height: 30px;
+      aspect-ratio: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    svg {
+      height: 20px;
+    }
   }
 
   .worldInfo__tags {
@@ -31,12 +50,10 @@
     display: flex;
     gap: var(--spacing-m);
     align-items: center;
-  }
 
-  svg {
-    margin-left: auto;
-    height: 15px;
-    min-width: 15px;
-    transition: all 0.2s;
+    svg {
+      margin-left: auto;
+      height: 15px;
+    }
   }
 }

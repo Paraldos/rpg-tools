@@ -5,6 +5,7 @@ import { SvgX, SvgPlus } from "../../utils/svgs";
 export default function WorldInfo({ worldIndex }) {
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
+  const addWorldTag = useSectorStore((s) => s.addWorldTag);
 
   if (!sector || selectedFieldIndex == null) return null;
 
@@ -21,19 +22,20 @@ export default function WorldInfo({ worldIndex }) {
   ));
 
   const plusBtn = (
-    <li className="worldInfo__tag btn">
+    <button onClick={() => addWorldTag(selectedFieldIndex, worldIndex)}>
       <SvgPlus />
-    </li>
+    </button>
   );
 
   return (
     <li key={selectedFieldIndex} className="worldInfo">
-      <p className="worldInfo__title">
-        {selectedField.title} {world.titleNumber}
-      </p>
-      <ul className="worldInfo__tags">
-        {tags} {plusBtn}
-      </ul>
+      <div className="worldInfo__title">
+        <p>
+          {selectedField.title} {world.titleNumber}
+        </p>
+        {plusBtn}
+      </div>
+      <ul className="worldInfo__tags">{tags}</ul>
     </li>
   );
 }
