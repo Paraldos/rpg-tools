@@ -1,6 +1,7 @@
 import "./worldInfo.css";
 import { useSectorStore } from "../../../utils/store";
 import XBtn from "../../xBtn/XBtn";
+import AddWroldTagBtn from "../addWorldTagBtn/AddWorldTagBtn";
 
 export default function WorldInfo() {
   const sector = useSectorStore((s) => s.sector);
@@ -30,6 +31,10 @@ export default function WorldInfo() {
           <li>{tag}</li>
         ))}
       </ul>
+      <div className="worldInfo__add">
+        <p>Hinzufügen</p>
+        <AddWroldTagBtn />
+      </div>
     </div>
   );
 }

@@ -11,3 +11,15 @@
     right: 0;
   }
 }
+
+.worldInfo__add {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: auto;
+
+  p {
+    margin: 0;
+    margin-right: auto;
+  }
+}

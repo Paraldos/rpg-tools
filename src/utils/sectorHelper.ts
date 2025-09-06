@@ -23,6 +23,11 @@ export function generateWorld(ordinal: number): World {
   };
 }
 
+export function generateAdditionalTag(usedTags: string[]) {
+  const availableTags = GENERAL_TAGS.filter((tag) => !usedTags.includes(tag));
+  return getRandomArrayItem(availableTags);
+}
+
 export function generateStar(starTitle?: string): Star {
   const title = starTitle ?? "Nova";
   const n = rollDice(3);

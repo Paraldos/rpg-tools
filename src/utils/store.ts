@@ -1,6 +1,10 @@
 import { create } from "zustand";
 import { Sector, FieldType } from "./types";
-import { generateSector, generateWorld } from "./sectorHelper";
+import {
+  generateSector,
+  generateWorld,
+  generateAdditionalTag,
+} from "./sectorHelper";
 
 type SectorState = {
   sector: Sector | null;
@@ -16,6 +20,7 @@ type SectorState = {
 
   changeFieldType: (index: number, newType: FieldType) => void;
   addWorld: (index: number) => void;
+  addWorldTag: (index: number) => void;
   resetSelection: () => void;
 };
 
@@ -74,6 +79,21 @@ export const useSectorStore = create<SectorState>((set) => ({
       newFields[index] = updatedField;
 
       return { sector: { ...previousSector, fields: newFields } };
+    }),
+
+  addWorldTag: (indices) =>
+    set((state) => {
+      const [fieldIndex, worldIndex] = indices;
+      const sector = state.sector!;
+      const sectorClone = structuredClone(sector);
+      const field = sectorClone.fields[fieldIndex];
+      const world = field.worlds[worldIndex];
+      const tags = world.tags;
+
+      const newTag = generateAdditionalTag(tags);
+      tags.push(newTag);
+
+      return { sector: sectorClone };
     }),
 
   changeFieldType: (index, newType) =>
