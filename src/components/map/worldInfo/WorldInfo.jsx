@@ -21,7 +21,6 @@ export default function WorldInfo() {
   return (
     <div className="worldInfo">
       <XBtn onClick={onClickXBtn} />
-
       <p className="fieldInfo__baseInfo">Feld: {selectedField.index + 1}</p>
       <h3>
         {selectedField.title} {selectedWorld.titleNumber}
