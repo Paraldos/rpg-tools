@@ -1,5 +1,5 @@
-import { SvgPlanet } from "../../../utils/svgs";
-import { useSectorStore } from "../../../utils/store";
+import { SvgPlanet } from "../../utils/svgs";
+import { useSectorStore } from "../../utils/store";
 
 export default function AddWorldBtn() {
   const addWorld = useSectorStore((s) => s.addWorld);

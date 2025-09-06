@@ -1,9 +1,9 @@
 import "./map.css";
-import Board from "./board/Board";
-import Controlls from "./controlls/Controlls";
-import FieldInfo from "./fieldInfo/FieldInfo";
+import Board from "../board/Board";
+import Controlls from "../controlls/Controlls";
+import FieldInfo from "../fieldInfo/FieldInfo";
 import { useSectorStore } from "../../utils/store";
-import WorldInfo from "./worldInfo/WorldInfo";
+import WorldInfo from "../worldInfo/WorldInfo";
 
 export default function Map() {
   const sector = useSectorStore((s) => s.sector);

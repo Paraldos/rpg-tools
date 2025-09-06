@@ -5,4 +5,8 @@
   --color-hover__light: rgb(182, 182, 182);
 
   --header-size: 60px;
+
+  --spacing-s: 5px;
+  --spacing-m: 10px;
+  --spacing-l: 20px;
 }

@@ -1,13 +1,12 @@
 import "./Field.css";
-import { SvgBlackHole, SvgStar } from "../../../utils/svgs";
+import { SvgBlackHole, SvgStar } from "../../utils/svgs";
 import { useCallback } from "react";
-import { useSectorStore } from "../../../utils/store";
+import { useSectorStore } from "../../utils/store";
 
 export default function Field({ field, index }) {
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const setSelectedFieldIndex = useSectorStore((s) => s.setSelectedFieldIndex);
   const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
-  const resetSelection = useSectorStore((s) => s.resetSelection);
 
   const getColumnStart = () =>
     field.column * 4 + (field.row % 2 !== 0 ? 2 : 0) + 1;
@@ -21,7 +20,6 @@ export default function Field({ field, index }) {
   if (field.type === "Schwarzes Loch") svg = <SvgBlackHole />;
 
   const handleClick = useCallback(() => {
-    resetSelection();
     setSelectedFieldIndex(index);
   }, [index, setSelectedFieldIndex]);
 

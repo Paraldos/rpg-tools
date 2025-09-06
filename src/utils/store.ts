@@ -9,11 +9,9 @@ import {
 type SectorState = {
   sector: Sector | null;
   selectedFieldIndex: number | null;
-  selectedWorldIndex: [number, number] | null;
 
   setSector: (sector: Sector | null) => void;
   setSelectedFieldIndex: (index: number | null) => void;
-  setSelectedWorldIndex: (indices: [number, number] | null) => void;
   updateFieldTitle: (index: number, title: string) => void;
 
   newSector: (rows: number, columns: number) => void;
@@ -21,22 +19,20 @@ type SectorState = {
   changeFieldType: (index: number, newType: FieldType) => void;
   addWorld: (index: number) => void;
   addWorldTag: (index: number) => void;
-  resetSelection: () => void;
 };
 
 export const useSectorStore = create<SectorState>((set) => ({
   sector: null,
   selectedFieldIndex: null,
-  selectedWorldIndex: null,
 
   setSector: (sector) => set({ sector }),
   setSelectedFieldIndex: (index) => set({ selectedFieldIndex: index }),
-  setSelectedWorldIndex: (indices) => set({ selectedWorldIndex: indices }),
 
-  newSector: (rows, columns) => {
-    const sector = generateSector({ rows, columns });
-    set({ sector, selectedFieldIndex: null, selectedWorldIndex: null });
-  },
+  newSector: (rows, columns) =>
+    set((state) => {
+      const sector = generateSector({ rows, columns });
+      return { sector };
+    }),
 
   updateFieldTitle: (index, newTitle) =>
     set((state) => {
@@ -111,7 +107,4 @@ export const useSectorStore = create<SectorState>((set) => ({
 
       return { sector: { ...updatedSector, fields } };
     }),
-
-  resetSelection: () =>
-    set({ selectedFieldIndex: null, selectedWorldIndex: null }),
 }));

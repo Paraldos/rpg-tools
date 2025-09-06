@@ -1,9 +1,9 @@
 import "./fieldInfo.css";
 import ChangeFieldType from "../changeFieldType/ChangeFieldType";
-import WorldBtn from "../worldBtn/WorldBtn";
-import { useSectorStore } from "../../../utils/store";
+import WorldInfo from "../worldInfo/WorldInfo";
+import { useSectorStore } from "../../utils/store";
 import AddWorldBtn from "../addWorldBtn/AddWorldBtn";
-import { SvgText } from "../../../utils/svgs";
+import { SvgText } from "../../utils/svgs";
 
 export default function FieldInfo() {
   const sector = useSectorStore((s) => s.sector);
@@ -36,13 +36,15 @@ export default function FieldInfo() {
     content = title;
   }
 
+  const worlds = selectedField.worlds.map((_world, index) => (
+    <WorldInfo key={index} worldIndex={index} />
+  ));
+
   if (selectedField.type === "Stern") {
     content = (
       <>
         {title}
-        {selectedField.worlds.map((world, index) => (
-          <WorldBtn key={index} worldIndex={index} />
-        ))}
+        <ul className="fieldInfo__listOfWorlds">{worlds}</ul>
         <div className="fieldInfo__add">
           <p>Hinzufügen</p>
           <AddWorldBtn />
