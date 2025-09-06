@@ -65,16 +65,13 @@ export const useSectorStore = create<SectorState>((set) => ({
 
   addWorldTag: (fieldIndex, worldIndex) =>
     set((state) => {
-      const sector = state.sector!;
-      const sectorClone = structuredClone(sector);
-      const field = sectorClone.fields[fieldIndex];
+      const sector = structuredClone(state.sector);
+      const field = sector!.fields[fieldIndex];
       const world = field.worlds[worldIndex];
       const tags = world.tags;
-
       const newTag = generateAdditionalTag(tags);
       tags.push(newTag);
-
-      return { sector: sectorClone };
+      return { sector };
     }),
 
   changeFieldType: (index, newType) =>
