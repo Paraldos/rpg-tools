@@ -1,11 +1,9 @@
 import "./worldInfo.css";
 import { useSectorStore } from "../../utils/store";
-import { SvgX, SvgPlus } from "../../utils/svgs";
 
 export default function WorldInfo({ worldIndex }) {
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
-  const addWorldTag = useSectorStore((s) => s.addWorldTag);
 
   if (!sector || selectedFieldIndex == null) return null;
 
@@ -14,27 +12,15 @@ export default function WorldInfo({ worldIndex }) {
 
   if (!world) return null;
 
-  const tags = world.tags.map((tag, index) => (
-    <li className={`worldInfo__tag btn ${index < 2 ? "btn__disabled" : ""}`}>
-      {tag}
-      {index >= 2 && <SvgX />}
-    </li>
+  const tags = world.tags.map((tag) => (
+    <li className={`worldInfo__tag`}>{tag}</li>
   ));
 
-  const plusBtn = (
-    <button onClick={() => addWorldTag(selectedFieldIndex, worldIndex)}>
-      <SvgPlus />
-    </button>
-  );
-
   return (
-    <li key={selectedFieldIndex} className="worldInfo">
-      <div className="worldInfo__title">
-        <p>
-          {selectedField.title} {world.titleNumber}
-        </p>
-        {plusBtn}
-      </div>
+    <li key={selectedFieldIndex} className="worldInfo btn">
+      <p className="worldInfo__title">
+        {selectedField.title} {world.titleNumber}
+      </p>
       <ul className="worldInfo__tags">{tags}</ul>
     </li>
   );

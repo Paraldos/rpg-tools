@@ -35,8 +35,8 @@ button:not(:disabled):hover,
 .btn:not(.btn__disabled):hover {
   cursor: pointer;
   transform: translate(2px, 1px);
-  color: var(--color-hover__light);
-  border-color: var(--color-hover__light);
+  color: var(--color-offsetLight);
+  border-color: var(--color-offsetLight);
 }
 
 button:disabled,

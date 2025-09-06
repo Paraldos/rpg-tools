@@ -39,7 +39,7 @@
   color: var(--color-primary);
   background-color: unset;
   border: none;
-  border-bottom: 2px solid var(--color-hover__light);
+  border-bottom: 2px solid var(--color-offsetLight);
 
   &:focus {
     outline: unset;
@@ -52,7 +52,6 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-l);
 }
 
 .fieldInfo__add {

@@ -13,7 +13,7 @@
 
 .field--selected {
   .field-inside {
-    background-color: var(--color-hover__dark);
+    background-color: var(--color-offsetDark);
   }
 }
 
@@ -24,7 +24,7 @@
   background-color: black;
 
   &:hover {
-    background-color: var(--color-hover__dark);
+    background-color: var(--color-offsetDark);
   }
 }
 

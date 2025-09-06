@@ -1,8 +1,8 @@
 :root {
   --color-background: black;
   --color-primary: white;
-  --color-hover__dark: rgb(29, 29, 29);
-  --color-hover__light: rgb(182, 182, 182);
+  --color-offsetDark: rgb(37, 37, 37);
+  --color-offsetLight: rgb(182, 182, 182);
 
   --header-size: 60px;
 
