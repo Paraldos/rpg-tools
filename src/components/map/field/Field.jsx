@@ -6,6 +6,7 @@ import { useSectorStore } from "../../../utils/store";
 export default function Field({ field, index }) {
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const setSelectedFieldIndex = useSectorStore((s) => s.setSelectedFieldIndex);
+  const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
   const resetSelection = useSectorStore((s) => s.resetSelection);
 
   const getColumnStart = () =>
@@ -24,9 +25,13 @@ export default function Field({ field, index }) {
     setSelectedFieldIndex(index);
   }, [index, setSelectedFieldIndex]);
 
+  const fieldIsSelected =
+    selectedFieldIndex == index ||
+    (selectedWorldIndex && selectedWorldIndex[0] == index);
+
   return (
     <div
-      className={`field ${selectedFieldIndex === index && "field--selected"}`}
+      className={`field ${fieldIsSelected && "field--selected"}`}
       style={{
         gridColumnStart: getColumnStart(),
         gridColumnEnd: getColumnEnd(),
