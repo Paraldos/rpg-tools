@@ -1,4 +1,4 @@
-.worldInfo {
+.WorldInfoBtn {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,19 +10,19 @@
   &:hover {
     background-color: var(--color-offsetDark);
 
-    .worldInfo__tag {
+    .worldInfoBtn__tag {
       border-color: var(--color-offsetLight);
     }
   }
 
-  .worldInfo__title {
+  .worldInfoBtn__title {
     margin: 0;
     padding-bottom: var(--spacing-m);
     font-size: 1.2rem;
     font-weight: bold;
   }
 
-  .worldInfo__tags {
+  .worldInfoBtn__tags {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-s);
@@ -30,7 +30,7 @@
     padding: 0;
   }
 
-  .worldInfo__tag {
+  .worldInfoBtn__tag {
     font-size: 0.9rem;
     border: 1px solid var(--color-offsetDark);
     border-radius: 5px;

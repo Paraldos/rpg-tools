@@ -3,7 +3,6 @@ import Board from "../board/Board";
 import Controlls from "../controlls/Controlls";
 import FieldInfo from "../fieldInfo/FieldInfo";
 import { useSectorStore } from "../../utils/store";
-import WorldInfo from "../worldInfo/WorldInfo";
 
 export default function Map() {
   const sector = useSectorStore((s) => s.sector);
@@ -18,7 +17,6 @@ export default function Map() {
         <Controlls />
         <div className="info-box">
           <FieldInfo />
-          <WorldInfo />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import "./fieldInfo.css";
 import ChangeFieldType from "../changeFieldType/ChangeFieldType";
-import WorldInfo from "../worldInfo/WorldInfo";
+import WorldInfoBtn from "../worldInfoBtn/WorldInfoBtn";
 import { useSectorStore } from "../../utils/store";
 import AddWorldBtn from "../addWorldBtn/AddWorldBtn";
 import { SvgText } from "../../utils/svgs";
@@ -42,7 +42,7 @@ export default function FieldInfo() {
         {title}
         <ul className="fieldInfo__listOfWorlds">
           {selectedField.worlds.map((_world, index) => (
-            <WorldInfo key={index} worldIndex={index} />
+            <WorldInfoBtn key={index} worldIndex={index} />
           ))}
         </ul>
         <div className="fieldInfo__add">

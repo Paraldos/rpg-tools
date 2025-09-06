@@ -1,7 +1,7 @@
-import "./worldInfo.css";
+import "./worldInfoBtn.css";
 import { useSectorStore } from "../../utils/store";
 
-export default function WorldInfo({ worldIndex }) {
+export default function WorldInfoBtn({ worldIndex }) {
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
 
@@ -13,15 +13,15 @@ export default function WorldInfo({ worldIndex }) {
   if (!world) return null;
 
   const tags = world.tags.map((tag) => (
-    <li className={`worldInfo__tag`}>{tag}</li>
+    <li className={`worldInfoBtn__tag`}>{tag}</li>
   ));
 
   return (
-    <li key={selectedFieldIndex} className="worldInfo btn">
-      <p className="worldInfo__title">
+    <li key={selectedFieldIndex} className="WorldInfoBtn btn">
+      <p className="worldInfoBtn__title">
         {selectedField.title} {world.titleNumber}
       </p>
-      <ul className="worldInfo__tags">{tags}</ul>
+      <ul className="worldInfoBtn__tags">{tags}</ul>
     </li>
   );
 }
