@@ -17,7 +17,7 @@ type SectorState = {
 
   newSector: (rows: number, columns: number) => void;
 
-  updateFieldTitle: (index: number, title: string) => void;
+  updateFieldTitle: (title: string) => void;
   changeFieldType: (index: number, newType: FieldType) => void;
   addWorld: (index: number) => void;
   addWorldTag: (fieldIndex: number, worldIndex: number) => void;
@@ -47,30 +47,12 @@ export const useSectorStore = create<SectorState>((set) => ({
       sector: generateSector({ rows, columns }),
     }),
 
-  updateFieldTitle: (index, newTitle) =>
+  updateFieldTitle: (newTitle) =>
     set((state) => {
-      if (!state.sector) return state;
-
-      const prev = state.sector;
-      const fields = [...prev.fields];
-      const oldField = prev.fields[index];
-
-      // add new title to field
-      let nextField: any = { ...oldField, title: newTitle };
-
-      // add new title to worlds
-      if (oldField.worlds) {
-        const updatedWorlds = oldField.worlds.map((world) => {
-          const m = /(\d+)$/.exec(world.title);
-          if (!m) return world;
-          const num = m[1];
-          return { ...world, title: `${newTitle} ${num}` };
-        });
-        nextField = { ...nextField, worlds: updatedWorlds };
-      }
-
-      fields[index] = nextField;
-      return { sector: { ...prev, fields } };
+      const sectorClone = structuredClone(state.sector)!;
+      const selectedField = sectorClone.fields[state.selectedFieldIndex!];
+      selectedField.title = newTitle;
+      return { sector: sectorClone };
     }),
 
   addWorld: (index) =>

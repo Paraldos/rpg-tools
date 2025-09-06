@@ -26,7 +26,7 @@ export default function FieldInfo() {
         type="text"
         value={selectedField.title}
         aria-label="Name des Felds"
-        onChange={(e) => updateFieldTitle(selectedField.index, e.target.value)}
+        onChange={(e) => updateFieldTitle(e.target.value)}
       />
       <SvgText />
     </div>
