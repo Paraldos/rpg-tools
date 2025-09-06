@@ -16,16 +16,17 @@
   .worldInfo__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-s) var(--spacing-m);
+    gap: var(--spacing-s);
     list-style: none;
     padding: 0;
   }
 
   .worldInfo__tag {
+    font-size: 0.9rem;
     padding: 0;
     border: none;
     border: 1px solid var(--color-primary);
-    border-radius: 15px;
+    border-radius: 5px;
     padding: var(--spacing-s) var(--spacing-m);
     display: flex;
     gap: var(--spacing-m);
@@ -34,8 +35,8 @@
 
   svg {
     margin-left: auto;
-    height: 20px;
-    min-width: 20px;
+    height: 15px;
+    min-width: 15px;
     transition: all 0.2s;
   }
 }

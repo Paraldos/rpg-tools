@@ -36,15 +36,15 @@ export default function FieldInfo() {
     content = title;
   }
 
-  const worlds = selectedField.worlds.map((_world, index) => (
-    <WorldInfo key={index} worldIndex={index} />
-  ));
-
   if (selectedField.type === "Stern") {
     content = (
       <>
         {title}
-        <ul className="fieldInfo__listOfWorlds">{worlds}</ul>
+        <ul className="fieldInfo__listOfWorlds">
+          {selectedField.worlds.map((_world, index) => (
+            <WorldInfo key={index} worldIndex={index} />
+          ))}
+        </ul>
         <div className="fieldInfo__add">
           <p>Hinzufügen</p>
           <AddWorldBtn />

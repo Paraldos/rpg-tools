@@ -31,7 +31,7 @@ export const useSectorStore = create<SectorState>((set) => ({
   newSector: (rows, columns) =>
     set((state) => {
       const sector = generateSector({ rows, columns });
-      return { sector };
+      return { sector, selectedFieldIndex: null };
     }),
 
   updateFieldTitle: (index, newTitle) =>
