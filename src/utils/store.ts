@@ -56,19 +56,11 @@ export const useSectorStore = create<SectorState>((set) => ({
 
   addWorld: (index) =>
     set((state) => {
-      if (!state.sector) return state;
-
-      const previousSector = state.sector;
-      const selectedField = previousSector.fields[index];
+      const sector = structuredClone(state.sector!);
+      const selectedField = sector.fields[index];
       const newWorld = generateWorld(selectedField.worlds?.length ?? 0);
-      const updatedField = {
-        ...selectedField,
-        worlds: [...(selectedField.worlds ?? []), newWorld],
-      };
-      const newFields = [...previousSector.fields];
-      newFields[index] = updatedField;
-
-      return { sector: { ...previousSector, fields: newFields } };
+      selectedField.worlds.push(newWorld);
+      return { sector };
     }),
 
   addWorldTag: (fieldIndex, worldIndex) =>
