@@ -29,13 +29,22 @@ export const useSectorStore = create<SectorState>((set) => ({
   selectedWorldIndex: null,
 
   setSector: (sector) => set({ sector }),
-  setSelectedFieldIndex: (index) => set({ selectedFieldIndex: index }),
-  setSelectedWorldIndex: (indices) => set({ selectedWorldIndex: indices }),
+
+  setSelectedFieldIndex: (index) =>
+    set({
+      selectedWorldIndex: null,
+      selectedFieldIndex: index,
+    }),
+
+  setSelectedWorldIndex: (indices) =>
+    set({
+      selectedWorldIndex: indices,
+      selectedFieldIndex: null,
+    }),
 
   newSector: (rows, columns) =>
-    set((state) => {
-      const sector = generateSector({ rows, columns });
-      return { sector, selectedFieldIndex: null };
+    set({
+      sector: generateSector({ rows, columns }),
     }),
 
   updateFieldTitle: (index, newTitle) =>

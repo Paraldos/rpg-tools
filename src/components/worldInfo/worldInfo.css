@@ -1,0 +1,14 @@
+.worldInfo {
+  position: relative;
+
+  .xBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.worldInfo__baseInfo {
+  margin: 0;
+  font-size: 0.9rem;
+}
