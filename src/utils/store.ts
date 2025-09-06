@@ -49,10 +49,9 @@ export const useSectorStore = create<SectorState>((set) => ({
 
   updateFieldTitle: (newTitle) =>
     set((state) => {
-      const sectorClone = structuredClone(state.sector)!;
-      const selectedField = sectorClone.fields[state.selectedFieldIndex!];
-      selectedField.title = newTitle;
-      return { sector: sectorClone };
+      const sector = structuredClone(state.sector!);
+      sector.fields[state.selectedFieldIndex!].title = newTitle;
+      return { sector };
     }),
 
   addWorld: (index) =>
