@@ -23,7 +23,9 @@ export default function WorldInfo() {
       <XBtn onClick={onClickXBtn} />
 
       <p className="fieldInfo__baseInfo">Feld: {selectedField.index + 1}</p>
-      <h3>{selectedWorld.name}</h3>
+      <h3>
+        {selectedField.title} {selectedWorld.titleNumber}
+      </h3>
       <ul>
         {selectedWorld.tags.map((tag) => (
           <li>{tag}</li>

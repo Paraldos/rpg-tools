@@ -1,6 +1,10 @@
 import { World, Star, BlackHole, Empty, Sector, Field } from "./types";
-import { WORLD_TYPES, SOCIETY_TAGS, GENERAL_TAGS } from "../sector/worldTags";
-import { STAR_NAMES } from "../sector/starNames";
+import {
+  WORLD_TYPES,
+  SOCIETY_TAGS,
+  GENERAL_TAGS,
+  FIELD_TITLES,
+} from "../sector/worldTags";
 import { rollDice } from "./random";
 import {
   shuffleArray,
@@ -8,10 +12,9 @@ import {
   getWeightedRandomArrayItem,
 } from "./array";
 
-export function generateWorld(starName: string, ordinal: number): World {
-  const planetNumber = ordinal * 2 + rollDice(2);
+export function generateWorld(ordinal: number): World {
   return {
-    name: `${starName} ${planetNumber}`,
+    titleNumber: ordinal * 2 + rollDice(2),
     tags: [
       getWeightedRandomArrayItem(WORLD_TYPES)!,
       getWeightedRandomArrayItem(SOCIETY_TAGS)!,
@@ -20,26 +23,22 @@ export function generateWorld(starName: string, ordinal: number): World {
   };
 }
 
-export function generateStar(name?: string): Star {
-  const title = name ?? "Nova";
+export function generateStar(starTitle?: string): Star {
+  const title = starTitle ?? "Nova";
   const n = rollDice(3);
   return {
     type: "Stern",
     title,
-    worlds: Array.from({ length: n }, (_, i) => generateWorld(title, i)),
+    worlds: Array.from({ length: n }, (_, i) => generateWorld(i)),
   };
 }
 
-export function generateBlackHole(name?: string): BlackHole {
-  return { type: "Schwarzes Loch", title: name ?? "Singularis" };
+export function generateBlackHole(blackHoleTitle?: string): BlackHole {
+  return { type: "Schwarzes Loch", title: blackHoleTitle ?? "Singularis" };
 }
 
-export function generateEmpty(name?: string): Empty {
-  return { type: "Leere", title: name ?? "Void" };
-}
-
-export function shuffledStarNames() {
-  return shuffleArray([...STAR_NAMES]);
+export function generateEmpty(emptyTitle?: string): Empty {
+  return { type: "Leere", title: emptyTitle ?? "Void" };
 }
 
 export function generateSector({
@@ -50,7 +49,7 @@ export function generateSector({
   const amountOfStars = Math.floor(amountOfFields / 4);
   const amountOfBlackHoles = Math.floor(amountOfFields / 20);
 
-  const starNames = shuffleArray([...STAR_NAMES]);
+  const starNames = shuffleArray([...FIELD_TITLES]);
 
   let fields: any[] = [];
 

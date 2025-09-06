@@ -22,7 +22,9 @@ export default function WorldBtn({ worldIndex }) {
   return (
     <button key={selectedFieldIndex} className="worldBtn" onClick={handelClick}>
       <SvgChevronRight />
-      <p className="worldBtn__title">{world.name}</p>
+      <p className="worldBtn__title">
+        {selectedField.title} {world.titleNumber}
+      </p>
       <p className="worldBtn__tags">({world.tags.join(", ")})</p>
     </button>
   );

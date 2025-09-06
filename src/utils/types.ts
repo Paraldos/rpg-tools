@@ -1,4 +1,4 @@
-export type World = { name: string; tags: string[] };
+export type World = { titleNumber: number; tags: string[] };
 export type Star = { type: "Stern"; title: string; worlds: World[] };
 export type BlackHole = { type: "Schwarzes Loch"; title: string };
 export type Empty = { type: "Leere"; title: string };

@@ -4,9 +4,11 @@ import WorldBtn from "../worldBtn/WorldBtn";
 import { useSectorStore } from "../../../utils/store";
 import AddWorldBtn from "../addWorldBtn/AddWorldBtn";
 
-export default function FieldInfo({ onOpenWorldInfo }) {
+export default function FieldInfo() {
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
+  const updateFieldTitle = useSectorStore((s) => s.updateFieldTitle);
+
   const selectedField =
     sector && selectedFieldIndex != null
       ? sector.fields[selectedFieldIndex]
@@ -16,14 +18,28 @@ export default function FieldInfo({ onOpenWorldInfo }) {
 
   let content = null;
 
-  if (selectedField.type == "Schwarzes Loch") {
-    content = <h3>{selectedField.title}</h3>;
+  if (selectedField.type === "Schwarzes Loch") {
+    content = (
+      <input
+        type="text"
+        value={selectedField.title}
+        aria-label="Name des Sterns"
+        onChange={(e) => updateFieldTitle(selectedField.index, e.target.value)}
+      />
+    );
   }
 
-  if (selectedField.type == "Stern") {
+  if (selectedField.type === "Stern") {
     content = (
       <>
-        <h3>{selectedField.title}</h3>
+        <input
+          type="text"
+          value={selectedField.title}
+          aria-label="Name des Sterns"
+          onChange={(e) =>
+            updateFieldTitle(selectedField.index, e.target.value)
+          }
+        />
         {selectedField.worlds.map((world, index) => (
           <WorldBtn key={index} worldIndex={index} />
         ))}
