@@ -3,6 +3,7 @@ import ChangeFieldType from "../changeFieldType/ChangeFieldType";
 import WorldBtn from "../worldBtn/WorldBtn";
 import { useSectorStore } from "../../../utils/store";
 import AddWorldBtn from "../addWorldBtn/AddWorldBtn";
+import { SvgText } from "../../../utils/svgs";
 
 export default function FieldInfo() {
   const sector = useSectorStore((s) => s.sector);
@@ -18,28 +19,27 @@ export default function FieldInfo() {
 
   let content = null;
 
-  if (selectedField.type === "Schwarzes Loch") {
-    content = (
+  const title = (
+    <div className="fieldInfo__titleBox">
       <input
+        className="fieldInfo__title"
         type="text"
         value={selectedField.title}
         aria-label="Name des Sterns"
         onChange={(e) => updateFieldTitle(selectedField.index, e.target.value)}
       />
-    );
+      <SvgText />
+    </div>
+  );
+
+  if (selectedField.type === "Schwarzes Loch") {
+    content = title;
   }
 
   if (selectedField.type === "Stern") {
     content = (
       <>
-        <input
-          type="text"
-          value={selectedField.title}
-          aria-label="Name des Sterns"
-          onChange={(e) =>
-            updateFieldTitle(selectedField.index, e.target.value)
-          }
-        />
+        {title}
         {selectedField.worlds.map((world, index) => (
           <WorldBtn key={index} worldIndex={index} />
         ))}
