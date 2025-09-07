@@ -10,6 +10,7 @@ export default function WorldInfo() {
   const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
   const sector = useSectorStore((s) => s.sector);
   const setSelectedFieldIndex = useSectorStore((s) => s.setSelectedFieldIndex);
+
   if (!selectedWorldIndex) return;
 
   const selectedField = sector.fields[selectedWorldIndex[0]];

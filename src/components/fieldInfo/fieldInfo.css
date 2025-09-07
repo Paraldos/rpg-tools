@@ -52,13 +52,14 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  margin-bottom: auto;
 }
 
-.fieldInfo__add {
+.fieldInfo__addWorld,
+.fieldInfo__changeFieldType {
   display: flex;
-  gap: 15px;
   align-items: center;
-  margin-top: auto;
+  gap: 10px;
 
   p {
     margin: 0;

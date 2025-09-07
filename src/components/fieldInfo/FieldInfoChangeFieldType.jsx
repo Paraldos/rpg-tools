@@ -1,15 +1,14 @@
-import "./changeFieldType.css";
 import { SvgBlackHole, SvgStar } from "../../utils/svgs";
 import { useSectorStore } from "../../utils/store";
 
-export default function ChangeFieldType() {
+export default function FieldInfoChangeFieldType() {
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const changeFieldType = useSectorStore((s) => s.changeFieldType);
 
   if (selectedFieldIndex == null) return null;
 
   return (
-    <div className="changeFieldType">
+    <div className="fieldInfo__changeFieldType">
       <p>Umwandeln</p>
       <button
         className="symbolBtn"

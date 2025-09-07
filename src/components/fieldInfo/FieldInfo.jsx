@@ -1,22 +1,19 @@
 import "./fieldInfo.css";
-import ChangeFieldType from "../changeFieldType/ChangeFieldType";
 import WorldInfoBtn from "../worldInfoBtn/WorldInfoBtn";
 import { useSectorStore } from "../../utils/store";
-import AddWorldBtn from "../addWorldBtn/AddWorldBtn";
 import { SvgText } from "../../utils/svgs";
 
+import FieldInfoAddWorld from "./FieldInfoAddWorld";
+import FieldInfoChangeFieldType from "./FieldInfoChangeFieldType";
+
 export default function FieldInfo() {
-  const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
+  const sector = useSectorStore((s) => s.sector);
   const updateFieldTitle = useSectorStore((s) => s.updateFieldTitle);
 
-  const selectedField =
-    sector && selectedFieldIndex != null
-      ? sector.fields[selectedFieldIndex]
-      : null;
+  if (!selectedFieldIndex) return null;
 
-  if (!selectedField) return null;
-
+  const selectedField = sector.fields[selectedFieldIndex];
   let content = null;
 
   const title = (
@@ -45,10 +42,7 @@ export default function FieldInfo() {
             <WorldInfoBtn key={index} worldIndex={index} />
           ))}
         </ul>
-        <div className="fieldInfo__add">
-          <p>Hinzufügen</p>
-          <AddWorldBtn />
-        </div>
+        <FieldInfoAddWorld />
       </>
     );
   }
@@ -59,7 +53,7 @@ export default function FieldInfo() {
         Feld: {selectedField.index + 1}, Typ: {selectedField.type}
       </p>
       <div className="fieldInfo__content">{content}</div>
-      <ChangeFieldType />
+      <FieldInfoChangeFieldType />
     </div>
   );
 }
