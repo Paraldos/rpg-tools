@@ -1,4 +1,4 @@
-import { SvgText } from "../../utils/svgs";
+import { SvgText } from "../svgs/Svgs";
 import { useSectorStore } from "../../utils/store";
 
 export default function FieldInfoTitle() {

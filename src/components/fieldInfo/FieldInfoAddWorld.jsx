@@ -1,4 +1,4 @@
-import { SvgPlanet } from "../../utils/svgs";
+import { SvgPlanet } from "../svgs/Svgs";
 import { useSectorStore } from "../../utils/store";
 
 export default function FieldInfoAddWorld() {

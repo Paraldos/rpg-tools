@@ -1,4 +1,4 @@
-import { SvgBlackHole, SvgStar } from "../../utils/svgs";
+import { SvgBlackHole, SvgStar } from "../svgs/Svgs";
 import { useSectorStore } from "../../utils/store";
 
 export default function FieldInfoChangeFieldType() {

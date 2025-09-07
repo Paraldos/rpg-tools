@@ -1,5 +1,5 @@
 import "./Field.css";
-import { SvgBlackHole, SvgStar } from "../../utils/svgs";
+import { SvgBlackHole, SvgStar } from "../svgs/Svgs";
 import { useCallback } from "react";
 import { useSectorStore } from "../../utils/store";
 

@@ -1,4 +1,4 @@
-import { SvgChevronRight, SvgChevronLeft } from "../../utils/svgs";
+import { SvgChevronRight, SvgChevronLeft } from "../svgs/Svgs";
 import { useSectorStore } from "../../utils/store";
 
 export default function WorldInfoPositionControls() {

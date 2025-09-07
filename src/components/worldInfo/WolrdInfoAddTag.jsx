@@ -1,5 +1,5 @@
 import { useSectorStore } from "../../utils/store";
-import { SvgTag } from "../../utils/svgs";
+import { SvgTag } from "../svgs/Svgs";
 
 export default function WorldInfoAddTag() {
   const sector = useSectorStore((s) => s.sector);
