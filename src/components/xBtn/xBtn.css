@@ -1,7 +1,8 @@
 .xBtn {
   border-radius: 50px;
+  border-width: 2px;
   position: relative;
-  max-width: 30px;
+  height: 40px;
   aspect-ratio: 1;
 }
 
@@ -9,7 +10,7 @@
 .xBtn::after {
   content: "";
   display: inline-block;
-  width: 70%;
+  width: 60%;
   height: 2px;
   background-color: white;
   position: absolute;
