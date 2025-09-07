@@ -14,6 +14,7 @@ import {
 
 export function generateWorld(): World {
   return {
+    title: "",
     tags: [
       getWeightedRandomArrayItem(WORLD_TYPES)!,
       getWeightedRandomArrayItem(SOCIETY_TAGS)!,

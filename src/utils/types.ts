@@ -1,4 +1,4 @@
-export type World = { tags: string[] };
+export type World = { title: string; tags: string[] };
 export type Field = {
   index: number;
   row: number;
