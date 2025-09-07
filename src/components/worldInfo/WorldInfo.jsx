@@ -60,8 +60,6 @@ export default function WorldInfo() {
     return generalTag(tag, index);
   };
 
-  const titleNumber = selectedWorldIndex[1] * 2 + selectedWorld.titleOffset;
-
   return (
     <div className="worldInfo">
       <XBtn onClick={() => setSelectedFieldIndex(selectedWorldIndex[0])} />
@@ -69,7 +67,7 @@ export default function WorldInfo() {
         Feld: {selectedField.index + 1}, Typ: {selectedField.type}
       </p>
       <h3>
-        {selectedField.title} {titleNumber}
+        {selectedField.title} {selectedWorldIndex[1] + 1}
       </h3>
       <ul className="worldInfo__tags">
         {selectedWorld.tags.map((tag, index) => (

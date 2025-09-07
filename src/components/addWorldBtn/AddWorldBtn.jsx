@@ -11,8 +11,9 @@ export default function AddWorldBtn() {
       ? sector.fields[selectedFieldIndex]
       : null;
 
-  const amountOfWorlds = selectedField.worlds?.length ?? 0;
-  const noMoreWorldsPossible = amountOfWorlds >= 6;
+  const amountOfWorlds =
+    selectedField?.worlds?.filter((w) => w !== null).length ?? 0;
+  const noMoreWorldsPossible = amountOfWorlds >= 5;
 
   return (
     <button

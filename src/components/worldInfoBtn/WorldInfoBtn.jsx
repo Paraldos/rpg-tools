@@ -6,8 +6,8 @@ export default function WorldInfoBtn({ worldIndex }) {
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const setSelectedWorldIndex = useSectorStore((s) => s.setSelectedWorldIndex);
-  const worldNumberUp = useSectorStore((s) => s.worldNumberUp);
-  const worldNumberDown = useSectorStore((s) => s.worldNumberDown);
+  const moveWorldAwayFromSun = useSectorStore((s) => s.moveWorldAwayFromSun);
+  const moveWorldTowardsSun = useSectorStore((s) => s.moveWorldTowardsSun);
 
   if (!sector || selectedFieldIndex == null) return null;
 
@@ -22,8 +22,6 @@ export default function WorldInfoBtn({ worldIndex }) {
     </li>
   ));
 
-  const titleNumber = worldIndex * 2 + world.titleOffset;
-
   return (
     <li key={selectedFieldIndex} className="worldInfoBtn">
       <button
@@ -31,20 +29,20 @@ export default function WorldInfoBtn({ worldIndex }) {
         onClick={() => setSelectedWorldIndex([selectedFieldIndex, worldIndex])}
       >
         <p className="worldInfoBtn__title">
-          {selectedField.title} {titleNumber}
+          {selectedField.title} {worldIndex + 1}
         </p>
         <ul className="worldInfoBtn__tags">{tags}</ul>
       </button>
       <div className="worldInfoBtn__directionBtns">
         <button
           className="WorldInfoBtn__down"
-          onClick={() => worldNumberDown(worldIndex)}
+          onClick={() => moveWorldTowardsSun(worldIndex)}
         >
           <SvgChevronUp />
         </button>
         <button
           className="WorldInfoBtn__up"
-          onClick={() => worldNumberUp(worldIndex)}
+          onClick={() => moveWorldAwayFromSun(worldIndex)}
         >
           <SvgChevronDown />
         </button>
