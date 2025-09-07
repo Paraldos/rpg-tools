@@ -35,7 +35,7 @@ export default function FieldInfo() {
       <p className="fieldInfo__baseInfo">
         Feld: {selectedField.index + 1}, Typ: {selectedField.type}
       </p>
-      {content}
+      <div className="fieldInfo__content">{content}</div>
       <FieldInfoChangeFieldType />
     </div>
   );
