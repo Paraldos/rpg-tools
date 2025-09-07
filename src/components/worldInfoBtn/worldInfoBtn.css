@@ -1,17 +1,43 @@
-.WorldInfoBtn {
+.worldInfoBtn {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  border: none;
-  transition: all 0.2s;
-  padding: 5px;
+  gap: var(--spacing-m);
+  align-items: center;
 
-  &:hover {
-    background-color: var(--color-offsetDark);
+  .WorldInfoBtn__mainBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    border: none;
+    transition: all 0.2s;
+    padding: 5px;
+    text-align: left;
 
-    .worldInfoBtn__tag {
-      border-color: var(--color-offsetLight);
+    &:hover {
+      background-color: var(--color-offsetDark);
+
+      .worldInfoBtn__tag {
+        border-color: var(--color-offsetLight);
+      }
+    }
+  }
+
+  .worldInfoBtn__directionBtns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+
+    button {
+      height: 25px;
+      aspect-ratio: 1;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    svg {
+      fill: transparent !important;
     }
   }
 

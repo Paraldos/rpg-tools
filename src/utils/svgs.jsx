@@ -71,6 +71,34 @@ export function SvgPlanet() {
   );
 }
 
+export function SvgChevronVertical() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path
+        stroke="#fff"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m7 15 5 5 5-5M7 9l5-5 5 5m-5 3h.01m.49 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"
+      />
+    </svg>
+  );
+}
+
+export function SvgChevronUp() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path
+        stroke="#fff"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m6 15 6-6 6 6"
+      />
+    </svg>
+  );
+}
+
 export function SvgChevronRight() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5.5 0 26 26">
@@ -78,6 +106,20 @@ export function SvgChevronRight() {
         fill="#fff"
         fillRule="evenodd"
         d="M14.404 11.36 3.637 1.6a2.11 2.11 0 0 0-3.008 0 2.117 2.117 0 0 0 0 3L9.885 13 .629 21.4a2.117 2.117 0 0 0 0 3c.83.84 2.177.84 3.008 0l10.767-9.76c.45-.45.648-1.05.611-1.64a2.115 2.115 0 0 0-.611-1.64"
+      />
+    </svg>
+  );
+}
+
+export function SvgChevronDown() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path
+        stroke="#fff"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m6 9 6 6 6-6"
       />
     </svg>
   );

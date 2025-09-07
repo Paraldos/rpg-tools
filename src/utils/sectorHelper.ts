@@ -14,7 +14,7 @@ import {
 
 export function generateWorld(ordinal: number): World {
   return {
-    titleNumber: ordinal * 2 + rollDice(2),
+    titleOffset: rollDice(2),
     tags: [
       getWeightedRandomArrayItem(WORLD_TYPES)!,
       getWeightedRandomArrayItem(SOCIETY_TAGS)!,
