@@ -6,13 +6,12 @@ import {
   SOCIETY_TAGS,
   GENERAL_TAGS,
 } from "../../sector/worldTags";
-import { SvgPlus } from "../../utils/svgs";
+import AddTagBtn from "../addTagBtn/addTagBtn";
 
 export default function WorldInfo() {
   const sector = useSectorStore((s) => s.sector);
   const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
   const setSelectedFieldIndex = useSectorStore((s) => s.setSelectedFieldIndex);
-  const addWorldTag = useSectorStore((s) => s.addWorldTag);
   const updateWorldTags = useSectorStore((s) => s.updateWorldTags);
   if (!selectedWorldIndex) return null;
 
@@ -63,14 +62,6 @@ export default function WorldInfo() {
     return generalTag(tag, index);
   };
 
-  const plusBtn = (
-    <li>
-      <button onClick={addWorldTag}>
-        <SvgPlus />
-      </button>
-    </li>
-  );
-
   return (
     <div className="worldInfo">
       <XBtn onClick={() => setSelectedFieldIndex(selectedWorldIndex[0])} />
@@ -84,8 +75,11 @@ export default function WorldInfo() {
         {selectedWorld.tags.map((tag, index) => (
           <li key={index}>{getTagInputField(tag, index)}</li>
         ))}
-        {plusBtn}
       </ul>
+      <div className="worldInfo__add">
+        <p>Hinzufügen</p>
+        <AddTagBtn />
+      </div>
     </div>
   );
 }

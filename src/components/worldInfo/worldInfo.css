@@ -1,5 +1,8 @@
 .worldInfo {
   position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   .xBtn {
     position: absolute;
@@ -35,5 +38,17 @@
 
   svg {
     height: 15px;
+  }
+}
+
+.worldInfo__add {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: auto;
+
+  p {
+    margin: 0;
+    margin-right: auto;
   }
 }
