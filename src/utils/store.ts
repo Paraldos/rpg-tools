@@ -41,8 +41,8 @@ export const useSectorStore = create<SectorState>((set) => ({
 
   setSelectedWorldIndex: (indices) =>
     set({
-      selectedWorldIndex: indices,
       selectedFieldIndex: null,
+      selectedWorldIndex: indices,
     }),
 
   newSector: (rows, columns) =>

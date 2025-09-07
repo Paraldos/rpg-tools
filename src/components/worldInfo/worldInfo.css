@@ -17,7 +17,7 @@
   font-size: 0.9rem;
 }
 
-.worldInfo__tags {
+.worldInfo__listOfTags {
   list-style: none;
   padding: 0;
   display: flex;
@@ -29,22 +29,13 @@
     width: 100%;
   }
 
-  button {
-    width: 100%;
-    border-radius: 5px;
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   svg {
     height: 15px;
   }
 }
 
-.worldInfo__position,
-.worldInfo__add {
+.worldInfo__positionControlls,
+.worldInfo__addTag {
   display: flex;
   gap: 15px;
   align-items: center;

@@ -1,7 +1,7 @@
-import { SvgTag } from "../../utils/svgs";
 import { useSectorStore } from "../../utils/store";
+import { SvgTag } from "../../utils/svgs";
 
-export default function AddTagBtn() {
+export default function WorldInfoAddTag() {
   const sector = useSectorStore((s) => s.sector);
   const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
   const addWorldTag = useSectorStore((s) => s.addWorldTag);
@@ -14,12 +14,15 @@ export default function AddTagBtn() {
   const noMoreTagsPossible = tags.length >= 8;
 
   return (
-    <button
-      className={"symbolBtn"}
-      onClick={addWorldTag}
-      disabled={noMoreTagsPossible}
-    >
-      <SvgTag />
-    </button>
+    <div className="worldInfo__addTag">
+      <p>Hinzufügen</p>
+      <button
+        className={"symbolBtn"}
+        onClick={addWorldTag}
+        disabled={noMoreTagsPossible}
+      >
+        <SvgTag />
+      </button>
+    </div>
   );
 }
