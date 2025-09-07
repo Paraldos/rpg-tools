@@ -19,15 +19,13 @@ export default function WorldInfo() {
   const selectedWorld = selectedField.worlds[selectedWorldIndex[1]];
   const tags = selectedWorld.tags;
 
-  const selectedType = tags.find((tag) => WORLD_TYPES.includes(tag)) ?? "";
-
   const onChangeHandler = (tagIndex, event) => {
     tags[tagIndex] = event.target.value;
     updateWorldTags(tags);
   };
 
   const worldTypeTag = (
-    <select value={selectedType} onChange={(e) => onChangeHandler(0, e)}>
+    <select value={tags[0]} onChange={(e) => onChangeHandler(0, e)}>
       {WORLD_TYPES.map((worldType) => (
         <option key={worldType} value={worldType}>
           {worldType}
@@ -37,7 +35,7 @@ export default function WorldInfo() {
   );
 
   const societyTypeTag = (
-    <select value={selectedType} onChange={(e) => onChangeHandler(1, e)}>
+    <select value={tags[1]} onChange={(e) => onChangeHandler(1, e)}>
       {SOCIETY_TAGS.map((societyType) => (
         <option key={societyType} value={societyType}>
           {societyType}
