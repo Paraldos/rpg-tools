@@ -1,7 +1,7 @@
 import "./worldInfo.css";
 import { useSectorStore } from "../../utils/store";
 import XBtn from "../xBtn/XBtn";
-
+import WorldInfoTitle from "./WorldInfoTitle";
 import WorldInfoListOfTags from "./WorldInfoListOfTags";
 import WorldInfoPositionControls from "./WorldInfoPositionControls";
 import WorldInfoAddTag from "./WolrdInfoAddTag";
@@ -21,9 +21,7 @@ export default function WorldInfo() {
       <p className="worldInfo__baseInfo">
         Feld: {selectedField.index + 1}, Typ: {selectedField.type}
       </p>
-      <h3>
-        {selectedField.title} {selectedWorldIndex[1] + 1}
-      </h3>
+      <WorldInfoTitle />
       <WorldInfoListOfTags />
       <WorldInfoAddTag />
       <WorldInfoPositionControls />
