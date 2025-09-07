@@ -1,4 +1,4 @@
-import { World, Star, BlackHole, Empty, Sector, Field } from "./types";
+import { World, Sector, Field } from "./types";
 import {
   WORLD_TYPES,
   SOCIETY_TAGS,
@@ -12,9 +12,8 @@ import {
   getWeightedRandomArrayItem,
 } from "./array";
 
-export function generateWorld(ordinal: number): World {
+export function generateWorld(): World {
   return {
-    titleOffset: rollDice(2),
     tags: [
       getWeightedRandomArrayItem(WORLD_TYPES)!,
       getWeightedRandomArrayItem(SOCIETY_TAGS)!,
@@ -28,22 +27,35 @@ export function generateAdditionalTag(usedTags: string[]) {
   return getRandomArrayItem(availableTags);
 }
 
-export function generateStar(starTitle?: string): Star {
+export function generateStar(starTitle?: string): Field {
   const title = starTitle ?? "Nova";
-  const n = rollDice(3);
+  const numberOfWorlds = rollDice(3);
+  const worldsArray = Array(14).fill(null);
+  for (let i = 0; i < numberOfWorlds; i++) {
+    worldsArray[i] = generateWorld();
+  }
+  shuffleArray(worldsArray);
   return {
     type: "Stern",
     title,
-    worlds: Array.from({ length: n }, (_, i) => generateWorld(i)),
+    worlds: worldsArray,
   };
 }
 
-export function generateBlackHole(blackHoleTitle?: string): BlackHole {
-  return { type: "Schwarzes Loch", title: blackHoleTitle ?? "Singularis" };
+export function generateBlackHole(blackHoleTitle?: string): Field {
+  return {
+    type: "Schwarzes Loch",
+    title: blackHoleTitle ?? "Singularis",
+    worlds: [],
+  };
 }
 
-export function generateEmpty(emptyTitle?: string): Empty {
-  return { type: "Leere", title: emptyTitle ?? "Void" };
+export function generateEmpty(emptyTitle?: string): Field {
+  return {
+    type: "Leere",
+    title: emptyTitle ?? "Oblivio",
+    worlds: [],
+  };
 }
 
 export function generateSector({
