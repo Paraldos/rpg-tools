@@ -6,6 +6,7 @@ export default function WorldInfoTitle() {
   const sector = useSectorStore((s) => s.sector);
   const selectedField = sector.fields[selectedWorldIndex[0]];
   const selectedWorld = selectedField.worlds[selectedWorldIndex[1]];
+  const updateWorldTitle = useSectorStore((s) => s.updateWorldTitle);
 
   return (
     <div className="worldInfo__titleBox">
@@ -15,6 +16,7 @@ export default function WorldInfoTitle() {
         value={selectedWorld.title}
         aria-label="Name der Welt"
         placeholder={selectedField.title + " " + (selectedWorldIndex[1] + 1)}
+        onChange={(e) => updateWorldTitle(e.target.value)}
       />
       <SvgText />
     </div>

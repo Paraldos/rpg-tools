@@ -19,15 +19,17 @@ export default function WorldInfoBtn({ worldIndex }) {
     </li>
   ));
 
+  const worldTitle = world.title
+    ? world.title
+    : `${selectedField.title} ${worldIndex + 1}`;
+
   return (
     <li key={selectedFieldIndex} className="worldInfoBtn">
       <button
         className="WorldInfoBtn__mainBtn"
         onClick={() => setSelectedWorldIndex([selectedFieldIndex, worldIndex])}
       >
-        <p className="worldInfoBtn__title">
-          {selectedField.title} {worldIndex + 1}
-        </p>
+        <p className="worldInfoBtn__title">{worldTitle}</p>
         <ul className="worldInfoBtn__tags">{tags}</ul>
       </button>
     </li>

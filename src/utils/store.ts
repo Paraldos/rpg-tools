@@ -17,10 +17,11 @@ type SectorState = {
 
   newSector: (rows: number, columns: number) => void;
 
-  updateFieldTitle: (title: string) => void;
-  changeFieldType: (index: number, newType: FieldType) => void;
   addWorld: (worldIndex: number) => void;
   addWorldTag: (worldIndex: number) => void;
+  changeFieldType: (index: number, newType: FieldType) => void;
+  updateFieldTitle: (newTitle: string) => void;
+  updateWorldTitle: (newTitle: string) => void;
   updateWorldTags: (newTags: string[]) => void;
   moveWorldAwayFromSun: () => void;
   moveWorldTowardsSun: () => void;
@@ -52,13 +53,6 @@ export const useSectorStore = create<SectorState>((set) => ({
       sector: generateSector({ rows, columns }),
     }),
 
-  updateFieldTitle: (newTitle) =>
-    set((state) => {
-      const sector = structuredClone(state.sector!);
-      sector.fields[state.selectedFieldIndex!].title = newTitle;
-      return { sector };
-    }),
-
   addWorld: () =>
     set((state) => {
       const newSector = structuredClone(state.sector);
@@ -71,6 +65,13 @@ export const useSectorStore = create<SectorState>((set) => ({
       const lastNullIdx = worlds.lastIndexOf(null);
       worlds.splice(lastNullIdx, 1);
 
+      return { sector: newSector };
+    }),
+
+  updateFieldTitle: (newTitle) =>
+    set((state) => {
+      const newSector = structuredClone(state.sector!);
+      newSector.fields[state.selectedFieldIndex!].title = newTitle;
       return { sector: newSector };
     }),
 
@@ -92,6 +93,15 @@ export const useSectorStore = create<SectorState>((set) => ({
       const world = field.worlds[state.selectedWorldIndex![1]];
       world!.tags = newTags;
       return { sector };
+    }),
+
+  updateWorldTitle: (newTitle) =>
+    set((state) => {
+      const newSector = structuredClone(state.sector);
+      const field = newSector!.fields[state.selectedWorldIndex![0]];
+      const world = field.worlds[state.selectedWorldIndex![1]];
+      world!.title = newTitle;
+      return { sector: newSector };
     }),
 
   changeFieldType: (index, newType) =>
