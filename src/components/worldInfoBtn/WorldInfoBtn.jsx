@@ -1,13 +1,10 @@
 import "./worldInfoBtn.css";
 import { useSectorStore } from "../../utils/store";
-import { SvgChevronUp, SvgChevronDown } from "../../utils/svgs";
 
 export default function WorldInfoBtn({ worldIndex }) {
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const setSelectedWorldIndex = useSectorStore((s) => s.setSelectedWorldIndex);
-  const moveWorldAwayFromSun = useSectorStore((s) => s.moveWorldAwayFromSun);
-  const moveWorldTowardsSun = useSectorStore((s) => s.moveWorldTowardsSun);
 
   if (!sector || selectedFieldIndex == null) return null;
 
@@ -33,20 +30,6 @@ export default function WorldInfoBtn({ worldIndex }) {
         </p>
         <ul className="worldInfoBtn__tags">{tags}</ul>
       </button>
-      <div className="worldInfoBtn__directionBtns">
-        <button
-          className="WorldInfoBtn__down"
-          onClick={() => moveWorldTowardsSun(worldIndex)}
-        >
-          <SvgChevronUp />
-        </button>
-        <button
-          className="WorldInfoBtn__up"
-          onClick={() => moveWorldAwayFromSun(worldIndex)}
-        >
-          <SvgChevronDown />
-        </button>
-      </div>
     </li>
   );
 }

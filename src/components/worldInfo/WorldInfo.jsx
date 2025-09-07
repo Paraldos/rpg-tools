@@ -7,12 +7,16 @@ import {
   GENERAL_TAGS,
 } from "../../sector/worldTags";
 import AddTagBtn from "../addTagBtn/addTagBtn";
+import { SvgChevronRight, SvgChevronLeft } from "../../utils/svgs";
 
 export default function WorldInfo() {
   const sector = useSectorStore((s) => s.sector);
   const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
   const setSelectedFieldIndex = useSectorStore((s) => s.setSelectedFieldIndex);
   const updateWorldTags = useSectorStore((s) => s.updateWorldTags);
+  const moveWorldAwayFromSun = useSectorStore((s) => s.moveWorldAwayFromSun);
+  const moveWorldTowardsSun = useSectorStore((s) => s.moveWorldTowardsSun);
+
   if (!selectedWorldIndex) return null;
 
   const selectedField = sector.fields[selectedWorldIndex[0]];
@@ -74,9 +78,20 @@ export default function WorldInfo() {
           <li key={index}>{getTagInputField(tag, index)}</li>
         ))}
       </ul>
+
       <div className="worldInfo__add">
         <p>Hinzufügen</p>
         <AddTagBtn />
+      </div>
+
+      <div className="worldInfo__position">
+        <p>Position</p>
+        <button className="symbolBtn" onClick={moveWorldTowardsSun}>
+          <SvgChevronLeft />
+        </button>
+        <button className="symbolBtn" onClick={moveWorldAwayFromSun}>
+          <SvgChevronRight />
+        </button>
       </div>
     </div>
   );

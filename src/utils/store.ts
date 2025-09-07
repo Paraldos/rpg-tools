@@ -22,8 +22,8 @@ type SectorState = {
   addWorld: (worldIndex: number) => void;
   addWorldTag: (worldIndex: number) => void;
   updateWorldTags: (newTags: string[]) => void;
-  moveWorldAwayFromSun: (worldIndex: number) => void;
-  moveWorldTowardsSun: (worldIndex: number) => void;
+  moveWorldAwayFromSun: () => void;
+  moveWorldTowardsSun: () => void;
 };
 
 export const useSectorStore = create<SectorState>((set) => ({
@@ -110,21 +110,31 @@ export const useSectorStore = create<SectorState>((set) => ({
       return { sector: { ...updatedSector, fields } };
     }),
 
-  moveWorldAwayFromSun: (worldIndex: number) =>
+  moveWorldAwayFromSun: () =>
     set((state) => {
       const newSector = structuredClone(state.sector);
-      const field = newSector!.fields[state.selectedFieldIndex!];
+      const fieldIndex = state.selectedWorldIndex![0];
+      const worldIndex = state.selectedWorldIndex![1];
+      const field = newSector!.fields[fieldIndex];
       const worlds = field.worlds;
-      if (worldIndex >= 14) return state;
+
+      if (worldIndex >= worlds.length - 1) return state;
+
       const [world] = worlds.splice(worldIndex, 1);
       worlds.splice(worldIndex + 1, 0, world);
-      return { sector: newSector };
+
+      return {
+        sector: newSector,
+        selectedWorldIndex: [fieldIndex, worldIndex + 1],
+      };
     }),
 
-  moveWorldTowardsSun: (worldIndex: number) =>
+  moveWorldTowardsSun: () =>
     set((state) => {
       const newSector = structuredClone(state.sector);
-      const field = newSector!.fields[state.selectedFieldIndex!];
+      const fieldIndex = state.selectedWorldIndex![0];
+      const worldIndex = state.selectedWorldIndex![1];
+      const field = newSector!.fields[fieldIndex];
       const worlds = field.worlds;
 
       if (worldIndex <= 0) return state;
@@ -132,6 +142,9 @@ export const useSectorStore = create<SectorState>((set) => ({
       const [world] = worlds.splice(worldIndex, 1);
       worlds.splice(worldIndex - 1, 0, world);
 
-      return { sector: newSector };
+      return {
+        sector: newSector,
+        selectedWorldIndex: [fieldIndex, worldIndex - 1],
+      };
     }),
 }));
