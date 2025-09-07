@@ -19,8 +19,8 @@ type SectorState = {
 
   updateFieldTitle: (title: string) => void;
   changeFieldType: (index: number, newType: FieldType) => void;
-  addWorld: (index: number) => void;
-  addWorldTag: (fieldIndex: number, worldIndex: number) => void;
+  addWorld: () => void;
+  addWorldTag: () => void;
   updateWorldTags: (newTags: string[]) => void;
 };
 
@@ -45,6 +45,8 @@ export const useSectorStore = create<SectorState>((set) => ({
 
   newSector: (rows, columns) =>
     set({
+      selectedFieldIndex: null,
+      selectedWorldIndex: null,
       sector: generateSector({ rows, columns }),
     }),
 
@@ -55,10 +57,10 @@ export const useSectorStore = create<SectorState>((set) => ({
       return { sector };
     }),
 
-  addWorld: (index) =>
+  addWorld: () =>
     set((state) => {
       const sector = structuredClone(state.sector!);
-      const selectedField = sector.fields[index];
+      const selectedField = sector.fields[state.selectedFieldIndex!];
       const newWorld = generateWorld(selectedField.worlds?.length ?? 0);
       selectedField.worlds.push(newWorld);
       return { sector };

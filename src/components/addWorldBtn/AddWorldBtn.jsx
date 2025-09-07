@@ -11,17 +11,14 @@ export default function AddWorldBtn() {
       ? sector.fields[selectedFieldIndex]
       : null;
 
-  if (!selectedField) return null;
-
   const amountOfWorlds = selectedField.worlds?.length ?? 0;
-  const canAddWorld = amountOfWorlds < 6;
-
-  if (!canAddWorld) return null;
+  const noMoreWorldsPossible = amountOfWorlds >= 6;
 
   return (
     <button
       className={"symbolBtn"}
-      onClick={() => addWorld(selectedField.index)}
+      onClick={() => addWorld()}
+      disabled={noMoreWorldsPossible}
     >
       <SvgPlanet />
     </button>
