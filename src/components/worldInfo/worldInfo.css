@@ -60,7 +60,7 @@
     display: flex;
     gap: var(--spacing-l);
     height: var(--spacing-xl);
-    animation: puls 0.5s;
+    animation: fadeIn 0.5s;
   }
 
   select {

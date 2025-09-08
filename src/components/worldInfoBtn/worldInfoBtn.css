@@ -2,7 +2,7 @@
   display: flex;
   gap: var(--spacing-m);
   align-items: center;
-  animation: puls 0.5s;
+  animation: fadeIn 0.5s;
 
   .WorldInfoBtn__mainBtn {
     display: flex;
