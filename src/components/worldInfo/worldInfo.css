@@ -76,3 +76,10 @@
     margin-right: auto;
   }
 }
+
+.worldInfo__deleteBtns {
+  margin-top: var(--spacing-xl);
+  display: flex;
+  gap: var(--spacing-l);
+  justify-content: center;
+}

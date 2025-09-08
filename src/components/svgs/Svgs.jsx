@@ -202,3 +202,18 @@ export function SvgCog() {
     </svg>
   );
 }
+
+export function SvgCheck() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <path
+        stroke="#fff"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 12.611 8.923 17.5 20 6.5"
+        className="svgCheck"
+      />
+    </svg>
+  );
+}

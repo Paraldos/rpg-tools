@@ -1,0 +1,23 @@
+.modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modal__window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-primary);
+  padding: var(--spacing-xl);
+  z-index: 1000;
+
+  .xBtn {
+    position: absolute;
+    right: var(--spacing-s);
+    top: var(--spacing-s);
+  }
+}
