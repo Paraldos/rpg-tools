@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function WorldInfoPositionControls() {
   const moveWorldAwayFromSun = useSectorStore((s) => s.moveWorldAwayFromSun);
   const moveWorldTowardsSun = useSectorStore((s) => s.moveWorldTowardsSun);
-  const deleteWorld = useSectorStore((s) => s.deleteWorld);
+  const removeWorld = useSectorStore((s) => s.removeWorld);
   const [open, setOpen] = useState(false);
 
   return (
@@ -24,7 +24,7 @@ export default function WorldInfoPositionControls() {
       <Modal open={open} onClose={() => setOpen(false)}>
         <p>Sicher dass du diese Welt löschen willst?</p>
         <div className="worldInfo__deleteBtns">
-          <button className="symbolBtn" onClick={deleteWorld}>
+          <button className="symbolBtn" onClick={removeWorld}>
             <SvgCheck />
           </button>
           <button className="symbolBtn" onClick={() => setOpen(false)}>

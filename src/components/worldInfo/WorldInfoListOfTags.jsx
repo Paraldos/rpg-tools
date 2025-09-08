@@ -4,10 +4,12 @@ import {
   SOCIETY_TAGS,
   GENERAL_TAGS,
 } from "../../sector/worldTags";
+import { SvgX } from "../svgs/Svgs";
 
 export default function WorldInfoListOfTags() {
   const sector = useSectorStore((s) => s.sector);
   const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
+  const removeWorldTag = useSectorStore((s) => s.removeWorldTag);
   const selectedField = sector.fields[selectedWorldIndex[0]];
   const selectedWorld = selectedField.worlds[selectedWorldIndex[1]];
   const tags = selectedWorld.tags;
@@ -38,13 +40,18 @@ export default function WorldInfoListOfTags() {
   );
 
   const generalTag = (tag, index) => (
-    <select value={tag} onChange={(e) => onChangeHandler(index, e)}>
-      {GENERAL_TAGS.map((generalTag) => (
-        <option key={generalTag} value={generalTag}>
-          {generalTag}
-        </option>
-      ))}
-    </select>
+    <div className="worldInfo__tagWrapper">
+      <select value={tag} onChange={(e) => onChangeHandler(index, e)}>
+        {GENERAL_TAGS.map((generalTag) => (
+          <option key={generalTag} value={generalTag}>
+            {generalTag}
+          </option>
+        ))}
+      </select>
+      <button onClick={() => removeWorldTag(index)}>
+        <SvgX />
+      </button>
+    </div>
   );
 
   const getTagInputField = (tag, index) => {

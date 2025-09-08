@@ -71,6 +71,7 @@ select {
   border-radius: 5px;
   padding: 5px;
   transition: all 0.2s;
+  padding: var(--spacing-m);
 
   &:hover {
     cursor: pointer;
