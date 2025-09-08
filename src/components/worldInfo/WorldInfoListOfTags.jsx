@@ -23,23 +23,27 @@ export default function WorldInfoListOfTags() {
   };
 
   const worldTypeTag = (
-    <select value={tags[0]} onChange={(e) => onChangeHandler(0, e)}>
-      {WORLD_TYPES.map((worldType) => (
-        <option key={worldType} value={worldType}>
-          {worldType}
-        </option>
-      ))}
-    </select>
+    <div className="worldInfo__tagWrapper">
+      <select value={tags[0]} onChange={(e) => onChangeHandler(0, e)}>
+        {WORLD_TYPES.map((worldType) => (
+          <option key={worldType} value={worldType}>
+            {worldType}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 
   const societyTypeTag = (
-    <select value={tags[1]} onChange={(e) => onChangeHandler(1, e)}>
-      {SOCIETY_TAGS.map((societyType) => (
-        <option key={societyType} value={societyType}>
-          {societyType}
-        </option>
-      ))}
-    </select>
+    <div className="worldInfo__tagWrapper">
+      <select value={tags[1]} onChange={(e) => onChangeHandler(1, e)}>
+        {SOCIETY_TAGS.map((societyType) => (
+          <option key={societyType} value={societyType}>
+            {societyType}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 
   const generalTag = (tag, index) => (
