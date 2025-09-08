@@ -12,19 +12,16 @@ export default function FieldInfoChangeFieldType() {
       <p>Umwandeln</p>
       <button
         className="symbolBtn"
-        onClick={() => changeFieldType(selectedFieldIndex, "Schwarzes Loch")}
+        onClick={() => changeFieldType("Schwarzes Loch")}
       >
         <SvgBlackHole />
       </button>
-      <button
-        className="symbolBtn"
-        onClick={() => changeFieldType(selectedFieldIndex, "Stern")}
-      >
+      <button className="symbolBtn" onClick={() => changeFieldType("Stern")}>
         <SvgStar />
       </button>
       <button
         className="symbolBtn"
-        onClick={() => changeFieldType(selectedFieldIndex, "Leere")}
+        onClick={() => changeFieldType("Leere")}
       ></button>
     </div>
   );
