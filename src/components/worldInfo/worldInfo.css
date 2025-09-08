@@ -68,7 +68,7 @@
 .worldInfo__positionControlls,
 .worldInfo__addTag {
   display: flex;
-  gap: 15px;
+  gap: var(--spacing-m);
   align-items: center;
 
   p {
