@@ -10,13 +10,16 @@ export default function WorldInfoListOfTags() {
   const sector = useSectorStore((s) => s.sector);
   const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
   const removeWorldTag = useSectorStore((s) => s.removeWorldTag);
+  const updateWorldTags = useSectorStore((s) => s.updateWorldTags);
   const selectedField = sector.fields[selectedWorldIndex[0]];
   const selectedWorld = selectedField.worlds[selectedWorldIndex[1]];
   const tags = selectedWorld.tags;
 
   const onChangeHandler = (tagIndex, event) => {
-    tags[tagIndex] = event.target.value;
-    updateWorldTags(tags);
+    const value = event.target.value;
+    const copyOfTags = [...tags];
+    copyOfTags[tagIndex] = value;
+    updateWorldTags(copyOfTags);
   };
 
   const worldTypeTag = (
