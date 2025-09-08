@@ -1,8 +1,10 @@
 @keyframes puls {
   0% {
-    transform: scale(0) translateX(100%);
+    opacity: 0;
+    transform: scale(0) translateX(50%);
   }
   100% {
+    opacity: 1;
     transform: scale(1) translateX(0);
   }
 }
