@@ -24,8 +24,9 @@ type SectorState = {
   addWorldTag: (worldIndex: number) => void;
   removeWorldTag: (tagIndex: number) => void;
 
-  changeFieldType: (newType: FieldType) => void;
   updateFieldTitle: (newTitle: string) => void;
+  changeFieldType: (newType: FieldType) => void;
+
   updateWorldTitle: (newTitle: string) => void;
   updateWorldTags: (newTags: string[]) => void;
   moveWorldAwayFromSun: () => void;
@@ -92,13 +93,6 @@ export const useSectorStore = create<SectorState>((set) => ({
       };
     }),
 
-  updateFieldTitle: (newTitle) =>
-    set((state) => {
-      const sectorClone = structuredClone(state.sector!);
-      sectorClone.fields[state.selectedFieldIndex!].title = newTitle;
-      return { sector: sectorClone };
-    }),
-
   addWorldTag: () =>
     set((state) => {
       const sectorClone = structuredClone(state.sector);
@@ -120,12 +114,18 @@ export const useSectorStore = create<SectorState>((set) => ({
       return { sector: sectorClone };
     }),
 
-  updateWorldTags: (newTags) =>
+  updateFieldTitle: (newTitle) =>
+    set((state) => {
+      const sectorClone = structuredClone(state.sector!);
+      sectorClone.fields[state.selectedFieldIndex!].title = newTitle;
+      return { sector: sectorClone };
+    }),
+
+  changeFieldType: (newType) =>
     set((state) => {
       const sectorClone = structuredClone(state.sector);
-      const field = sectorClone!.fields[state.selectedWorldIndex![0]];
-      const world = field.worlds[state.selectedWorldIndex![1]];
-      world!.tags = newTags;
+      const field = sectorClone!.fields[state.selectedFieldIndex!];
+      field.type = newType;
       return { sector: sectorClone };
     }),
 
@@ -138,11 +138,12 @@ export const useSectorStore = create<SectorState>((set) => ({
       return { sector: sectorClone };
     }),
 
-  changeFieldType: (newType) =>
+  updateWorldTags: (newTags) =>
     set((state) => {
       const sectorClone = structuredClone(state.sector);
-      const field = sectorClone!.fields[state.selectedFieldIndex!];
-      field.type = newType;
+      const field = sectorClone!.fields[state.selectedWorldIndex![0]];
+      const world = field.worlds[state.selectedWorldIndex![1]];
+      world!.tags = newTags;
       return { sector: sectorClone };
     }),
 
