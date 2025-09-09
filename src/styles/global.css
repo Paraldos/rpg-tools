@@ -67,7 +67,7 @@ button:not(:disabled):hover {
 
 .btn.btn__disabled,
 button:disabled {
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 .symbolBtn {
