@@ -115,6 +115,7 @@ export const useSectorStore = create<SectorState>((set, get) => ({
       for (let i = 0; i < worlds.length; i++) {
         if (worlds[i] === null) nullIndices.push(i);
       }
+
       const randomePosition = getRandomArrayItem(nullIndices);
       const newWorld = generateWorld();
       worlds[randomePosition] = newWorld;

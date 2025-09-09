@@ -47,7 +47,7 @@ export function generateBlackHole(blackHoleTitle?: string): Field {
   return {
     type: "Schwarzes Loch",
     title: blackHoleTitle ?? "Singularis",
-    worlds: [],
+    worlds: Array(14).fill(null),
   };
 }
 
@@ -55,7 +55,7 @@ export function generateEmpty(emptyTitle?: string): Field {
   return {
     type: "Leere",
     title: emptyTitle ?? "Oblivio",
-    worlds: [],
+    worlds: Array(14).fill(null),
   };
 }
 
