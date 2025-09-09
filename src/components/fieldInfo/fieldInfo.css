@@ -69,13 +69,6 @@
   animation: fadeIn 0.5s forwards;
 }
 
-.fieldInfoWorld__moveBtn {
-  height: 40px;
-  padding: 2px;
-  border-width: 1px;
-  margin-left: auto;
-}
-
 .fieldInfoWorld__mainBtn {
   width: 100%;
   text-align: left;

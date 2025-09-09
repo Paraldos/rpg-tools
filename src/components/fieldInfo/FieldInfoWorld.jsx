@@ -1,5 +1,6 @@
 import { useSectorStore } from "../../utils/store";
-import { SvgChevronVertical } from "../svgs/Svgs";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 export default function fieldInfoWorld({ worldIndex }) {
   const sector = useSectorStore((s) => s.sector);
@@ -8,15 +9,22 @@ export default function fieldInfoWorld({ worldIndex }) {
   const selectedField = sector.fields[selectedFieldIndex];
   const world = selectedField.worlds?.[worldIndex];
 
-  const moveBtn = (
-    <button className="fieldInfoWorld__moveBtn symbolBtn">
-      <SvgChevronVertical />
-    </button>
-  );
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: String(worldIndex) });
+  const style = {
+    transform: CSS.Translate.toString(transform),
+    transition: transition || "transform 0.1s",
+  };
 
   if (!world)
     return (
-      <li key={selectedFieldIndex} className="fieldInfoWorld">
+      <li
+        className="fieldInfoWorld"
+        ref={setNodeRef}
+        style={style}
+        {...attributes}
+        {...listeners}
+      >
         <p>Leere</p>
       </li>
     );
@@ -32,7 +40,13 @@ export default function fieldInfoWorld({ worldIndex }) {
     : `${selectedField.title} ${worldIndex + 1}`;
 
   return (
-    <li key={selectedFieldIndex} className="fieldInfoWorld">
+    <li
+      className="fieldInfoWorld"
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+    >
       <button
         className="fieldInfoWorld__mainBtn"
         onClick={() => setSelectedWorldIndex([selectedFieldIndex, worldIndex])}
@@ -40,7 +54,6 @@ export default function fieldInfoWorld({ worldIndex }) {
         <h4 className="fieldInfoWorld__title">{worldTitle}</h4>
         <ul className="fieldInfoWorld__tags">{tags}</ul>
       </button>
-      {moveBtn}
     </li>
   );
 }
