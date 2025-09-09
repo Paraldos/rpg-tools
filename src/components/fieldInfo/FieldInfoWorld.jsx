@@ -9,11 +9,18 @@ export default function fieldInfoWorld({ worldIndex }) {
   const selectedField = sector.fields[selectedFieldIndex];
   const world = selectedField.worlds?.[worldIndex];
 
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: String(worldIndex) });
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: String(worldIndex) });
   const style = {
     transform: CSS.Translate.toString(transform),
     transition: transition || "transform 0.1s",
+    zIndex: isDragging ? 5 : 0,
   };
 
   if (!world)
