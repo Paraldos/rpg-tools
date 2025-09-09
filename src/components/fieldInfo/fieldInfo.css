@@ -88,3 +88,7 @@
   border-radius: 5px;
   padding: 2px var(--spacing-s);
 }
+
+.fieldInfoWorld[aria-pressed="true"] {
+  z-index: 5 !important;
+}
