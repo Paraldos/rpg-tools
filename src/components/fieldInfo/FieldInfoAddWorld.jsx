@@ -7,7 +7,8 @@ export default function FieldInfoAddWorld() {
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const selectedField = sector.fields[selectedFieldIndex];
   const amountOfWorlds =
-    selectedField?.worlds?.filter((w) => w !== null).length ?? 0;
+    selectedField?.worlds?.filter((world) => world.title !== "Leere").length ??
+    0;
   const noMoreWorldsPossible = amountOfWorlds >= 5;
 
   return (

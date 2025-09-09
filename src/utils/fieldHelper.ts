@@ -10,7 +10,7 @@ export function addWorld() {
 
   const nullIndices: number[] = [];
   for (let i = 0; i < worlds.length; i++) {
-    if (worlds[i] === null) nullIndices.push(i);
+    if (worlds[i].title === "Leere") nullIndices.push(i);
   }
 
   const randomePosition = getRandomArrayItem(nullIndices);
