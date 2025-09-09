@@ -3,6 +3,8 @@
   position: relative;
   height: 45px;
   aspect-ratio: 1;
+  background-color: transparent;
+  box-shadow: unset;
 }
 
 .xBtn::before,

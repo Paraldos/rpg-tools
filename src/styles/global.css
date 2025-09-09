@@ -23,31 +23,37 @@ p {
   margin: 0;
 }
 
-button,
-.btn {
-  padding: var(--spacing-m);
+.btn,
+button {
+  --btnOffsetX: 3px;
+  --btnOffsetY: 3px;
 
-  border: 1px solid var(--color-primary);
-  background-color: transparent;
+  position: relative;
+  padding: var(--spacing-m);
   color: var(--color-primary);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-primary);
+  box-shadow: var(--btnOffsetX) var(--btnOffsetY) 0px 0px
+    var(--color-offsetLight);
   transition: all 0.2s;
 
   svg {
     height: 100%;
+    width: 100%;
     stroke: var(--color-primary);
     fill: var(--color-primary);
   }
 }
 
-button:not(:disabled):hover,
-.btn:not(.btn__disabled):hover {
+.btn:not(.btn__disabled):hover,
+button:not(:disabled):hover {
   cursor: pointer;
-  opacity: 0.75;
-  transform: translate(1px, 1px);
+  transform: translateX(var(--btnOffsetX)) translateY(var(--btnOffsetY));
+  box-shadow: 0 0 0px 0px var(--color-primary);
 }
 
-button:disabled,
-.btn.btn__disabled {
+.btn.btn__disabled,
+button:disabled {
   opacity: 0.6;
 }
 
@@ -56,6 +62,7 @@ button:disabled,
   aspect-ratio: 1;
   border-radius: 50px;
   border-bottom-width: 5px;
+  box-shadow: unset;
 }
 
 ul {

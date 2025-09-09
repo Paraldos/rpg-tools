@@ -50,6 +50,7 @@
 
 .fieldInfo__listOfWorlds {
   margin-bottom: auto;
+  gap: var(--spacing-m);
 }
 
 .fieldInfo__addWorld,
