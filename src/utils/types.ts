@@ -13,7 +13,7 @@ export type Sector = {
   fields: Field[];
   title?: string;
 };
-export type SectorState = {
+export type SectorStore = {
   sector: Sector | null;
   setSector: (sector: Sector | null) => void;
   newSector: (rows: number, columns: number) => void;

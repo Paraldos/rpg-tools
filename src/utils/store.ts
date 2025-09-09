@@ -1,8 +1,8 @@
 import { create } from "zustand";
-import { SectorState } from "./types";
+import { SectorStore } from "./types";
 import { generateSector } from "./sectorHelper";
 
-export const useSectorStore = create<SectorState>((set, get) => ({
+export const useSectorStore = create<SectorStore>((set) => ({
   sector: null,
   setSector: (sector) => set({ sector }),
   newSector: (rows, columns) =>
