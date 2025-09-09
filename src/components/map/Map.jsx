@@ -12,7 +12,7 @@ export default function Map() {
   return (
     <div className="map">
       <div className="map__left">
-        <h2 className="sectorTitle">Sektor: {sector ? sector.title : ""}</h2>
+        {sector && <h2 className="sectorTitle">Sektor: {sector.title}</h2>}
         <Board sector={sector} />
       </div>
       <div className="map__right">

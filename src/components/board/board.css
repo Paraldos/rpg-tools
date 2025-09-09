@@ -1,7 +1,9 @@
-.board {
+.board,
+.board__empty {
   display: grid;
   margin: auto;
-
+  justify-content: center;
+  align-items: center;
   height: 100%;
   aspect-ratio: 1;
 }
