@@ -19,7 +19,7 @@ export default function WorldInfo() {
   return (
     <div className="worldInfo">
       <XBtn onClick={() => setSelectedFieldIndex(selectedWorldIndex[0])} />
-      <p className="worldInfo__baseInfo">
+      <p className="worldInfo__baseInfo smallText">
         Feld: {selectedField.index + 1}, Typ: {selectedField.type}
       </p>
       <WorldInfoTitle />

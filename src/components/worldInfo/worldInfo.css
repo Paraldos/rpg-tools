@@ -12,8 +12,6 @@
 }
 
 .worldInfo__baseInfo {
-  margin: 0;
-  font-size: 0.9rem;
   margin-bottom: var(--spacing-m);
 }
 

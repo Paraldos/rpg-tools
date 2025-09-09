@@ -9,7 +9,7 @@ export default function FieldInfoTitle() {
   const selectedField = sector.fields[selectedFieldIndex];
 
   return (
-    <div className="fieldInfo__titleBox">
+    <h2 className="fieldInfo__titleBox">
       <input
         className="fieldInfo__title"
         type="text"
@@ -18,6 +18,6 @@ export default function FieldInfoTitle() {
         onChange={(e) => updateFieldTitle(e.target.value)}
       />
       <SvgText />
-    </div>
+    </h2>
   );
 }

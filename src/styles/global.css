@@ -7,20 +7,33 @@ body {
   height: 100%;
 }
 
-h2 {
+h1,
+h2,
+h3,
+h4 {
   font-family: Asimovian;
-  font-size: 40px;
   margin: 0;
 }
 
+h2 {
+  font-size: 40px;
+}
+
 h3 {
-  font-family: Asimovian;
   font-size: 30px;
-  margin: 0;
+  font-size: 1.8em;
+}
+
+h4 {
+  font-size: 1.4em;
 }
 
 p {
   margin: 0;
+}
+
+.smallText {
+  font-size: 0.9em;
 }
 
 .btn,
