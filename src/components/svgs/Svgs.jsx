@@ -75,9 +75,9 @@ export function SvgChevronVertical() {
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
       <path
         stroke="#fff"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         className="svgChevronVertical"
         d="m7 15 5 5 5-5M7 9l5-5 5 5m-5 3h.01m.49 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"
       />
@@ -91,9 +91,9 @@ export function SvgChevronUp() {
       <path
         fill="none"
         stroke="#fff"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="3"
         d="m5 15.5 7-7 7 7"
       />
     </svg>
@@ -106,9 +106,9 @@ export function SvgChevronRight() {
       <path
         fill="none"
         stroke="#fff"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="3"
         d="m8.5 5 7 7-7 7"
       />
     </svg>
@@ -121,9 +121,9 @@ export function SvgChevronDown() {
       <path
         fill="none"
         stroke="#fff"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="3"
         d="m5 8.5 7 7 7-7"
       />
     </svg>
@@ -136,9 +136,9 @@ export function SvgChevronLeft() {
       <path
         fill="none"
         stroke="#fff"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="3"
         d="m15.5 5-7 7 7 7"
       />
     </svg>
@@ -161,9 +161,9 @@ export function SvgTag() {
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
       <path
         stroke="#fff"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         d="M7.05 7.05h.01M10.512 3H7.8c-1.68 0-2.52 0-3.162.327a3 3 0 0 0-1.311 1.311C3 5.28 3 6.12 3 7.8v2.712c0 .733 0 1.1.083 1.446.073.306.195.598.36.867.185.303.444.562.963 1.08l4.7 4.7c1.188 1.189 1.782 1.783 2.467 2.005a3 3 0 0 0 1.854 0c.685-.222 1.28-.816 2.467-2.004l2.712-2.712c1.188-1.188 1.782-1.782 2.004-2.467a3 3 0 0 0 0-1.854c-.222-.685-.816-1.28-2.004-2.467l-4.7-4.7c-.519-.519-.778-.778-1.081-.964a3.001 3.001 0 0 0-.867-.36C11.612 3 11.245 3 10.512 3ZM7.55 7.05a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"
       />
     </svg>
@@ -209,9 +209,9 @@ export function SvgCheck() {
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
       <path
         stroke="#fff"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         d="M4 12.611 8.923 17.5 20 6.5"
         className="svgCheck"
       />
