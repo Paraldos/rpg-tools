@@ -8,10 +8,11 @@ import WorldInfoAddTag from "./WolrdInfoAddTag";
 
 export default function WorldInfo() {
   const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
+  const saveMenuOpen = useSectorStore((s) => s.saveMenuOpen);
   const sector = useSectorStore((s) => s.sector);
   const setSelectedFieldIndex = useSectorStore((s) => s.setSelectedFieldIndex);
 
-  if (!selectedWorldIndex) return;
+  if (!selectedWorldIndex || saveMenuOpen) return;
 
   const selectedField = sector.fields[selectedWorldIndex[0]];
 

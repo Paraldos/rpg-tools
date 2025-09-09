@@ -17,7 +17,7 @@ export default function Map() {
       </div>
       <div className="map__right">
         <Controlls />
-        <div className="info-box">
+        <div className="map__infoBox">
           <FieldInfo />
           <WorldInfo />
           <SaveMenu />

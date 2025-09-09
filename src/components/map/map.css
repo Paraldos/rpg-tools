@@ -18,13 +18,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+}
 
-  .info-box {
-    margin: 15px;
-    padding: 15px;
-    border: 2px solid var(--color-primary);
-    height: 100%;
-  }
+.map__infoBox {
+  position: relative;
+  margin: 15px;
+  padding: 15px;
+  border: 2px solid var(--color-primary);
+  height: 100%;
 }
 
 .sectorTitle {

@@ -1,7 +1,6 @@
 import "./fieldInfo.css";
 import WorldInfoBtn from "../worldInfoBtn/WorldInfoBtn";
 import { useSectorStore } from "../../utils/store";
-
 import FieldInfoTitle from "./FieldInfoTitle";
 import FieldInfoAddWorld from "./FieldInfoAddWorld";
 import FieldInfoChangeFieldType from "./FieldInfoChangeFieldType";
@@ -9,8 +8,9 @@ import FieldInfoChangeFieldType from "./FieldInfoChangeFieldType";
 export default function FieldInfo() {
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const sector = useSectorStore((s) => s.sector);
+  const saveMenuOpen = useSectorStore((s) => s.saveMenuOpen);
 
-  if (!selectedFieldIndex) return null;
+  if (!selectedFieldIndex || saveMenuOpen) return null;
 
   const selectedField = sector.fields[selectedFieldIndex];
 

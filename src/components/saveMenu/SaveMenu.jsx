@@ -3,10 +3,12 @@ import { useSectorStore } from "../../utils/store";
 import { STORAGE_KEY_PREFIX } from "../../utils/storageHelper";
 import { useEffect, useState } from "react";
 import { saveToSlot, loadFromSlot, clearSlot } from "../../utils/storageHelper";
+import XBtn from "../xBtn/XBtn";
 
 export default function SaveMenu() {
   const sector = useSectorStore((s) => s.sector);
   const saveMenuOpen = useSectorStore((s) => s.saveMenuOpen);
+  const toggleSaveMenu = useSectorStore((s) => s.toggleSaveMenu);
 
   const [slotInfos, setSlotInfos] = useState(Array(5).fill(null));
   const refresh = () => {
@@ -65,6 +67,7 @@ export default function SaveMenu() {
 
   return (
     <div className="saveMenu">
+      <XBtn onClick={toggleSaveMenu} />
       <h3>Laden und Speichern</h3>
       <ul className="saveMenu__list">
         {Array.from({ length: 5 }, (_, i) => generateSlot(i))}

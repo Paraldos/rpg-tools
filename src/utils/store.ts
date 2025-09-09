@@ -60,8 +60,6 @@ export const useSectorStore = create<SectorState>((set, get) => ({
   saveMenuOpen: null,
   toggleSaveMenu: () =>
     set((state) => ({
-      selectedFieldIndex: null,
-      selectedWorldIndex: null,
       saveMenuOpen: !state.saveMenuOpen,
     })),
 
