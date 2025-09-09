@@ -1,19 +1,28 @@
 import { useSectorStore } from "../../utils/store";
+import { SvgChevronVertical } from "../svgs/Svgs";
 
-export default function FieldInfoWorldBtn({ worldIndex }) {
+export default function fieldInfoWorld({ worldIndex }) {
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const setSelectedWorldIndex = useSectorStore((s) => s.setSelectedWorldIndex);
-
-  if (!sector || selectedFieldIndex == null) return null;
-
   const selectedField = sector.fields[selectedFieldIndex];
   const world = selectedField.worlds?.[worldIndex];
 
-  if (!world) return null;
+  const moveBtn = (
+    <button className="fieldInfoWorld__moveBtn symbolBtn">
+      <SvgChevronVertical />
+    </button>
+  );
+
+  if (!world)
+    return (
+      <li key={selectedFieldIndex} className="fieldInfoWorld">
+        <p>Leere</p>
+      </li>
+    );
 
   const tags = world.tags.map((tag, index) => (
-    <li key={index} className={`fieldInfoWorldBtn__tag`}>
+    <li key={index} className={`fieldInfoWorld__tag`}>
       {tag}
     </li>
   ));
@@ -23,14 +32,15 @@ export default function FieldInfoWorldBtn({ worldIndex }) {
     : `${selectedField.title} ${worldIndex + 1}`;
 
   return (
-    <li key={selectedFieldIndex} className="fieldInfoWorldBtn">
+    <li key={selectedFieldIndex} className="fieldInfoWorld">
       <button
-        className="fieldInfoWorldBtn__mainBtn"
+        className="fieldInfoWorld__mainBtn"
         onClick={() => setSelectedWorldIndex([selectedFieldIndex, worldIndex])}
       >
-        <h4 className="fieldInfoWorldBtn__title">{worldTitle}</h4>
-        <ul className="fieldInfoWorldBtn__tags">{tags}</ul>
+        <h4 className="fieldInfoWorld__title">{worldTitle}</h4>
+        <ul className="fieldInfoWorld__tags">{tags}</ul>
       </button>
+      {moveBtn}
     </li>
   );
 }

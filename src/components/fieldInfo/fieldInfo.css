@@ -62,25 +62,35 @@
   }
 }
 
-.fieldInfoWorldBtn {
+.fieldInfoWorld {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-l);
   animation: fadeIn 0.5s forwards;
 }
 
-.fieldInfoWorldBtn__mainBtn {
+.fieldInfoWorld__moveBtn {
+  height: 40px;
+  padding: 2px;
+  border-width: 1px;
+  margin-left: auto;
+}
+
+.fieldInfoWorld__mainBtn {
   width: 100%;
   text-align: left;
 }
 
-.fieldInfoWorldBtn__title {
+.fieldInfoWorld__title {
   padding-bottom: var(--spacing-m);
 }
 
-.fieldInfoWorldBtn__tags {
+.fieldInfoWorld__tags {
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.fieldInfoWorldBtn__tag {
+.fieldInfoWorld__tag {
   border: 1px solid var(--color-primary);
   border-radius: 5px;
   padding: 2px var(--spacing-s);

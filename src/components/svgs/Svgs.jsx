@@ -78,6 +78,7 @@ export function SvgChevronVertical() {
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-width="2"
+        className="svgChevronVertical"
         d="m7 15 5 5 5-5M7 9l5-5 5 5m-5 3h.01m.49 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"
       />
     </svg>

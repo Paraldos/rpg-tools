@@ -1,5 +1,5 @@
 import "./fieldInfo.css";
-import FieldInfoWorldBtn from "./FieldInfoWorldBtn";
+import FieldInfoWorldBtn from "./FieldInfoWorld";
 import { useSectorStore } from "../../utils/store";
 import FieldInfoTitle from "./FieldInfoTitle";
 import FieldInfoAddWorld from "./FieldInfoAddWorld";
@@ -21,7 +21,7 @@ export default function FieldInfo() {
       <>
         <FieldInfoTitle />
         <ul className="fieldInfo__listOfWorlds">
-          {selectedField.worlds.map((_world, index) => (
+          {selectedField.worlds.map((world, index) => (
             <FieldInfoWorldBtn key={index} worldIndex={index} />
           ))}
         </ul>
