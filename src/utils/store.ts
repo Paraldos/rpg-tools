@@ -84,6 +84,21 @@ export const useSectorStore = create<SectorState>((set, get) => ({
       };
     }),
 
+  updateFieldTitle: (newTitle) =>
+    set((state) => {
+      const sectorClone = structuredClone(state.sector!);
+      sectorClone.fields[state.selectedFieldIndex!].title = newTitle;
+      return { sector: sectorClone };
+    }),
+
+  changeFieldType: (newType) =>
+    set((state) => {
+      const sectorClone = structuredClone(state.sector);
+      const field = sectorClone!.fields[state.selectedFieldIndex!];
+      field.type = newType;
+      return { sector: sectorClone };
+    }),
+
   addWorldTag: () =>
     set((state) => {
       const sectorClone = structuredClone(state.sector);
@@ -102,21 +117,6 @@ export const useSectorStore = create<SectorState>((set, get) => ({
       const world = field.worlds[state.selectedWorldIndex![1]];
       const tags = world!.tags;
       tags.splice(tagIndex, 1);
-      return { sector: sectorClone };
-    }),
-
-  updateFieldTitle: (newTitle) =>
-    set((state) => {
-      const sectorClone = structuredClone(state.sector!);
-      sectorClone.fields[state.selectedFieldIndex!].title = newTitle;
-      return { sector: sectorClone };
-    }),
-
-  changeFieldType: (newType) =>
-    set((state) => {
-      const sectorClone = structuredClone(state.sector);
-      const field = sectorClone!.fields[state.selectedFieldIndex!];
-      field.type = newType;
       return { sector: sectorClone };
     }),
 

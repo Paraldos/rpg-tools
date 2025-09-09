@@ -1,10 +1,10 @@
 import { SvgText } from "../svgs/Svgs";
 import { useSectorStore } from "../../utils/store";
+import { updateFieldTitle } from "../../utils/fieldHelper";
 
 export default function FieldInfoTitle() {
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const sector = useSectorStore((s) => s.sector);
-  const updateFieldTitle = useSectorStore((s) => s.updateFieldTitle);
 
   const selectedField = sector.fields[selectedFieldIndex];
 

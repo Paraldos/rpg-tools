@@ -2,11 +2,11 @@ import { SvgChevronRight, SvgChevronLeft, SvgX, SvgCheck } from "../svgs/Svgs";
 import { useSectorStore } from "../../utils/store";
 import Modal from "../modal/Modal";
 import { useState } from "react";
+import { removeWorld } from "../../utils/fieldHelper";
 
 export default function WorldInfoPositionControls() {
   const moveWorldAwayFromSun = useSectorStore((s) => s.moveWorldAwayFromSun);
   const moveWorldTowardsSun = useSectorStore((s) => s.moveWorldTowardsSun);
-  const removeWorld = useSectorStore((s) => s.removeWorld);
   const [open, setOpen] = useState(false);
 
   return (
