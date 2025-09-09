@@ -50,11 +50,8 @@
   }
 
   .worldInfoBtn__tags {
-    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--spacing-s);
-    list-style: none;
-    padding: 0;
   }
 
   .worldInfoBtn__tag {

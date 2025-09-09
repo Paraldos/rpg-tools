@@ -49,10 +49,6 @@
 }
 
 .worldInfo__listOfTags {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
   gap: var(--spacing-m);
   margin-bottom: auto;
 
@@ -80,7 +76,6 @@
   align-items: center;
 
   p {
-    margin: 0;
     margin-right: auto;
   }
 }

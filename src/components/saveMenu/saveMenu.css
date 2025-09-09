@@ -1,0 +1,39 @@
+.saveMenu {
+  h3 {
+    margin-bottom: var(--spacing-l);
+  }
+}
+
+.saveMenu__title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+
+  p:first-child {
+    font-size: 1rem;
+    font-weight: bolder;
+  }
+
+  p:nth-child(2) {
+    font-size: 0.8rem;
+  }
+}
+
+.saveMenu__list {
+  gap: var(--spacing-l);
+}
+
+.saveMenu__listItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.saveMenu__btns {
+  display: flex;
+  gap: var(--spacing-m);
+
+  button {
+    width: 100%;
+  }
+}

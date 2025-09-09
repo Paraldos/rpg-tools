@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { Sector, Field } from "./types";
+import { STORAGE_KEY_PREFIX } from "./storageKeys";
 import {
   generateSector,
   generateWorld,
@@ -35,9 +36,41 @@ type SectorState = {
   updateWorldTags: (newTags: string[]) => void;
   moveWorldAwayFromSun: () => void;
   moveWorldTowardsSun: () => void;
+
+  saveToSlot: (slotIndex: number) => void;
+  loadFromSlot: (slotIndex: number) => void;
+  clearSlot: (slotIndex: number) => void;
 };
 
-export const useSectorStore = create<SectorState>((set) => ({
+export const useSectorStore = create<SectorState>((set, get) => ({
+  saveToSlot: (slotIndex) => {
+    const sector = get().sector;
+    if (!sector) return;
+    const payload = {
+      timestamp: Date.now(),
+      sector,
+    };
+    localStorage.setItem(
+      `${STORAGE_KEY_PREFIX}${slotIndex}`,
+      JSON.stringify(payload)
+    );
+  },
+
+  loadFromSlot: (slotIndex) => {
+    const raw = localStorage.getItem(`${STORAGE_KEY_PREFIX}${slotIndex}`);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    set({
+      sector: parsed.sector,
+      selectedFieldIndex: null,
+      selectedWorldIndex: null,
+    });
+  },
+
+  clearSlot: (slotIndex) => {
+    localStorage.removeItem(`${STORAGE_KEY_PREFIX}${slotIndex}`);
+  },
+
   sector: null,
   setSector: (sector) => set({ sector }),
 
