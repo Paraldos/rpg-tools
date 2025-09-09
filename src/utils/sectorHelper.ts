@@ -12,6 +12,8 @@ import {
   getWeightedRandomArrayItem,
 } from "./generalHelper";
 
+const MAX_AMOUNT_OF_WORLDS = 9;
+
 export function generateWorld(): World {
   return {
     title: "",
@@ -31,7 +33,7 @@ export function generateAdditionalTag(usedTags: string[]) {
 export function generateStar(starTitle?: string): Field {
   const title = starTitle ?? "Nova";
   const numberOfWorlds = rollDice(3);
-  const worldsArray = Array(14).fill(null);
+  const worldsArray = Array(MAX_AMOUNT_OF_WORLDS).fill(null);
   for (let i = 0; i < numberOfWorlds; i++) {
     worldsArray[i] = generateWorld();
   }
@@ -53,7 +55,7 @@ export function generateBlackHole(blackHoleTitle?: string): Field {
     column: 0,
     type: "Schwarzes Loch",
     title: blackHoleTitle ?? "Singularis",
-    worlds: Array(14).fill(null),
+    worlds: Array(9).fill(null),
   };
 }
 
@@ -64,7 +66,7 @@ export function generateEmpty(emptyTitle?: string): Field {
     column: 0,
     type: "Leere",
     title: emptyTitle ?? "Oblivio",
-    worlds: Array(14).fill(null),
+    worlds: Array(MAX_AMOUNT_OF_WORLDS).fill(null),
   };
 }
 
