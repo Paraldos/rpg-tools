@@ -5,7 +5,7 @@ import {
   generateWorld,
   generateAdditionalTag,
 } from "./sectorHelper";
-import { getRandomArrayItem } from "./array";
+import { getRandomArrayItem } from "./generalHelper";
 
 type SectorState = {
   sector: Sector | null;

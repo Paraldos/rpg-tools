@@ -5,12 +5,12 @@ import {
   GENERAL_TAGS,
   FIELD_TITLES,
 } from "../sector/worldTags";
-import { rollDice } from "./random";
 import {
+  rollDice,
   shuffleArray,
   getRandomArrayItem,
   getWeightedRandomArrayItem,
-} from "./array";
+} from "./generalHelper";
 
 export function generateWorld(): World {
   return {

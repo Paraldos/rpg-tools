@@ -6,8 +6,7 @@ export const shuffleArray = <T>(array: T[]): T[] => {
   return array;
 };
 
-export const getRandomArrayItem = <T>(arr: T[] = []): T | undefined => {
-  if (!arr?.length) return undefined;
+export const getRandomArrayItem = (arr: []) => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
@@ -21,4 +20,8 @@ export const getWeightedRandomArrayItem = <T>(
   const r = s / k;
   const idx = Math.min(arr.length - 1, Math.floor(r * arr.length));
   return arr[idx];
+};
+
+export const rollDice = (sides = 6): number => {
+  return Math.floor(Math.random() * sides) + 1;
 };
