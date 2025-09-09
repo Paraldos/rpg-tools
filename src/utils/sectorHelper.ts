@@ -11,11 +11,11 @@ import {
   getRandomArrayItem,
   getWeightedRandomArrayItem,
 } from "./generalHelper";
-
 const MAX_AMOUNT_OF_WORLDS = 9;
 
 export function generateWorld(): World {
   return {
+    id: crypto.randomUUID(),
     title: "",
     tags: [
       getWeightedRandomArrayItem(WORLD_TYPES)!,
@@ -30,15 +30,25 @@ export function generateAdditionalTag(usedTags: string[]) {
   return getRandomArrayItem(availableTags);
 }
 
+function makeEmptyWorld(): World {
+  return { id: crypto.randomUUID(), title: "Leere", tags: [] };
+}
+
 export function generateStar(starTitle?: string): Field {
   const title = starTitle ?? "Nova";
   const numberOfWorlds = rollDice(3);
-  const worldsArray = Array(MAX_AMOUNT_OF_WORLDS).fill(null);
+  const worldsArray: World[] = Array.from(
+    { length: MAX_AMOUNT_OF_WORLDS },
+    makeEmptyWorld
+  );
+
   for (let i = 0; i < numberOfWorlds; i++) {
     worldsArray[i] = generateWorld();
   }
   shuffleArray(worldsArray);
+
   return {
+    id: crypto.randomUUID(),
     index: 0,
     row: 0,
     column: 0,
@@ -55,7 +65,7 @@ export function generateBlackHole(blackHoleTitle?: string): Field {
     column: 0,
     type: "Schwarzes Loch",
     title: blackHoleTitle ?? "Singularis",
-    worlds: Array(9).fill(null),
+    worlds: Array.from({ length: MAX_AMOUNT_OF_WORLDS }, makeEmptyWorld),
   };
 }
 
@@ -66,7 +76,7 @@ export function generateEmpty(emptyTitle?: string): Field {
     column: 0,
     type: "Leere",
     title: emptyTitle ?? "Oblivio",
-    worlds: Array(MAX_AMOUNT_OF_WORLDS).fill(null),
+    worlds: Array.from({ length: MAX_AMOUNT_OF_WORLDS }, makeEmptyWorld),
   };
 }
 
@@ -79,22 +89,16 @@ export function generateSector({
   const amountOfBlackHoles = Math.floor(amountOfFields / 20);
 
   const starNames = shuffleArray([...FIELD_TITLES]);
+  const fields: Field[] = [];
 
-  let fields: any[] = [];
-
-  for (let i = 0; i < amountOfBlackHoles; i++) {
+  for (let i = 0; i < amountOfBlackHoles; i++)
     fields.push(generateBlackHole(starNames.pop()));
-  }
-
-  for (let i = 0; i < amountOfStars; i++) {
+  for (let i = 0; i < amountOfStars; i++)
     fields.push(generateStar(starNames.pop()));
-  }
-
-  while (fields.length < amountOfFields) {
+  while (fields.length < amountOfFields)
     fields.push(generateEmpty(starNames.pop()));
-  }
 
-  fields = shuffleArray(fields);
+  shuffleArray(fields);
 
   for (let row = 0; row < rows; row++) {
     for (let column = 0; column < columns; column++) {
@@ -102,8 +106,9 @@ export function generateSector({
       fields[index].index = index;
       fields[index].row = row;
       fields[index].column = column;
+      if (!fields[index].id) fields[index].id = crypto.randomUUID();
     }
   }
 
-  return { rows, columns, fields: fields as Field[], title: starNames.pop() };
+  return { rows, columns, fields, title: starNames.pop() ?? "Sektor" };
 }

@@ -7,7 +7,6 @@ import FieldInfoChangeFieldType from "./FieldInfoChangeFieldType";
 import {
   DndContext,
   closestCenter,
-  KeyboardSensor,
   PointerSensor,
   useSensor,
   useSensors,
@@ -15,6 +14,7 @@ import {
 import {
   SortableContext,
   verticalListSortingStrategy,
+  arrayMove,
 } from "@dnd-kit/sortable";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
@@ -24,24 +24,23 @@ export default function FieldInfo() {
   const saveMenuOpen = useSectorStore((s) => s.saveMenuOpen);
   const setSector = useSectorStore((s) => s.setSector);
 
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: { distance: 6 },
+    })
+  );
+
   if (!selectedFieldIndex || saveMenuOpen) return null;
 
   const selectedField = sector.fields[selectedFieldIndex];
+  const worlds = sector.fields[selectedFieldIndex].worlds;
 
-  const handleDragEnd = (event) => {
-    const { active, over } = event;
-
-    if (!active || !over || active.id === over.id) return;
-
-    const oldIndex = Number(active.id);
-    const newIndex = Number(over.id);
-
+  const handleDragEnd = ({ active, over }) => {
     const sectorClone = structuredClone(sector);
-    const worlds = sectorClone.fields[selectedFieldIndex].worlds;
-
-    const [movedWorld] = worlds.splice(oldIndex, 1);
-    worlds.splice(newIndex, 0, movedWorld);
-
+    const field = sectorClone.fields[selectedFieldIndex];
+    const oldIndex = field.worlds.findIndex((w) => w?.id === active.id);
+    const newIndex = field.worlds.findIndex((w) => w?.id === over.id);
+    field.worlds = arrayMove(field.worlds, oldIndex, newIndex);
     setSector(sectorClone);
   };
 
@@ -52,18 +51,20 @@ export default function FieldInfo() {
       <>
         <FieldInfoTitle />
         <DndContext
+          sensors={sensors}
           collisionDetection={closestCenter}
           modifiers={[restrictToVerticalAxis]}
           onDragEnd={handleDragEnd}
         >
           <SortableContext
-            items={selectedField.worlds.map((_, index) => String(index))}
+            items={worlds.map((world) => world.id)}
             strategy={verticalListSortingStrategy}
           >
             <ul className="fieldInfo__listOfWorlds">
-              {selectedField.worlds.map((_world, index) => (
+              {worlds.map((world, index) => (
                 <FieldInfoWorldBtn
-                  key={`world-${selectedFieldIndex}-${index}`}
+                  key={world.id}
+                  id={world.id}
                   worldIndex={index}
                 />
               ))}

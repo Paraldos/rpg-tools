@@ -2,7 +2,7 @@ import { useSectorStore } from "../../utils/store";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export default function fieldInfoWorld({ worldIndex }) {
+export default function FieldInfoWorld({ worldIndex, id }) {
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const setSelectedWorldIndex = useSectorStore((s) => s.setSelectedWorldIndex);
@@ -16,14 +16,18 @@ export default function fieldInfoWorld({ worldIndex }) {
     transform,
     transition,
     isDragging,
-  } = useSortable({ id: String(worldIndex) });
+  } = useSortable({ id });
+
   const style = {
     transform: CSS.Translate.toString(transform),
-    transition: transition || "transform 0.1s",
-    zIndex: isDragging ? 5 : 0,
+    transition,
+    touchAction: "none",
+    willChange: "transform",
+    opacity: isDragging ? 0.9 : 1,
+    zIndex: isDragging ? 5 : "auto",
   };
 
-  if (!world)
+  if (world.title === "Leere")
     return (
       <li
         className="fieldInfoWorld"
@@ -32,12 +36,12 @@ export default function fieldInfoWorld({ worldIndex }) {
         {...attributes}
         {...listeners}
       >
-        <p>Leere</p>
+        <p>-</p>
       </li>
     );
 
   const tags = world.tags.map((tag, index) => (
-    <li key={index} className={`fieldInfoWorld__tag`}>
+    <li key={index} className="fieldInfoWorld__tag">
       {tag}
     </li>
   ));
