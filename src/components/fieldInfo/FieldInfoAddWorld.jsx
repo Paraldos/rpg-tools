@@ -1,8 +1,8 @@
 import { SvgPlanet } from "../svgs/Svgs";
 import { useSectorStore } from "../../utils/store";
+import { addWorld } from "../../utils/fieldHelper";
 
 export default function FieldInfoAddWorld() {
-  const addWorld = useSectorStore((s) => s.addWorld);
   const sector = useSectorStore((s) => s.sector);
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const selectedField = sector.fields[selectedFieldIndex];
@@ -15,7 +15,7 @@ export default function FieldInfoAddWorld() {
       <p>Hinzufügen</p>
       <button
         className={"symbolBtn"}
-        onClick={() => addWorld()}
+        onClick={addWorld}
         disabled={noMoreWorldsPossible}
       >
         <SvgPlanet />

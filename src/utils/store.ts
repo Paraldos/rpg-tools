@@ -22,15 +22,12 @@ type SectorState = {
 
   newSector: (rows: number, columns: number) => void;
 
-  addWorld: () => void;
   removeWorld: () => void;
-
-  addWorldTag: () => void;
-  removeWorldTag: (tagIndex: number) => void;
-
   updateFieldTitle: (newTitle: string) => void;
   changeFieldType: (newType: string) => void;
 
+  addWorldTag: () => void;
+  removeWorldTag: (tagIndex: number) => void;
   updateWorldTitle: (newTitle: string) => void;
   updateWorldTags: (newTags: string[]) => void;
   moveWorldAwayFromSun: () => void;
@@ -68,24 +65,6 @@ export const useSectorStore = create<SectorState>((set, get) => ({
       selectedFieldIndex: null,
       selectedWorldIndex: null,
       sector: generateSector({ rows, columns }),
-    }),
-
-  addWorld: () =>
-    set((state) => {
-      const sectorClone = structuredClone(state.sector);
-      const field = sectorClone!.fields[state.selectedFieldIndex!];
-      const worlds = field.worlds;
-
-      const nullIndices: number[] = [];
-      for (let i = 0; i < worlds.length; i++) {
-        if (worlds[i] === null) nullIndices.push(i);
-      }
-
-      const randomePosition = getRandomArrayItem(nullIndices);
-      const newWorld = generateWorld();
-      worlds[randomePosition] = newWorld;
-
-      return { sector: sectorClone };
     }),
 
   removeWorld: () =>
