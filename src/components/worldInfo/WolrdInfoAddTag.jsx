@@ -1,10 +1,10 @@
 import { useSectorStore } from "../../utils/store";
 import { SvgTag } from "../svgs/Svgs";
+import { addWorldTag } from "../../utils/worldHelper";
 
 export default function WorldInfoAddTag() {
   const sector = useSectorStore((s) => s.sector);
   const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
-  const addWorldTag = useSectorStore((s) => s.addWorldTag);
 
   if (!selectedWorldIndex) return null;
 

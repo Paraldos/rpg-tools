@@ -1,12 +1,12 @@
 import { useSectorStore } from "../../utils/store";
 import { SvgText } from "../svgs/Svgs";
+import { updateWorldTitle } from "../../utils/worldHelper";
 
 export default function WorldInfoTitle() {
   const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
   const sector = useSectorStore((s) => s.sector);
   const selectedField = sector.fields[selectedWorldIndex[0]];
   const selectedWorld = selectedField.worlds[selectedWorldIndex[1]];
-  const updateWorldTitle = useSectorStore((s) => s.updateWorldTitle);
 
   return (
     <div className="worldInfo__titleBox">

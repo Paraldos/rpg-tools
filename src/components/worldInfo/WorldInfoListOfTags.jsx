@@ -5,12 +5,11 @@ import {
   GENERAL_TAGS,
 } from "../../sector/worldTags";
 import { SvgX } from "../svgs/Svgs";
+import { removeWorldTag, updateWorldTags } from "../../utils/worldHelper";
 
 export default function WorldInfoListOfTags() {
   const sector = useSectorStore((s) => s.sector);
   const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
-  const removeWorldTag = useSectorStore((s) => s.removeWorldTag);
-  const updateWorldTags = useSectorStore((s) => s.updateWorldTags);
   const selectedField = sector.fields[selectedWorldIndex[0]];
   const selectedWorld = selectedField.worlds[selectedWorldIndex[1]];
   const tags = selectedWorld.tags;

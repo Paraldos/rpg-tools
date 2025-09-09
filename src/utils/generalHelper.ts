@@ -6,9 +6,9 @@ export const shuffleArray = <T>(array: T[]): T[] => {
   return array;
 };
 
-export const getRandomArrayItem = (arr: []) => {
+export function getRandomArrayItem<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
-};
+}
 
 export const getWeightedRandomArrayItem = <T>(
   arr: T[],

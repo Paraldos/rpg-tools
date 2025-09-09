@@ -13,3 +13,17 @@ export type Sector = {
   fields: Field[];
   title?: string;
 };
+export type SectorState = {
+  sector: Sector | null;
+  setSector: (sector: Sector | null) => void;
+  newSector: (rows: number, columns: number) => void;
+
+  selectedFieldIndex: number | null;
+  setSelectedFieldIndex: (index: number | null) => void;
+
+  selectedWorldIndex: [number, number] | null;
+  setSelectedWorldIndex: (indices: [number, number] | null) => void;
+
+  saveMenuOpen: boolean | null;
+  toggleSaveMenu: () => void;
+};
