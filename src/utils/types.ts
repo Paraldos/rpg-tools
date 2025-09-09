@@ -3,7 +3,7 @@ export type Field = {
   index: number;
   row: number;
   column: number;
-  type: "Stern" | "Schwarzes Loch" | "Leere";
+  type: string;
   title: string;
   worlds: (World | null)[];
 };

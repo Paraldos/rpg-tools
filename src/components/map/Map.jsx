@@ -1,9 +1,10 @@
 import "./map.css";
+import { useSectorStore } from "../../utils/store";
 import Board from "../board/Board";
 import Controlls from "../controlls/Controlls";
 import FieldInfo from "../fieldInfo/FieldInfo";
-import { useSectorStore } from "../../utils/store";
 import WorldInfo from "../worldInfo/WorldInfo";
+import SaveMenu from "../saveMenu/SaveMenu";
 
 export default function Map() {
   const sector = useSectorStore((s) => s.sector);
@@ -19,6 +20,7 @@ export default function Map() {
         <div className="info-box">
           <FieldInfo />
           <WorldInfo />
+          <SaveMenu />
         </div>
       </div>
     </div>

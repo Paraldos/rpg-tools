@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Sector, FieldType } from "./types";
+import { Sector, Field } from "./types";
 import {
   generateSector,
   generateWorld,
@@ -9,23 +9,27 @@ import { getRandomArrayItem } from "./array";
 
 type SectorState = {
   sector: Sector | null;
-  selectedFieldIndex: number | null;
-  selectedWorldIndex: [number, number] | null;
-
   setSector: (sector: Sector | null) => void;
+
+  selectedFieldIndex: number | null;
   setSelectedFieldIndex: (index: number | null) => void;
+
+  selectedWorldIndex: [number, number] | null;
   setSelectedWorldIndex: (indices: [number, number] | null) => void;
+
+  saveMenuOpen: boolean | null;
+  toggleSaveMenu: () => void;
 
   newSector: (rows: number, columns: number) => void;
 
-  addWorld: (worldIndex: number) => void;
+  addWorld: () => void;
   removeWorld: () => void;
 
-  addWorldTag: (worldIndex: number) => void;
+  addWorldTag: () => void;
   removeWorldTag: (tagIndex: number) => void;
 
   updateFieldTitle: (newTitle: string) => void;
-  changeFieldType: (newType: FieldType) => void;
+  changeFieldType: (newType: string) => void;
 
   updateWorldTitle: (newTitle: string) => void;
   updateWorldTags: (newTags: string[]) => void;
@@ -35,22 +39,31 @@ type SectorState = {
 
 export const useSectorStore = create<SectorState>((set) => ({
   sector: null,
-  selectedFieldIndex: null,
-  selectedWorldIndex: null,
-
   setSector: (sector) => set({ sector }),
 
+  selectedFieldIndex: null,
   setSelectedFieldIndex: (index) =>
     set({
       selectedWorldIndex: null,
+      saveMenuOpen: null,
       selectedFieldIndex: index,
     }),
 
+  selectedWorldIndex: null,
   setSelectedWorldIndex: (indices) =>
     set({
       selectedFieldIndex: null,
+      saveMenuOpen: null,
       selectedWorldIndex: indices,
     }),
+
+  saveMenuOpen: null,
+  toggleSaveMenu: () =>
+    set((state) => ({
+      selectedFieldIndex: null,
+      selectedWorldIndex: null,
+      saveMenuOpen: !state.saveMenuOpen,
+    })),
 
   newSector: (rows, columns) =>
     set({
