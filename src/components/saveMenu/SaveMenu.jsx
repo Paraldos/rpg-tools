@@ -1,14 +1,12 @@
 import "./saveMenu.css";
 import { useSectorStore } from "../../utils/store";
-import { STORAGE_KEY_PREFIX } from "../../utils/storageKeys";
+import { STORAGE_KEY_PREFIX } from "../../utils/storageHelper";
 import { useEffect, useState } from "react";
+import { saveToSlot, loadFromSlot, clearSlot } from "../../utils/storageHelper";
 
 export default function SaveMenu() {
   const sector = useSectorStore((s) => s.sector);
   const saveMenuOpen = useSectorStore((s) => s.saveMenuOpen);
-  const saveToSlot = useSectorStore((s) => s.saveToSlot);
-  const loadFromSlot = useSectorStore((s) => s.loadFromSlot);
-  const clearSlot = useSectorStore((s) => s.clearSlot);
 
   const [slotInfos, setSlotInfos] = useState(Array(5).fill(null));
   const refresh = () => {

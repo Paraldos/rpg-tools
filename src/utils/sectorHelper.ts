@@ -37,6 +37,9 @@ export function generateStar(starTitle?: string): Field {
   }
   shuffleArray(worldsArray);
   return {
+    index: 0,
+    row: 0,
+    column: 0,
     type: "Stern",
     title,
     worlds: worldsArray,
@@ -45,6 +48,9 @@ export function generateStar(starTitle?: string): Field {
 
 export function generateBlackHole(blackHoleTitle?: string): Field {
   return {
+    index: 0,
+    row: 0,
+    column: 0,
     type: "Schwarzes Loch",
     title: blackHoleTitle ?? "Singularis",
     worlds: Array(14).fill(null),
@@ -53,6 +59,9 @@ export function generateBlackHole(blackHoleTitle?: string): Field {
 
 export function generateEmpty(emptyTitle?: string): Field {
   return {
+    index: 0,
+    row: 0,
+    column: 0,
     type: "Leere",
     title: emptyTitle ?? "Oblivio",
     worlds: Array(14).fill(null),
