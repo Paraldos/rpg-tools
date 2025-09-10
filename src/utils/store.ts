@@ -8,6 +8,8 @@ export const useSectorStore = create<SectorStore>((set) => ({
 
   openSectorInfo: () =>
     set({
+      selectedFieldIndex: null,
+      selectedWorldIndex: null,
       selectedInfoMenu: "SectorInfo",
     }),
 

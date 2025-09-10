@@ -15,7 +15,7 @@
   margin-bottom: var(--spacing-m);
 }
 
-.worldInfo__titleBox {
+.worldInfo__title {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: var(--spacing-l);
@@ -27,10 +27,10 @@
     height: 15px;
     min-width: 15px;
   }
-}
 
-.worldInfo__title {
-  width: 100%;
+  input {
+    width: 100%;
+  }
 }
 
 .worldInfo__listOfTags {

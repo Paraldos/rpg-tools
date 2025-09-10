@@ -3,16 +3,18 @@
 
 .sectorInfo__title {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-l);
   width: 100%;
+  align-items: center;
 
   svg {
+    display: inline-block;
     height: 15px;
+    min-width: 15px;
   }
-}
 
-.sectorInfo__input {
-  width: 100%;
-  font-family: Asimovian;
-  font-size: 1.8rem;
+  input {
+    width: 100%;
+  }
 }

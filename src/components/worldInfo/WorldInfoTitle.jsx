@@ -9,9 +9,9 @@ export default function WorldInfoTitle() {
   const selectedWorld = selectedField.worlds[selectedWorldIndex[1]];
 
   return (
-    <h2 className="worldInfo__titleBox">
+    <h2 className="worldInfo__title">
       <input
-        className="worldInfo__title h2"
+        className="h2"
         type="text"
         value={selectedWorld.title}
         aria-label="Name der Welt"

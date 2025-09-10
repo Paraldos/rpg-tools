@@ -16,7 +16,7 @@
   height: 100%;
 }
 
-.fieldInfo__titleBox {
+.fieldInfo__title {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: var(--spacing-l);
@@ -28,10 +28,10 @@
     height: 15px;
     min-width: 15px;
   }
-}
 
-.fieldInfo__title {
-  width: 100%;
+  input {
+    width: 100%;
+  }
 }
 
 .fieldInfo__listOfWorlds {

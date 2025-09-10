@@ -9,9 +9,9 @@ export default function FieldInfoTitle() {
   const selectedField = sector.fields[selectedFieldIndex];
 
   return (
-    <h2 className="fieldInfo__titleBox">
+    <h2 className="fieldInfo__title">
       <input
-        className="fieldInfo__title h2"
+        className="h2"
         type="text"
         value={selectedField.title}
         aria-label="Name des Felds"

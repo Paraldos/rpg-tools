@@ -14,16 +14,16 @@ function SectorInfoInner() {
 
   return (
     <div className="sectorInfo">
-      <div className="sectorInfo__title">
+      <h2 className="sectorInfo__title">
         <input
-          className="ssectorInfo__input"
+          className="ssectorInfo__input h2"
           type="text"
           value={sector.title}
           aria-label="Name des Sectors"
           onChange={(e) => updateSectorTitle(e.target.value)}
         />
         <SvgText />
-      </div>
+      </h2>
     </div>
   );
 }
