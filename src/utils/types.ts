@@ -27,3 +27,8 @@ export type SectorStore = {
   saveMenuOpen: boolean | null;
   toggleSaveMenu: () => void;
 };
+export type WorldTypes = string[];
+export type SocietyTags = string[];
+export type GeneralTags = string[];
+export type StellarTitles = string[];
+export type SectorTags = string[];
