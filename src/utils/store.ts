@@ -3,6 +3,12 @@ import { SectorStore } from "./types";
 import { generateSector } from "./sectorHelper";
 
 export const useSectorStore = create<SectorStore>((set) => ({
+  selectedInfoMenu: null,
+  setSelectedInfoMenu: (subMenuTitle) =>
+    set({
+      selectedInfoMenu: subMenuTitle,
+    }),
+
   sector: null,
   setSector: (sector) => set({ sector }),
   newSector: () =>

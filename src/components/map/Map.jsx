@@ -6,6 +6,7 @@ import FieldInfo from "../fieldInfo/FieldInfo";
 import WorldInfo from "../worldInfo/WorldInfo";
 import SaveMenu from "../saveMenu/SaveMenu";
 import SectorTitle from "../sectorTitle/SectorTitle";
+import SectorInfo from "../sectorInfo/SectorInfo";
 
 export default function Map() {
   const sector = useSectorStore((s) => s.sector);
@@ -22,6 +23,7 @@ export default function Map() {
           <FieldInfo />
           <WorldInfo />
           <SaveMenu />
+          <SectorInfo />
         </div>
       </div>
     </div>
