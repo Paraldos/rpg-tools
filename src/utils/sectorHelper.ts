@@ -92,7 +92,7 @@ export function generateEmpty(emptyTitle?: string): Field {
 }
 
 export function generateSector({
-  rows = 10,
+  rows = 12,
   columns = 8,
 }: { rows?: number; columns?: number } = {}): Sector {
   const amountOfFields = rows * columns;

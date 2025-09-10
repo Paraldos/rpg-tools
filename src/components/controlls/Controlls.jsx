@@ -7,7 +7,7 @@ export default function Controlls() {
 
   return (
     <div className="controlls">
-      <button onClick={() => newSector(10, 8)}>Neuer Sektor</button>
+      <button onClick={newSector}>Neuer Sektor</button>
       <button onClick={toggleSaveMenu}>Laden / Speichern</button>
     </div>
   );

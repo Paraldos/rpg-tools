@@ -16,7 +16,7 @@ export type Sector = {
 export type SectorStore = {
   sector: Sector | null;
   setSector: (sector: Sector | null) => void;
-  newSector: (rows: number, columns: number) => void;
+  newSector: () => void;
 
   selectedFieldIndex: number | null;
   setSelectedFieldIndex: (index: number | null) => void;

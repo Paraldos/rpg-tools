@@ -5,11 +5,11 @@ import { generateSector } from "./sectorHelper";
 export const useSectorStore = create<SectorStore>((set) => ({
   sector: null,
   setSector: (sector) => set({ sector }),
-  newSector: (rows, columns) =>
+  newSector: () =>
     set({
       selectedFieldIndex: null,
       selectedWorldIndex: null,
-      sector: generateSector({ rows, columns }),
+      sector: generateSector(),
     }),
 
   selectedFieldIndex: null,

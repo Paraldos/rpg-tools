@@ -6,10 +6,11 @@ export default function Board({ sector }) {
     return <h3 className="board__empty">Noch keine Sektor generiert</h3>;
 
   const columns = sector.columns * 4 + 2;
-  const rows = sector.rows * 3 + 1;
+  const rows = sector.rows * 3 - 1;
   const boardStyles = {
     gridTemplateColumns: `repeat(${columns} , 1fr)`,
-    gridTemplateRows: `repeat(${rows}, 1fr)`,
+    gridTemplateRows: `repeat(${rows + 2}, 1fr)`,
+    aspectRatio: columns / (rows + 2),
   };
 
   return (
