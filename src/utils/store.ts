@@ -4,15 +4,14 @@ import { generateSector } from "./sectorHelper";
 
 export const useSectorStore = create<SectorStore>((set) => ({
   selectedInfoMenu: null,
-  setSelectedInfoMenu: (subMenuTitle) =>
-    set({
-      selectedInfoMenu: subMenuTitle,
-    }),
+  oldSelectedInfoMenu: null,
 
   sector: null,
   setSector: (sector) => set({ sector }),
   newSector: () =>
     set({
+      selectedInfoMenu: null,
+      oldSelectedInfoMenu: null,
       selectedFieldIndex: null,
       selectedWorldIndex: null,
       sector: generateSector(),
@@ -21,22 +20,27 @@ export const useSectorStore = create<SectorStore>((set) => ({
   selectedFieldIndex: null,
   setSelectedFieldIndex: (index) =>
     set({
-      selectedWorldIndex: null,
-      saveMenuOpen: null,
+      selectedInfoMenu: "FieldInfo",
       selectedFieldIndex: index,
     }),
 
   selectedWorldIndex: null,
   setSelectedWorldIndex: (indices) =>
     set({
-      selectedFieldIndex: null,
-      saveMenuOpen: null,
+      selectedInfoMenu: "WorldInfo",
       selectedWorldIndex: indices,
     }),
 
-  saveMenuOpen: null,
   toggleSaveMenu: () =>
-    set((state) => ({
-      saveMenuOpen: !state.saveMenuOpen,
-    })),
+    set((state) =>
+      state.selectedInfoMenu === "SaveMenu"
+        ? {
+            selectedInfoMenu: state.oldSelectedInfoMenu ?? null,
+            oldSelectedInfoMenu: null,
+          }
+        : {
+            oldSelectedInfoMenu: state.selectedInfoMenu,
+            selectedInfoMenu: "SaveMenu",
+          }
+    ),
 }));

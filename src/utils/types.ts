@@ -15,7 +15,7 @@ export type Sector = {
 };
 export type SectorStore = {
   selectedInfoMenu: string | null;
-  setSelectedInfoMenu: (subMenuTitle: string | null) => void;
+  oldSelectedInfoMenu: string | null;
 
   sector: Sector | null;
   setSector: (sector: Sector | null) => void;
@@ -27,7 +27,6 @@ export type SectorStore = {
   selectedWorldIndex: [number, number] | null;
   setSelectedWorldIndex: (indices: [number, number] | null) => void;
 
-  saveMenuOpen: boolean | null;
   toggleSaveMenu: () => void;
 };
 export type WorldTypes = string[];

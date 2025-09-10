@@ -19,21 +19,23 @@ import {
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
 export default function FieldInfo() {
+  const selectedInfoMenu = useSectorStore((s) => s.selectedInfoMenu);
+  if (selectedInfoMenu !== "FieldInfo") return null;
+  return <FieldInfoInner />;
+}
+
+function FieldInfoInner() {
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const sector = useSectorStore((s) => s.sector);
-  const saveMenuOpen = useSectorStore((s) => s.saveMenuOpen);
   const setSector = useSectorStore((s) => s.setSector);
+  const selectedField = sector.fields[selectedFieldIndex];
+  const worlds = sector.fields[selectedFieldIndex].worlds;
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: { distance: 6 },
     })
   );
-
-  if (!selectedFieldIndex || saveMenuOpen) return null;
-
-  const selectedField = sector.fields[selectedFieldIndex];
-  const worlds = sector.fields[selectedFieldIndex].worlds;
 
   const handleDragEnd = ({ active, over }) => {
     const sectorClone = structuredClone(sector);

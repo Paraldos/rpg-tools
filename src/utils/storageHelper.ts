@@ -21,6 +21,7 @@ export const loadFromSlot = (slotIndex: number) => {
     sector: parsed.sector,
     selectedFieldIndex: null,
     selectedWorldIndex: null,
+    oldSelectedInfoMenu: null,
   });
 };
 

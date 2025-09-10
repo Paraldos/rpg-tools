@@ -6,11 +6,17 @@ import { saveToSlot, loadFromSlot, clearSlot } from "../../utils/storageHelper";
 import XBtn from "../xBtn/XBtn";
 
 export default function SaveMenu() {
+  const selectedInfoMenu = useSectorStore((s) => s.selectedInfoMenu);
+  if (selectedInfoMenu !== "SaveMenu") return null;
+  return <SaveMenuInner />;
+}
+
+function SaveMenuInner() {
   const sector = useSectorStore((s) => s.sector);
   const saveMenuOpen = useSectorStore((s) => s.saveMenuOpen);
   const toggleSaveMenu = useSectorStore((s) => s.toggleSaveMenu);
-
   const [slotInfos, setSlotInfos] = useState(Array(5).fill(null));
+
   const refresh = () => {
     setSlotInfos(
       Array.from({ length: 5 }, (_, i) => {
@@ -23,8 +29,6 @@ export default function SaveMenu() {
   useEffect(() => {
     refresh();
   }, [saveMenuOpen]);
-
-  if (!saveMenuOpen) return null;
 
   const generateSlot = (slotIndex) => {
     const parsed = slotInfos[slotIndex];

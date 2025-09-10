@@ -4,9 +4,13 @@ import { updateSectorTitle } from "../../utils/sectorHelper";
 import { useSectorStore } from "../../utils/store";
 
 export default function SectorInfo() {
-  const sector = useSectorStore((s) => s.sector);
+  const selectedInfoMenu = useSectorStore((s) => s.selectedInfoMenu);
+  if (selectedInfoMenu !== "SectorInfo") return null;
+  return <SectorInfoInner />;
+}
 
-  if (!sector) return;
+function SectorInfoInner() {
+  const sector = useSectorStore((s) => s.sector);
 
   return (
     <div className="sectorInfo">
