@@ -29,22 +29,10 @@ export default function FieldInfoWorld({ worldIndex, id }) {
 
   if (world.title === "Leere")
     return (
-      <li
-        className="fieldInfoWorld"
-        ref={setNodeRef}
-        style={style}
-        {...attributes}
-        {...listeners}
-      >
+      <li ref={setNodeRef} style={style} {...attributes} {...listeners}>
         <p>-</p>
       </li>
     );
-
-  const tags = world.tags.map((tag, index) => (
-    <li key={index} className="fieldInfoWorld__tag">
-      {tag}
-    </li>
-  ));
 
   const worldTitle = world.title
     ? world.title
@@ -62,8 +50,8 @@ export default function FieldInfoWorld({ worldIndex, id }) {
         className="fieldInfoWorld__mainBtn"
         onClick={() => setSelectedWorldIndex([selectedFieldIndex, worldIndex])}
       >
-        <h4 className="fieldInfoWorld__title">{worldTitle}</h4>
-        <ul className="fieldInfoWorld__tags">{tags}</ul>
+        <h3>{worldTitle}</h3>
+        <p className="fieldInfoWorld__tags">{world.tags.join(", ")}</p>
       </button>
     </li>
   );

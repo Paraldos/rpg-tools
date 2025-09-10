@@ -4,7 +4,7 @@
   background-color: var(--color-offsetDark);
   clip-path: var(--polygon);
   position: relative;
-  height: 96%;
+  height: 97%;
   aspect-ratio: 1;
   padding: 2px;
 }

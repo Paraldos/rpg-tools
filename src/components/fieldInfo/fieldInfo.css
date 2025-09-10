@@ -55,21 +55,19 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-l);
-  animation: fadeIn 0.5s forwards;
+  animation: fadeIn 1s forwards;
+
+  h3 {
+    font-size: 1.1rem;
+  }
 }
 
 .fieldInfoWorld__mainBtn {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   text-align: left;
-}
-
-.fieldInfoWorld__title {
-  padding-bottom: var(--spacing-m);
-}
-
-.fieldInfoWorld__tags {
-  flex-direction: row;
-  flex-wrap: wrap;
+  padding: 5px 10px;
 }
 
 .fieldInfoWorld__tag {
