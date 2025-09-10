@@ -4,6 +4,8 @@ import { STORAGE_KEY_PREFIX } from "../../utils/storageHelper";
 import { useEffect, useState } from "react";
 import { saveToSlot, loadFromSlot, clearSlot } from "../../utils/storageHelper";
 import XBtn from "../xBtn/XBtn";
+import Modal from "../modal/Modal";
+import { SvgX, SvgCheck } from "../svgs/Svgs";
 
 export default function SaveMenu() {
   const selectedInfoMenu = useSectorStore((s) => s.selectedInfoMenu);
@@ -16,6 +18,7 @@ function SaveMenuInner() {
   const saveMenuOpen = useSectorStore((s) => s.saveMenuOpen);
   const toggleSaveMenu = useSectorStore((s) => s.toggleSaveMenu);
   const [slotInfos, setSlotInfos] = useState(Array(5).fill(null));
+  const [open, setOpen] = useState(false);
 
   const refresh = () => {
     setSlotInfos(
@@ -30,11 +33,59 @@ function SaveMenuInner() {
     refresh();
   }, [saveMenuOpen]);
 
+  const btnAgreeToDelete = (
+    <button
+      className="symbolBtn"
+      onClick={() => {
+        clearSlot(slotIndex);
+        refresh();
+      }}
+    >
+      <SvgCheck />
+    </button>
+  );
+
+  const modal = (
+    <Modal open={open} onClose={() => setOpen(false)}>
+      <p>Sicher dass du diesen Speicherstand löschen willst?</p>
+      <div className="saveMenu__modalBtns">
+        {btnAgreeToDelete}
+        <button className="symbolBtn" onClick={() => setOpen(false)}>
+          <SvgX />
+        </button>
+      </div>
+    </Modal>
+  );
+
   const generateSlot = (slotIndex) => {
     const parsed = slotInfos[slotIndex];
     const timeStamp = parsed
       ? `(${new Date(parsed.timestamp).toLocaleString()})`
       : "(leer)";
+
+    const btnSpeichern = (
+      <button
+        onClick={() => {
+          saveToSlot(slotIndex);
+          refresh();
+        }}
+        disabled={!sector}
+      >
+        Speichern
+      </button>
+    );
+
+    const btnLaden = (
+      <button onClick={() => loadFromSlot(slotIndex)} disabled={!parsed}>
+        Laden
+      </button>
+    );
+
+    const btnDelete = (
+      <button onClick={() => setOpen(true)} disabled={!parsed}>
+        Löschen
+      </button>
+    );
 
     return (
       <li key={slotIndex} className="saveMenu__listItem">
@@ -43,27 +94,9 @@ function SaveMenuInner() {
           <p>{timeStamp}</p>
         </div>
         <div className="saveMenu__btns">
-          <button
-            onClick={() => {
-              saveToSlot(slotIndex);
-              refresh();
-            }}
-            disabled={!sector}
-          >
-            Speichern
-          </button>
-          <button onClick={() => loadFromSlot(slotIndex)} disabled={!parsed}>
-            Laden
-          </button>
-          <button
-            onClick={() => {
-              clearSlot(slotIndex);
-              refresh();
-            }}
-            disabled={!parsed}
-          >
-            Löschen
-          </button>
+          {btnSpeichern}
+          {btnLaden}
+          {btnDelete}
         </div>
       </li>
     );
@@ -76,6 +109,7 @@ function SaveMenuInner() {
       <ul className="saveMenu__list">
         {Array.from({ length: 5 }, (_, i) => generateSlot(i))}
       </ul>
+      {modal}
     </div>
   );
 }

@@ -45,3 +45,10 @@
     width: 100%;
   }
 }
+
+.saveMenu__modalBtns {
+  margin-top: var(--spacing-xl);
+  display: flex;
+  gap: var(--spacing-l);
+  justify-content: center;
+}
