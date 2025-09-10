@@ -17,6 +17,8 @@ export type SectorStore = {
   selectedInfoMenu: string | null;
   oldSelectedInfoMenu: string | null;
 
+  openSectorInfo: () => void;
+
   sector: Sector | null;
   setSector: (sector: Sector | null) => void;
   newSector: () => void;

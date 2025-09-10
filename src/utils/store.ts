@@ -6,6 +6,11 @@ export const useSectorStore = create<SectorStore>((set) => ({
   selectedInfoMenu: null,
   oldSelectedInfoMenu: null,
 
+  openSectorInfo: () =>
+    set({
+      selectedInfoMenu: "SectorInfo",
+    }),
+
   sector: null,
   setSector: (sector) => set({ sector }),
   newSector: () =>
