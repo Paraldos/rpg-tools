@@ -9,9 +9,9 @@ export default function WorldInfoTitle() {
   const selectedWorld = selectedField.worlds[selectedWorldIndex[1]];
 
   return (
-    <h3 className="worldInfo__titleBox">
+    <h2 className="worldInfo__titleBox">
       <input
-        className="worldInfo__title"
+        className="worldInfo__title h2"
         type="text"
         value={selectedWorld.title}
         aria-label="Name der Welt"
@@ -19,6 +19,6 @@ export default function WorldInfoTitle() {
         onChange={(e) => updateWorldTitle(e.target.value)}
       />
       <SvgText />
-    </h3>
+    </h2>
   );
 }
