@@ -11,7 +11,18 @@ import {
   getRandomArrayItem,
   getWeightedRandomArrayItem,
 } from "./generalHelper";
+import { useSectorStore } from "./store";
 const MAX_AMOUNT_OF_WORLDS = 9;
+
+export function updateSectorTitle(newTitle: string) {
+  const state = useSectorStore.getState();
+  const sectorClone = structuredClone(state.sector!);
+  sectorClone.title = newTitle;
+
+  useSectorStore.setState({
+    sector: sectorClone,
+  });
+}
 
 export function generateWorld(): World {
   return {

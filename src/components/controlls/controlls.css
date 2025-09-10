@@ -1,6 +1,5 @@
 .controlls {
   width: 100%;
-  padding: 15px;
 
   display: grid;
   grid-template-columns: 1fr 1fr;

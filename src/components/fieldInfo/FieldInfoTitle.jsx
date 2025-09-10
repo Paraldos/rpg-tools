@@ -11,7 +11,7 @@ export default function FieldInfoTitle() {
   return (
     <h2 className="fieldInfo__titleBox">
       <input
-        className="fieldInfo__title"
+        className="fieldInfo__title h2"
         type="text"
         value={selectedField.title}
         aria-label="Name des Felds"

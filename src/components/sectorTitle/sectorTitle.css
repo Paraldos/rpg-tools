@@ -1,0 +1,17 @@
+.sectorTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-l);
+
+  svg {
+    display: inline-block;
+    height: 30px;
+    margin-top: 2px;
+  }
+}
+
+.sectorTitle__input {
+  width: 100%;
+  font-family: Asimovian;
+  font-size: 1.8rem;
+}

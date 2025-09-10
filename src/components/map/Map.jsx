@@ -5,6 +5,7 @@ import Controlls from "../controlls/Controlls";
 import FieldInfo from "../fieldInfo/FieldInfo";
 import WorldInfo from "../worldInfo/WorldInfo";
 import SaveMenu from "../saveMenu/SaveMenu";
+import SectorTitle from "../sectorTitle/SectorTitle";
 
 export default function Map() {
   const sector = useSectorStore((s) => s.sector);
@@ -12,7 +13,7 @@ export default function Map() {
   return (
     <div className="map">
       <div className="map__left">
-        {sector && <h2 className="sectorTitle">Sektor: {sector.title}</h2>}
+        <SectorTitle />
         <Board sector={sector} />
       </div>
       <div className="map__right">
