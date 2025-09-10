@@ -30,17 +30,17 @@
 
 .field-number {
   position: absolute;
-  top: 10px;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   color: var(--color-primary);
-  font-size: 12px;
+  font-size: 0.6rem;
   margin: 0;
 }
 
 .field svg {
   position: absolute;
-  width: 40%;
+  width: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
