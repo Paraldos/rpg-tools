@@ -1,11 +1,5 @@
 import { World, Sector, Field } from "./types";
 import {
-  WORLD_TYPES,
-  SOCIETY_TAGS,
-  GENERAL_TAGS,
-  FIELD_TITLES,
-} from "../sector/worldTags";
-import {
   rollDice,
   shuffleArray,
   getRandomArrayItem,
@@ -25,19 +19,25 @@ export function updateSectorTitle(newTitle: string) {
 }
 
 export function generateWorld(): World {
+  const { worldTypeTags, worldSocietyTags, worldGeneralTags } =
+    useSectorStore.getState();
+
   return {
     id: crypto.randomUUID(),
     title: "",
     tags: [
-      getWeightedRandomArrayItem(WORLD_TYPES)!,
-      getWeightedRandomArrayItem(SOCIETY_TAGS)!,
-      getRandomArrayItem(GENERAL_TAGS)!,
+      getWeightedRandomArrayItem(worldTypeTags)!,
+      getWeightedRandomArrayItem(worldSocietyTags)!,
+      getRandomArrayItem(worldGeneralTags)!,
     ],
   };
 }
 
 export function generateAdditionalTag(usedTags: string[]) {
-  const availableTags = GENERAL_TAGS.filter((tag) => !usedTags.includes(tag));
+  const { worldGeneralTags } = useSectorStore.getState();
+  const availableTags = worldGeneralTags.filter(
+    (tag) => !usedTags.includes(tag)
+  );
   return getRandomArrayItem(availableTags);
 }
 
@@ -95,13 +95,19 @@ export function generateSector({
   rows = 12,
   columns = 8,
 }: { rows?: number; columns?: number } = {}): Sector {
+  const { stellarNames, sectorGeneralTags } = useSectorStore.getState();
   const amountOfFields = rows * columns;
   const amountOfStars = Math.floor(amountOfFields / 4);
   const amountOfBlackHoles = Math.floor(amountOfFields / 20);
+  const starNames = shuffleArray([...stellarNames]);
 
-  const starNames = shuffleArray([...FIELD_TITLES]);
+  const sectorTags = [];
+  let listOfTags = [...sectorGeneralTags];
+  listOfTags = shuffleArray(listOfTags);
+  sectorTags.push(listOfTags.pop());
+  sectorTags.push(listOfTags.pop());
+
   const fields: Field[] = [];
-
   for (let i = 0; i < amountOfBlackHoles; i++)
     fields.push(generateBlackHole(starNames.pop()));
   for (let i = 0; i < amountOfStars; i++)
@@ -121,5 +127,11 @@ export function generateSector({
     }
   }
 
-  return { rows, columns, fields, title: starNames.pop() ?? "Sektor" };
+  return {
+    rows,
+    columns,
+    fields,
+    title: starNames.pop() ?? "Sektor",
+    tags: sectorTags as string[],
+  };
 }

@@ -12,10 +12,17 @@ export type Sector = {
   columns: number;
   fields: Field[];
   title: string;
+  tags: string[];
 };
 export type SectorStore = {
   selectedInfoMenu: string | null;
   oldSelectedInfoMenu: string | null;
+
+  worldTypeTags: string[];
+  worldSocietyTags: string[];
+  worldGeneralTags: string[];
+  stellarNames: string[];
+  sectorGeneralTags: string[];
 
   openSectorInfo: () => void;
 

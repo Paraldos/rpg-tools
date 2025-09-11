@@ -8,8 +8,9 @@ export default function SectorTitle() {
   if (!sector) return;
 
   return (
-    <button className="sectorTitle h1" onClick={openSectorInfo}>
-      Sektor: {sector.title}
+    <button className="sectorTitle" onClick={openSectorInfo}>
+      <h1>Sektor: {sector.title}</h1>
+      <p>{sector.tags.join(", ")}</p>
     </button>
   );
 }
