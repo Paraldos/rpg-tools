@@ -7,8 +7,8 @@ import WorldInfoPositionControls from "./WorldInfoPositionControls";
 import WorldInfoAddTag from "./WolrdInfoAddTag";
 
 export default function WorldInfo() {
-  const selectedInfoMenu = useSectorStore((s) => s.selectedInfoMenu);
-  if (selectedInfoMenu !== "WorldInfo") return null;
+  const selectedInfo = useSectorStore((s) => s.selectedInfo);
+  if (selectedInfo !== "WorldInfo") return null;
   return <WorldInfoInner />;
 }
 

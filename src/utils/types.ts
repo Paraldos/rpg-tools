@@ -15,8 +15,8 @@ export type Sector = {
   tags: string[];
 };
 export type SectorStore = {
-  selectedInfoMenu: string | null;
-  oldSelectedInfoMenu: string | null;
+  selectedInfo: string | null;
+  oldselectedInfo: string | null;
 
   worldTypeTags: string[];
   worldSocietyTags: string[];
@@ -37,6 +37,7 @@ export type SectorStore = {
   setSelectedWorldIndex: (indices: [number, number] | null) => void;
 
   toggleSaveMenu: () => void;
+  toggleOptionsMenu: () => void;
 };
 export type WorldTypes = string[];
 export type SocietyTags = string[];

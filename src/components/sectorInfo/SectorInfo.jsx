@@ -4,8 +4,8 @@ import { updateSectorTitle } from "../../utils/sectorHelper";
 import { useSectorStore } from "../../utils/store";
 
 export default function SectorInfo() {
-  const selectedInfoMenu = useSectorStore((s) => s.selectedInfoMenu);
-  if (selectedInfoMenu !== "SectorInfo") return null;
+  const selectedInfo = useSectorStore((s) => s.selectedInfo);
+  if (selectedInfo !== "SectorInfo") return null;
   return <SectorInfoInner />;
 }
 

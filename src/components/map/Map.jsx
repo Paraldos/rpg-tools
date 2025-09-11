@@ -7,6 +7,7 @@ import WorldInfo from "../worldInfo/WorldInfo";
 import SaveMenu from "../saveMenu/SaveMenu";
 import SectorTitle from "../sectorTitle/SectorTitle";
 import SectorInfo from "../sectorInfo/SectorInfo";
+import { OptionsMenu } from "../optionsMenu/OptionsMenu";
 
 export default function Map() {
   const sector = useSectorStore((s) => s.sector);
@@ -24,6 +25,7 @@ export default function Map() {
           <WorldInfo />
           <SaveMenu />
           <SectorInfo />
+          <OptionsMenu />
         </div>
       </div>
     </div>

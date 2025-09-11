@@ -8,8 +8,8 @@ import Modal from "../modal/Modal";
 import { SvgX, SvgCheck } from "../svgs/Svgs";
 
 export default function SaveMenu() {
-  const selectedInfoMenu = useSectorStore((s) => s.selectedInfoMenu);
-  if (selectedInfoMenu !== "SaveMenu") return null;
+  const selectedInfo = useSectorStore((s) => s.selectedInfo);
+  if (selectedInfo !== "SaveMenu") return null;
   return <SaveMenuInner />;
 }
 

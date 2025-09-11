@@ -19,8 +19,8 @@ import {
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
 export default function FieldInfo() {
-  const selectedInfoMenu = useSectorStore((s) => s.selectedInfoMenu);
-  if (selectedInfoMenu !== "FieldInfo") return null;
+  const selectedInfo = useSectorStore((s) => s.selectedInfo);
+  if (selectedInfo !== "FieldInfo") return null;
   return <FieldInfoInner />;
 }
 

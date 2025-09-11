@@ -10,14 +10,14 @@ import {
 } from "./tags";
 
 export const useSectorStore = create<SectorStore>((set) => ({
-  selectedInfoMenu: null,
-  oldSelectedInfoMenu: null,
+  selectedInfo: null,
+  oldselectedInfo: null,
 
   openSectorInfo: () =>
     set({
       selectedFieldIndex: null,
       selectedWorldIndex: null,
-      selectedInfoMenu: "SectorInfo",
+      selectedInfo: "SectorInfo",
     }),
 
   worldTypeTags: worldTypeTags,
@@ -30,8 +30,8 @@ export const useSectorStore = create<SectorStore>((set) => ({
   setSector: (sector) => set({ sector }),
   newSector: () =>
     set({
-      selectedInfoMenu: null,
-      oldSelectedInfoMenu: null,
+      selectedInfo: null,
+      oldselectedInfo: null,
       selectedFieldIndex: null,
       selectedWorldIndex: null,
       sector: generateSector(),
@@ -40,27 +40,39 @@ export const useSectorStore = create<SectorStore>((set) => ({
   selectedFieldIndex: null,
   setSelectedFieldIndex: (index) =>
     set({
-      selectedInfoMenu: "FieldInfo",
+      selectedInfo: "FieldInfo",
       selectedFieldIndex: index,
     }),
 
   selectedWorldIndex: null,
   setSelectedWorldIndex: (indices) =>
     set({
-      selectedInfoMenu: "WorldInfo",
+      selectedInfo: "WorldInfo",
       selectedWorldIndex: indices,
     }),
 
   toggleSaveMenu: () =>
     set((state) =>
-      state.selectedInfoMenu === "SaveMenu"
+      state.selectedInfo === "SaveMenu"
         ? {
-            selectedInfoMenu: state.oldSelectedInfoMenu ?? null,
-            oldSelectedInfoMenu: null,
+            selectedInfo: state.oldselectedInfo ?? null,
+            oldselectedInfo: null,
           }
         : {
-            oldSelectedInfoMenu: state.selectedInfoMenu,
-            selectedInfoMenu: "SaveMenu",
+            oldselectedInfo: state.selectedInfo,
+            selectedInfo: "SaveMenu",
+          }
+    ),
+  toggleOptionsMenu: () =>
+    set((state) =>
+      state.selectedInfo === "OptionsMenu"
+        ? {
+            selectedInfo: state.oldselectedInfo ?? null,
+            oldselectedInfo: null,
+          }
+        : {
+            oldselectedInfo: state.selectedInfo,
+            selectedInfo: "OptionsMenu",
           }
     ),
 }));
