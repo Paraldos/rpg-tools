@@ -1,7 +1,7 @@
 import "./sectorInfo.css";
-import { SvgText } from "../svgs/Svgs";
-import { updateSectorTitle } from "../../utils/sectorHelper";
 import { useSectorStore } from "../../utils/store";
+import SectorInfoTitle from "./SectorInfoTitle";
+import SectorInfoAddTag from "./SectorInfoAddTag";
 
 export default function SectorInfo() {
   const selectedInfo = useSectorStore((s) => s.selectedInfo);
@@ -10,20 +10,10 @@ export default function SectorInfo() {
 }
 
 function SectorInfoInner() {
-  const sector = useSectorStore((s) => s.sector);
-
   return (
     <div className="sectorInfo">
-      <h2 className="sectorInfo__title">
-        <input
-          className="ssectorInfo__input h2"
-          type="text"
-          value={sector.title}
-          aria-label="Name des Sectors"
-          onChange={(e) => updateSectorTitle(e.target.value)}
-        />
-        <SvgText />
-      </h2>
+      <SectorInfoTitle />
+      <SectorInfoAddTag />
     </div>
   );
 }

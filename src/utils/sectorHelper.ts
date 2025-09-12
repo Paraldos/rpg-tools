@@ -8,6 +8,21 @@ import {
 import { useSectorStore } from "./store";
 const MAX_AMOUNT_OF_WORLDS = 9;
 
+export function addWorldTag() {
+  const state = useSectorStore.getState();
+  const sectorClone = structuredClone(state.sector);
+
+  const field = sectorClone!.fields[state.selectedWorldIndex![0]];
+  const world = field.worlds[state.selectedWorldIndex![1]];
+  const tags = world!.tags;
+  const newTag = generateAdditionalTag(tags);
+  tags.push(newTag);
+
+  useSectorStore.setState({
+    sector: sectorClone,
+  });
+}
+
 export function updateSectorTitle(newTitle: string) {
   const state = useSectorStore.getState();
   const sectorClone = structuredClone(state.sector!);

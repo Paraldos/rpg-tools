@@ -1,13 +1,13 @@
 @font-face {
   font-family: "Asimovian";
-  src: url("/public/assets/fonts/Asimovian-Regular.ttf");
+  src: url("/assets/fonts/Asimovian-Regular.ttf");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("/public/assets/fonts/Montserrat-VariableFont_wght.ttf");
+  src: url("/assets/fonts/Montserrat-VariableFont_wght.ttf");
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
