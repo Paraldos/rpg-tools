@@ -2,7 +2,6 @@ import "./fieldInfo.css";
 import { useSectorStore } from "../../utils/store";
 import FieldInfoAddWorld from "./FieldInfoAddWorld";
 import FieldInfoChangeFieldType from "./FieldInfoChangeFieldType";
-import { updateFieldTitle } from "../../utils/fieldHelper";
 import InfoBoxTitle from "../infoBox/InfoBoxTitle";
 import FieldInfoListOfWorlds from "./FieldInfoListOfWorlds";
 
@@ -13,28 +12,20 @@ export default function FieldInfo() {
 }
 
 function FieldInfoInner() {
-  const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const sector = useSectorStore((s) => s.sector);
+  const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const selectedField = sector.fields[selectedFieldIndex];
 
   let content = null;
 
   if (selectedField.type === "Schwarzes Loch") {
-    content = (
-      <InfoBoxTitle
-        title={selectedField.title}
-        onChangeHandler={(newTitle) => updateFieldTitle(newTitle)}
-      />
-    );
+    content = <InfoBoxTitle titleType="field" />;
   }
 
   if (selectedField.type === "Stern") {
     content = (
       <>
-        <InfoBoxTitle
-          title={selectedField.title}
-          onChangeHandler={(newTitle) => updateFieldTitle(newTitle)}
-        />
+        <InfoBoxTitle titleType="field" />;
         <FieldInfoListOfWorlds />
         <FieldInfoAddWorld />
       </>

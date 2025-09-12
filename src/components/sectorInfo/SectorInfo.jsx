@@ -1,6 +1,5 @@
 import "./sectorInfo.css";
 import { useSectorStore } from "../../utils/store";
-import { updateSectorTitle } from "../../utils/sectorHelper";
 import SectorInfoAddTag from "./SectorInfoAddTag";
 import InfoBoxTitle from "../infoBox/InfoBoxTitle";
 
@@ -11,14 +10,9 @@ export default function SectorInfo() {
 }
 
 function SectorInfoInner() {
-  const sector = useSectorStore((s) => s.sector);
-
   return (
     <div className="sectorInfo">
-      <InfoBoxTitle
-        title={sector.title}
-        onChangeHandler={(newTitle) => updateSectorTitle(newTitle)}
-      />
+      <InfoBoxTitle titleType="sector" />
       <SectorInfoAddTag />
     </div>
   );

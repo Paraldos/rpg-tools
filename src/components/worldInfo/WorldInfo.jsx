@@ -1,10 +1,10 @@
 import "./worldInfo.css";
 import { useSectorStore } from "../../utils/store";
 import XBtn from "../xBtn/XBtn";
-import WorldInfoTitle from "./WorldInfoTitle";
 import WorldInfoListOfTags from "./WorldInfoListOfTags";
 import WorldInfoPositionControls from "./WorldInfoPositionControls";
 import WorldInfoAddTag from "./WolrdInfoAddTag";
+import InfoBoxTitle from "../infoBox/InfoBoxTitle";
 
 export default function WorldInfo() {
   const selectedInfo = useSectorStore((s) => s.selectedInfo);
@@ -24,7 +24,7 @@ function WorldInfoInner() {
       <p className="worldInfo__baseInfo smallText">
         Feld: {selectedField.index + 1}, Typ: {selectedField.type}
       </p>
-      <WorldInfoTitle />
+      <InfoBoxTitle titleType="world" />
       <WorldInfoListOfTags />
       <WorldInfoAddTag />
       <WorldInfoPositionControls />
