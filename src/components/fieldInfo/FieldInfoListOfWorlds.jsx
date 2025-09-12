@@ -20,12 +20,13 @@ export default function FieldInfoListOfWorlds() {
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const selectedField = sector.fields[selectedFieldIndex];
   const worlds = selectedField.worlds;
-
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: { distance: 6 },
     })
   );
+
+  if (selectedField.type !== "Stern") return;
 
   const handleDragEnd = ({ active, over }) => {
     if (!over) return;

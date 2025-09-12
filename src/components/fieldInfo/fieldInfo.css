@@ -1,59 +1,23 @@
-.fieldInfo {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-m);
-}
-
 .fieldInfo__baseInfo {
   margin-bottom: var(--spacing-m);
 }
 
-.fieldInfo__content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-l);
-  height: 100%;
-}
-
 .fieldInfo__listOfWorlds {
-  margin-bottom: auto;
+  height: 100%;
   gap: var(--spacing-m);
 }
 
-.fieldInfo__addWorld,
-.fieldInfo__changeFieldType {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  p {
-    font-size: 0.8rem;
-    margin-right: auto;
-  }
-}
-
 .fieldInfoWorld {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-l);
   animation: fadeIn 1s forwards;
+
+  button {
+    width: 100%;
+    text-align: left;
+    padding: 5px 10px;
+  }
 
   h3 {
     font-size: 1.1rem;
+    margin-bottom: var(--spacing-s);
   }
-}
-
-.fieldInfoWorld__mainBtn {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  text-align: left;
-  padding: 5px 10px;
-}
-
-.fieldInfoWorld__tag {
-  border: 1px solid var(--color-primary);
-  border-radius: 5px;
-  padding: 2px var(--spacing-s);
 }

@@ -11,9 +11,9 @@ export default function SectorInfo() {
 
 function SectorInfoInner() {
   return (
-    <div className="sectorInfo">
+    <>
       <InfoBoxTitle titleType="sector" />
       <SectorInfoAddTag />
-    </div>
+    </>
   );
 }

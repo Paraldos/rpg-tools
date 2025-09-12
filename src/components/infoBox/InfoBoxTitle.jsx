@@ -21,7 +21,9 @@ export default function InfoBoxTitle({ titleType }) {
     const selectedWorldIndex = useSectorStore((s) => s.selectedWorldIndex);
     const selectedField = sector.fields[selectedWorldIndex[0]];
     const selectedWorld = selectedField.worlds[selectedWorldIndex[1]];
-    title = selectedWorld.title;
+    title = selectedWorld.title
+      ? selectedWorld.title
+      : `${selectedField.title} ${selectedWorldIndex[1] + 1}`;
     changeTitle = (newTitle) => updateWorldTitle(newTitle);
   }
 

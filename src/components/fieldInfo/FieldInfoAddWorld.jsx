@@ -11,6 +11,8 @@ export default function FieldInfoAddWorld() {
     0;
   const noMoreWorldsPossible = amountOfWorlds >= 5;
 
+  if (selectedField.type != "Stern") return;
+
   return (
     <div className="fieldInfo__addWorld">
       <p>Hinzufügen</p>

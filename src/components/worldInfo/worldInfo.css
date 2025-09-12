@@ -1,16 +1,3 @@
-.worldInfo {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-m);
-
-  .xBtn {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-}
-
 .worldInfo__baseInfo {
   margin-bottom: var(--spacing-m);
 }

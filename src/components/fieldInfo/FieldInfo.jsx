@@ -16,29 +16,17 @@ function FieldInfoInner() {
   const selectedFieldIndex = useSectorStore((s) => s.selectedFieldIndex);
   const selectedField = sector.fields[selectedFieldIndex];
 
-  let content = null;
-
-  if (selectedField.type === "Schwarzes Loch") {
-    content = <InfoBoxTitle titleType="field" />;
-  }
-
-  if (selectedField.type === "Stern") {
-    content = (
-      <>
-        <InfoBoxTitle titleType="field" />
-        <FieldInfoListOfWorlds />
-        <FieldInfoAddWorld />
-      </>
-    );
-  }
-
   return (
-    <div className="fieldInfo">
+    <>
       <p className="fieldInfo__baseInfo smallText">
         Feld: {selectedField.index + 1}, Typ: {selectedField.type}
       </p>
-      <div className="fieldInfo__content">{content}</div>
-      <FieldInfoChangeFieldType />
-    </div>
+      {selectedField.type !== "Leere" && <InfoBoxTitle titleType="field" />}
+      <FieldInfoListOfWorlds />
+      <div className="infoBox__controlls">
+        <FieldInfoAddWorld />
+        <FieldInfoChangeFieldType />
+      </div>
+    </>
   );
 }

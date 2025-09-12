@@ -47,11 +47,10 @@ export default function FieldInfoWorld({ worldIndex, id }) {
       {...listeners}
     >
       <button
-        className="fieldInfoWorld__mainBtn"
         onClick={() => setSelectedWorldIndex([selectedFieldIndex, worldIndex])}
       >
         <h3>{worldTitle}</h3>
-        <p className="fieldInfoWorld__tags">{world.tags.join(", ")}</p>
+        <p>{world.tags.join(", ")}</p>
       </button>
     </li>
   );
