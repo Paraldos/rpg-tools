@@ -33,8 +33,7 @@ export function removeWorld() {
 
   useSectorStore.setState({
     sector: sectorClone,
-    selectedFieldIndex: state.selectedWorldIndex![0],
-    selectedWorldIndex: null,
+    selectedInfo: "FieldInfo",
   });
 }
 
