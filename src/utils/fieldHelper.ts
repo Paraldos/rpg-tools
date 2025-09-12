@@ -58,3 +58,13 @@ export function changeFieldType(newType: string) {
     sector: sectorClone,
   });
 }
+
+export function reorderWorlds(reorderedWorlds = []) {
+  const state = useSectorStore.getState();
+  const sectorClone = structuredClone(state.sector);
+  const field = sectorClone!.fields[state.selectedFieldIndex!];
+  field.worlds = reorderedWorlds;
+  useSectorStore.setState({
+    sector: sectorClone,
+  });
+}
