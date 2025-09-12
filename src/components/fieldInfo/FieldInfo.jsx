@@ -25,7 +25,7 @@ function FieldInfoInner() {
   if (selectedField.type === "Stern") {
     content = (
       <>
-        <InfoBoxTitle titleType="field" />;
+        <InfoBoxTitle titleType="field" />
         <FieldInfoListOfWorlds />
         <FieldInfoAddWorld />
       </>
