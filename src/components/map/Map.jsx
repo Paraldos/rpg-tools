@@ -8,6 +8,7 @@ import SaveMenu from "../saveMenu/SaveMenu";
 import SectorTitle from "../sectorTitle/SectorTitle";
 import SectorInfo from "../sectorInfo/SectorInfo";
 import { OptionsMenu } from "../optionsMenu/OptionsMenu";
+import InfoBox from "../infoBox/InfoBox";
 
 export default function Map() {
   const sector = useSectorStore((s) => s.sector);
@@ -20,13 +21,13 @@ export default function Map() {
       </div>
       <div className="map__right">
         <Controlls />
-        <div className="map__infoBox">
+        <InfoBox>
           <FieldInfo />
           <WorldInfo />
           <SaveMenu />
           <SectorInfo />
           <OptionsMenu />
-        </div>
+        </InfoBox>
       </div>
     </div>
   );

@@ -1,0 +1,27 @@
+.infoBox {
+  position: relative;
+  padding: var(--spacing-m);
+  border: 1px solid var(--color-primary);
+  height: 100%;
+}
+
+.infoBox__title {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-l);
+  width: 100%;
+  align-items: center;
+
+  svg {
+    display: inline-block;
+    height: 15px;
+    min-width: 15px;
+  }
+
+  input {
+    width: 100%;
+    font-family: Asimovian;
+    margin: 0;
+    font-size: 1.4rem;
+  }
+}

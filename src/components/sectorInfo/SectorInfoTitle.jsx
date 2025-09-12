@@ -6,9 +6,8 @@ export default function SectorInfoTitle() {
   const sector = useSectorStore((s) => s.sector);
 
   return (
-    <h2 className="sectorInfo__title">
+    <h2 className="infoBox__title">
       <input
-        className="sectorInfo__input h2"
         type="text"
         value={sector.title}
         aria-label="Name des Sectors"
