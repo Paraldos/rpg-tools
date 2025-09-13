@@ -1,0 +1,19 @@
+.sectorInfo__tags {
+  li {
+    display: flex;
+    gap: var(--spacing-l);
+    animation: fadeIn 0.5s;
+    width: 100%;
+  }
+
+  select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  button {
+    height: var(--spacing-xl);
+    aspect-ratio: 1;
+    border-radius: 50px;
+  }
+}

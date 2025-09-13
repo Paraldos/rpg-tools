@@ -15,7 +15,7 @@ function SectorInfoInner() {
     <>
       <InfoBoxTitle titleType="sector" />
       <SectorInfoTags />
-      <div>
+      <div className="infoBox__controlls">
         <SectorInfoAddTag />
       </div>
     </>

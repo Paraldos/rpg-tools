@@ -8,6 +8,18 @@ import {
 import { useSectorStore } from "./store";
 const MAX_AMOUNT_OF_WORLDS = 9;
 
+export function addSectorTag() {
+  const state = useSectorStore.getState();
+  const sectorClone = structuredClone(state.sector);
+  const usedTags = sectorClone!.tags;
+  const { sectorTags } = useSectorStore.getState();
+  const availableTags = sectorTags.filter((tag) => !usedTags.includes(tag));
+  usedTags.push(getRandomArrayItem(availableTags));
+  useSectorStore.setState({
+    sector: sectorClone,
+  });
+}
+
 export function addWorldTag() {
   const state = useSectorStore.getState();
   const sectorClone = structuredClone(state.sector);
