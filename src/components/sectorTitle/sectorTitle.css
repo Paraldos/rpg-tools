@@ -1,11 +1,17 @@
 .sectorTitle {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   align-items: center;
+  justify-content: start;
   gap: var(--spacing-l);
 
   svg {
     display: inline-block;
     height: 30px;
     margin-top: 2px;
+  }
+
+  p {
+    text-align: left;
   }
 }
