@@ -5,7 +5,7 @@ import {
   worldTypeTags,
   worldSocietyTags,
   worldGeneralTags,
-  sectorGeneralTags,
+  sectorTags,
   stellarNames,
 } from "./tags";
 
@@ -23,7 +23,7 @@ export const useSectorStore = create<SectorStore>((set) => ({
   worldTypeTags: worldTypeTags,
   worldSocietyTags: worldSocietyTags,
   worldGeneralTags: worldGeneralTags,
-  sectorGeneralTags: sectorGeneralTags,
+  sectorTags: sectorTags,
   stellarNames: stellarNames,
 
   sector: null,

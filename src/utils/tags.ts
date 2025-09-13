@@ -84,7 +84,7 @@ export const worldGeneralTags = [
   "Zombies",
 ];
 
-export const sectorGeneralTags = [
+export const sectorTags = [
   "Alte Prophezeiung",
   "Altes Machtzentrum",
   "Altes Schlachtfeld",

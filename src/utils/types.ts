@@ -22,7 +22,7 @@ export type SectorStore = {
   worldSocietyTags: string[];
   worldGeneralTags: string[];
   stellarNames: string[];
-  sectorGeneralTags: string[];
+  sectorTags: string[];
 
   openSectorInfo: () => void;
 

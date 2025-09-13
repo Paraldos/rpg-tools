@@ -23,6 +23,17 @@ export function addWorldTag() {
   });
 }
 
+export function removeWorldTag(tagIndex: number) {
+  const state = useSectorStore.getState();
+  const sectorClone = structuredClone(state.sector);
+  const tags = sectorClone!.tags;
+  tags.splice(tagIndex, 1);
+
+  useSectorStore.setState({
+    sector: sectorClone,
+  });
+}
+
 export function updateSectorTitle(newTitle: string) {
   const state = useSectorStore.getState();
   const sectorClone = structuredClone(state.sector!);
@@ -110,17 +121,17 @@ export function generateSector({
   rows = 12,
   columns = 8,
 }: { rows?: number; columns?: number } = {}): Sector {
-  const { stellarNames, sectorGeneralTags } = useSectorStore.getState();
+  const { stellarNames, sectorTags } = useSectorStore.getState();
   const amountOfFields = rows * columns;
   const amountOfStars = Math.floor(amountOfFields / 4);
   const amountOfBlackHoles = Math.floor(amountOfFields / 20);
   const starNames = shuffleArray([...stellarNames]);
 
-  const sectorTags = [];
-  let listOfTags = [...sectorGeneralTags];
+  const tagsOfCurrentSector = [];
+  let listOfTags = [...sectorTags];
   listOfTags = shuffleArray(listOfTags);
-  sectorTags.push(listOfTags.pop());
-  sectorTags.push(listOfTags.pop());
+  tagsOfCurrentSector.push(listOfTags.pop());
+  tagsOfCurrentSector.push(listOfTags.pop());
 
   const fields: Field[] = [];
   for (let i = 0; i < amountOfBlackHoles; i++)
@@ -147,6 +158,6 @@ export function generateSector({
     columns,
     fields,
     title: starNames.pop() ?? "Sektor",
-    tags: sectorTags as string[],
+    tags: tagsOfCurrentSector as string[],
   };
 }

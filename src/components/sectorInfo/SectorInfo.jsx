@@ -2,6 +2,7 @@ import "./sectorInfo.css";
 import { useSectorStore } from "../../utils/store";
 import SectorInfoAddTag from "./SectorInfoAddTag";
 import InfoBoxTitle from "../infoBox/InfoBoxTitle";
+import SectorInfoTags from "./SectorInfoTags";
 
 export default function SectorInfo() {
   const selectedInfo = useSectorStore((s) => s.selectedInfo);
@@ -13,7 +14,10 @@ function SectorInfoInner() {
   return (
     <>
       <InfoBoxTitle titleType="sector" />
-      <SectorInfoAddTag />
+      <SectorInfoTags />
+      <div>
+        <SectorInfoAddTag />
+      </div>
     </>
   );
 }
