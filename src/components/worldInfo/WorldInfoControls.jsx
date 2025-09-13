@@ -2,7 +2,7 @@ import { useSectorStore } from "../../utils/store";
 import { SvgX, SvgTag, SvgCheck } from "../svgs/Svgs";
 import Modal from "../modal/Modal";
 import { useState } from "react";
-import { addWorldTag } from "../../utils/sectorHelper";
+import { addWorldTag } from "../../utils/worldHelper";
 import { removeWorld } from "../../utils/fieldHelper";
 
 export default function WorldInfoControls() {

@@ -20,21 +20,6 @@ export function addSectorTag() {
   });
 }
 
-export function addWorldTag() {
-  const state = useSectorStore.getState();
-  const sectorClone = structuredClone(state.sector);
-
-  const field = sectorClone!.fields[state.selectedWorldIndex![0]];
-  const world = field.worlds[state.selectedWorldIndex![1]];
-  const tags = world!.tags;
-  const newTag = generateAdditionalTag(tags);
-  tags.push(newTag);
-
-  useSectorStore.setState({
-    sector: sectorClone,
-  });
-}
-
 export function removeWorldTag(tagIndex: number) {
   const state = useSectorStore.getState();
   const sectorClone = structuredClone(state.sector);
@@ -69,14 +54,6 @@ export function generateWorld(): World {
       getRandomArrayItem(worldGeneralTags)!,
     ],
   };
-}
-
-export function generateAdditionalTag(usedTags: string[]) {
-  const { worldGeneralTags } = useSectorStore.getState();
-  const availableTags = worldGeneralTags.filter(
-    (tag) => !usedTags.includes(tag)
-  );
-  return getRandomArrayItem(availableTags);
 }
 
 function makeEmptyWorld(): World {

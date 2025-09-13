@@ -1,5 +1,5 @@
 import { useSectorStore } from "./store";
-import { generateAdditionalTag } from "./sectorHelper";
+import { getRandomArrayItem } from "./generalHelper";
 
 export function removeWorld() {
   const state = useSectorStore.getState();
@@ -23,10 +23,12 @@ export function addWorldTag() {
   const sectorClone = structuredClone(state.sector);
   const field = sectorClone!.fields[state.selectedWorldIndex![0]];
   const world = field.worlds[state.selectedWorldIndex![1]];
-  const tags = world!.tags;
-  const newTag = generateAdditionalTag(tags);
-  tags.push(newTag);
-
+  const usedTags = world!.tags;
+  const { worldGeneralTags } = useSectorStore.getState();
+  const availableTags = worldGeneralTags.filter(
+    (tag) => !usedTags.includes(tag)
+  );
+  usedTags.push(getRandomArrayItem(availableTags));
   useSectorStore.setState({
     sector: sectorClone,
   });
