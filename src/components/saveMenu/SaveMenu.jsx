@@ -1,8 +1,12 @@
 import "./saveMenu.css";
 import { useSectorStore } from "../../utils/store";
-import { STORAGE_KEY_PREFIX } from "../../utils/storageHelper";
+import {
+  STORAGE_KEY_PREFIX,
+  saveToSlot,
+  loadFromSlot,
+  clearSlot,
+} from "../../utils/storageHelper";
 import { useEffect, useState } from "react";
-import { saveToSlot, loadFromSlot, clearSlot } from "../../utils/storageHelper";
 import XBtn from "../xBtn/XBtn";
 import Modal from "../modal/Modal";
 import { SvgX, SvgCheck } from "../svgs/Svgs";
@@ -18,7 +22,7 @@ function SaveMenuInner() {
   const saveMenuOpen = useSectorStore((s) => s.saveMenuOpen);
   const toggleSaveMenu = useSectorStore((s) => s.toggleSaveMenu);
   const [slotInfos, setSlotInfos] = useState(Array(5).fill(null));
-  const [open, setOpen] = useState(false);
+  const [slotToDelete, setSlotToDelete] = useState(null);
 
   const refresh = () => {
     setSlotInfos(
@@ -33,24 +37,21 @@ function SaveMenuInner() {
     refresh();
   }, [saveMenuOpen]);
 
-  const btnAgreeToDelete = (
-    <button
-      className="symbolBtn"
-      onClick={() => {
-        clearSlot(slotIndex);
-        refresh();
-      }}
-    >
-      <SvgCheck />
-    </button>
-  );
+  const handleConfirmDelete = () => {
+    if (slotToDelete == null) return;
+    clearSlot(slotToDelete);
+    setSlotToDelete(null);
+    refresh();
+  };
 
   const modal = (
-    <Modal open={open} onClose={() => setOpen(false)}>
+    <Modal open={slotToDelete !== null} onClose={() => setSlotToDelete(null)}>
       <p>Sicher dass du diesen Speicherstand löschen willst?</p>
       <div className="saveMenu__modalBtns">
-        {btnAgreeToDelete}
-        <button className="symbolBtn" onClick={() => setOpen(false)}>
+        <button className="symbolBtn" onClick={handleConfirmDelete}>
+          <SvgCheck />
+        </button>
+        <button className="symbolBtn" onClick={() => setSlotToDelete(null)}>
           <SvgX />
         </button>
       </div>
@@ -82,7 +83,7 @@ function SaveMenuInner() {
     );
 
     const btnDelete = (
-      <button onClick={() => setOpen(true)} disabled={!parsed}>
+      <button onClick={() => setSlotToDelete(slotIndex)} disabled={!parsed}>
         Löschen
       </button>
     );
