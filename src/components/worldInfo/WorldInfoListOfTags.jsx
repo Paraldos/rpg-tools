@@ -19,14 +19,19 @@ export default function WorldInfoListOfTags() {
     updateWorldTags(copyOfTags);
   };
 
+  const options = (listOfTags) => {
+    listOfTags.sort();
+    return listOfTags.map((tag) => (
+      <option key={tag} value={tag}>
+        {tag}
+      </option>
+    ));
+  };
+
   const worldTypeTag = (
     <div className="worldInfo__tagWrapper">
       <select value={tags[0]} onChange={(e) => onChangeHandler(0, e)}>
-        {worldTypeTags.map((worldType) => (
-          <option key={worldType} value={worldType}>
-            {worldType}
-          </option>
-        ))}
+        {options(worldTypeTags)}
       </select>
     </div>
   );
@@ -34,11 +39,7 @@ export default function WorldInfoListOfTags() {
   const societyTypeTag = (
     <div className="worldInfo__tagWrapper">
       <select value={tags[1]} onChange={(e) => onChangeHandler(1, e)}>
-        {worldSocietyTags.map((societyType) => (
-          <option key={societyType} value={societyType}>
-            {societyType}
-          </option>
-        ))}
+        {options(worldSocietyTags)}
       </select>
     </div>
   );
@@ -46,11 +47,7 @@ export default function WorldInfoListOfTags() {
   const generalTag = (tag, index) => (
     <div className="worldInfo__tagWrapper">
       <select value={tag} onChange={(e) => onChangeHandler(index, e)}>
-        {worldGeneralTags.map((generalTag) => (
-          <option key={generalTag} value={generalTag}>
-            {generalTag}
-          </option>
-        ))}
+        {options(worldGeneralTags)}
       </select>
       <button onClick={() => removeWorldTag(index)}>
         <SvgX />
