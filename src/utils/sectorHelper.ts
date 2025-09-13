@@ -20,11 +20,21 @@ export function addSectorTag() {
   });
 }
 
-export function removeWorldTag(tagIndex: number) {
+export function removeSectorTag(tagIndex: number) {
   const state = useSectorStore.getState();
   const sectorClone = structuredClone(state.sector);
   const tags = sectorClone!.tags;
   tags.splice(tagIndex, 1);
+
+  useSectorStore.setState({
+    sector: sectorClone,
+  });
+}
+
+export function updateSectorTags(newTags: string[]) {
+  const state = useSectorStore.getState();
+  const sectorClone = structuredClone(state.sector);
+  sectorClone!.tags = newTags;
 
   useSectorStore.setState({
     sector: sectorClone,

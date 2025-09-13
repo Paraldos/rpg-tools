@@ -99,7 +99,6 @@ export const sectorTags = [
   "Gefährliche Artefakte",
   "Geisterschiffe",
   "Handelskrieg",
-  "Handelskrieg",
   "Handelszentrum",
   "Heiliger Krieg",
   "Hungersnot",
