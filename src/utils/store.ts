@@ -13,6 +13,13 @@ export const useSectorStore = create<SectorStore>((set) => ({
   selectedInfo: null,
   oldselectedInfo: null,
 
+  presetRows: 12,
+  setPresetRows: (newAmountOfRows) => set({ presetRows: newAmountOfRows }),
+
+  presetColumns: 8,
+  setPresetColumns: (newAmountOfRColumns) =>
+    set({ presetColumns: newAmountOfRColumns }),
+
   openSectorInfo: () =>
     set({
       selectedFieldIndex: null,
@@ -20,22 +27,47 @@ export const useSectorStore = create<SectorStore>((set) => ({
       selectedInfo: "SectorInfo",
     }),
 
-  worldTypeTags: worldTypeTags,
-  worldSocietyTags: worldSocietyTags,
-  worldGeneralTags: worldGeneralTags,
   sectorTags: sectorTags,
+  setSectorTags: (stringOfTags) =>
+    set((state) => {
+      const newArrayOfTags = stringOfTags.split(", ");
+      return { sectorTags: newArrayOfTags };
+    }),
+  worldTypeTags: worldTypeTags,
+  setWorldTypeTags: (stringOfTags) =>
+    set((state) => {
+      const newArrayOfTags = stringOfTags.split(", ");
+      return { sectorTags: newArrayOfTags };
+    }),
+  worldSocietyTags: worldSocietyTags,
+  setWorldSocietyTags: (stringOfTags) =>
+    set((state) => {
+      const newArrayOfTags = stringOfTags.split(", ");
+      return { sectorTags: newArrayOfTags };
+    }),
+  worldGeneralTags: worldGeneralTags,
+  setWorldGeneralTags: (stringOfTags) =>
+    set((state) => {
+      const newArrayOfTags = stringOfTags.split(", ");
+      return { sectorTags: newArrayOfTags };
+    }),
   stellarNames: stellarNames,
+  setStellarNames: (stringOfTags) =>
+    set((state) => {
+      const newArrayOfTags = stringOfTags.split(", ");
+      return { sectorTags: newArrayOfTags };
+    }),
 
   sector: null,
   setSector: (sector) => set({ sector }),
   newSector: () =>
-    set({
+    set((state) => ({
       selectedInfo: null,
       oldselectedInfo: null,
       selectedFieldIndex: null,
       selectedWorldIndex: null,
-      sector: generateSector(),
-    }),
+      sector: generateSector(state.presetRows, state.presetColumns),
+    })),
 
   selectedFieldIndex: null,
   setSelectedFieldIndex: (index) =>

@@ -116,21 +116,13 @@ export function generateEmpty(emptyTitle?: string): Field {
   };
 }
 
-export function generateSector({
-  rows = 12,
-  columns = 8,
-}: { rows?: number; columns?: number } = {}): Sector {
+export function generateSector(rows: number, columns: number): Sector {
   const { stellarNames, sectorTags } = useSectorStore.getState();
   const amountOfFields = rows * columns;
   const amountOfStars = Math.floor(amountOfFields / 4);
   const amountOfBlackHoles = Math.floor(amountOfFields / 20);
   const starNames = shuffleArray([...stellarNames]);
-
-  const tagsOfCurrentSector = [];
-  let listOfTags = [...sectorTags];
-  listOfTags = shuffleArray(listOfTags);
-  tagsOfCurrentSector.push(listOfTags.pop());
-  tagsOfCurrentSector.push(listOfTags.pop());
+  const tagsOfCurrentSector = shuffleArray([...sectorTags]).slice(0, 2);
 
   const fields: Field[] = [];
   for (let i = 0; i < amountOfBlackHoles; i++)
@@ -139,13 +131,11 @@ export function generateSector({
     fields.push(generateStar(starNames.pop()));
   while (fields.length < amountOfFields)
     fields.push(generateEmpty(starNames.pop()));
-
   shuffleArray(fields);
 
   for (let row = 0; row < rows; row++) {
     for (let column = 0; column < columns; column++) {
       const index = row * columns + column;
-      fields[index].index = index;
       fields[index].row = row;
       fields[index].column = column;
       if (!fields[index].id) fields[index].id = crypto.randomUUID();

@@ -18,11 +18,21 @@ export type SectorStore = {
   selectedInfo: string | null;
   oldselectedInfo: string | null;
 
-  worldTypeTags: string[];
-  worldSocietyTags: string[];
-  worldGeneralTags: string[];
-  stellarNames: string[];
+  presetRows: number;
+  setPresetRows: (newAmountOfRows: number) => void;
+  presetColumns: number;
+  setPresetColumns: (newAmountOfColumns: number) => void;
+
   sectorTags: string[];
+  setSectorTags: (newListOfTags: string) => void;
+  worldTypeTags: string[];
+  setWorldTypeTags: (newListOfTags: string) => void;
+  worldSocietyTags: string[];
+  setWorldSocietyTags: (newListOfTags: string) => void;
+  worldGeneralTags: string[];
+  setWorldGeneralTags: (newListOfTags: string) => void;
+  stellarNames: string[];
+  setStellarNames: (newListOfTags: string) => void;
 
   openSectorInfo: () => void;
 

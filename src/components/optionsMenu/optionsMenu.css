@@ -1,5 +1,8 @@
 .optionsMenu {
   margin-top: var(--spacing-l);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
 
   .xBtn {
     position: absolute;
@@ -16,4 +19,8 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: var(--spacing-l);
+}
+
+.optionsMenu__tagList {
+  width: 100%;
 }
