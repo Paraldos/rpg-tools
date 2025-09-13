@@ -1,0 +1,19 @@
+.optionsMenu {
+  margin-top: var(--spacing-l);
+
+  .xBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  h2 {
+    margin-bottom: var(--spacing-l);
+  }
+}
+
+.optionsMenu__numberInput {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--spacing-l);
+}
