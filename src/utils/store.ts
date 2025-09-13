@@ -42,6 +42,7 @@ export const useSectorStore = create<SectorStore>((set) => ({
     set({
       selectedInfo: "FieldInfo",
       selectedFieldIndex: index,
+      selectedWorldIndex: null,
     }),
 
   selectedWorldIndex: null,
