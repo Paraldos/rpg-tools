@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: start;
   gap: var(--spacing-l);
+  width: 100%;
 
   svg {
     display: inline-block;

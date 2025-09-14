@@ -15,20 +15,18 @@ export default function Map() {
 
   return (
     <div className="map">
-      <div className="map__left">
+      <div className="map__top">
         <SectorTitle />
-        <Board sector={sector} />
-      </div>
-      <div className="map__right">
         <Controlls />
-        <InfoBox>
-          <FieldInfo />
-          <WorldInfo />
-          <SaveMenu />
-          <SectorInfo />
-          <OptionsMenu />
-        </InfoBox>
       </div>
+      <Board sector={sector} className="map__board" />
+      <InfoBox className="map__infobox">
+        <FieldInfo />
+        <WorldInfo />
+        <SaveMenu />
+        <SectorInfo />
+        <OptionsMenu />
+      </InfoBox>
     </div>
   );
 }

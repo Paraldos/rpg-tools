@@ -1,5 +1,6 @@
 import "./controlls.css";
 import { useSectorStore } from "../../utils/store";
+import { SvgCog, SvgFloppy, SvgPlus } from "../svgs/Svgs";
 
 export default function Controlls() {
   const newSector = useSectorStore((s) => s.newSector);
@@ -8,9 +9,15 @@ export default function Controlls() {
 
   return (
     <div className="controlls">
-      <button onClick={newSector}>Neuer Sektor</button>
-      <button onClick={toggleSaveMenu}>Laden / Speichern</button>
-      <button onClick={toggleOptionsMenu}>Optionen</button>
+      <button onClick={newSector} className="symbolBtn">
+        <SvgPlus />
+      </button>
+      <button onClick={toggleSaveMenu} className="symbolBtn">
+        <SvgFloppy />
+      </button>
+      <button onClick={toggleOptionsMenu} className="symbolBtn">
+        <SvgCog />
+      </button>
     </div>
   );
 }

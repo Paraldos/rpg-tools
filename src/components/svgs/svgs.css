@@ -1,5 +1,6 @@
 .svgCheck,
 .svgChevronVertical,
-.svgBlackHole {
+.svgBlackHole,
+.svgCog {
   fill: transparent !important;
 }

@@ -1,8 +1,6 @@
 .controlls {
-  width: 100%;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  width: fit-content;
+  display: flex;
+  gap: var(--spacing-l);
   justify-content: center;
 }

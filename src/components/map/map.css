@@ -6,19 +6,22 @@
   padding: var(--spacing-l);
   display: grid;
   grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto 1fr;
   gap: var(--spacing-l);
+  grid-template-areas: "top top" "board infobox";
 }
 
-.map__left {
-  height: 100%;
+.map__top {
+  grid-area: top;
   display: flex;
-  flex-direction: column;
   gap: var(--spacing-l);
+  height: fit-content;
 }
 
-.map__right {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-l);
+.map__board {
+  grid-area: board;
+}
+
+.map__infobox {
+  grid-area: infobox;
 }
