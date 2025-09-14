@@ -16,7 +16,6 @@ export type Sector = {
 };
 export type SectorStore = {
   selectedInfo: string | null;
-  oldselectedInfo: string | null;
 
   presetRows: number;
   setPresetRows: (newAmountOfRows: number) => void;
@@ -46,8 +45,8 @@ export type SectorStore = {
   selectedWorldIndex: [number, number] | null;
   setSelectedWorldIndex: (indices: [number, number] | null) => void;
 
-  toggleSaveMenu: () => void;
-  toggleOptions: () => void;
+  openSaveMenu: () => void;
+  openOptions: () => void;
 };
 export type WorldTypes = string[];
 export type SocietyTags = string[];

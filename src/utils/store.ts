@@ -11,7 +11,6 @@ import {
 
 export const useSectorStore = create<SectorStore>((set) => ({
   selectedInfo: null,
-  oldselectedInfo: null,
 
   presetRows: 12,
   setPresetRows: (newAmountOfRows) => set({ presetRows: newAmountOfRows }),
@@ -63,7 +62,6 @@ export const useSectorStore = create<SectorStore>((set) => ({
   newSector: () =>
     set((state) => ({
       selectedInfo: null,
-      oldselectedInfo: null,
       selectedFieldIndex: null,
       selectedWorldIndex: null,
       sector: generateSector(state.presetRows, state.presetColumns),
@@ -84,28 +82,13 @@ export const useSectorStore = create<SectorStore>((set) => ({
       selectedWorldIndex: indices,
     }),
 
-  toggleSaveMenu: () =>
-    set((state) =>
-      state.selectedInfo === "SaveMenu"
-        ? {
-            selectedInfo: state.oldselectedInfo ?? null,
-            oldselectedInfo: null,
-          }
-        : {
-            oldselectedInfo: state.selectedInfo,
-            selectedInfo: "SaveMenu",
-          }
-    ),
-  toggleOptions: () =>
-    set((state) =>
-      state.selectedInfo === "Options"
-        ? {
-            selectedInfo: state.oldselectedInfo ?? null,
-            oldselectedInfo: null,
-          }
-        : {
-            oldselectedInfo: state.selectedInfo,
-            selectedInfo: "Options",
-          }
-    ),
+  openSaveMenu: () =>
+    set({
+      selectedInfo: "SaveMenu",
+    }),
+
+  openOptions: () =>
+    set({
+      selectedInfo: "Options",
+    }),
 }));

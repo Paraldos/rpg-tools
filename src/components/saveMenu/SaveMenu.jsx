@@ -7,7 +7,6 @@ import {
   clearSlot,
 } from "../../utils/storageHelper";
 import { useEffect, useState } from "react";
-import XBtn from "../xBtn/XBtn";
 import Modal from "../modal/Modal";
 import { SvgX, SvgCheck } from "../svgs/Svgs";
 
@@ -20,7 +19,6 @@ export default function SaveMenu() {
 function SaveMenuInner() {
   const sector = useSectorStore((s) => s.sector);
   const saveMenuOpen = useSectorStore((s) => s.saveMenuOpen);
-  const toggleSaveMenu = useSectorStore((s) => s.toggleSaveMenu);
   const [slotInfos, setSlotInfos] = useState(Array(5).fill(null));
   const [slotToDelete, setSlotToDelete] = useState(null);
 
@@ -105,7 +103,6 @@ function SaveMenuInner() {
 
   return (
     <div className="saveMenu">
-      <XBtn onClick={toggleSaveMenu} />
       <h3>Laden und Speichern</h3>
       <ul className="saveMenu__list">
         {Array.from({ length: 5 }, (_, i) => generateSlot(i))}
