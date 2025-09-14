@@ -1,10 +1,9 @@
 import "./options.css";
 import { useSectorStore } from "../../utils/store";
+import OptionsRowsAndColumns from "./OptionsRowsAndcolumns";
 
 export default function Options() {
   const selectedInfo = useSectorStore((s) => s.selectedInfo);
-  const presetRows = useSectorStore((s) => s.presetRows);
-  const presetColumns = useSectorStore((s) => s.presetColumns);
 
   const sectorTags = useSectorStore((s) => s.sectorTags);
   const setWorldTypeTags = useSectorStore((s) => s.setWorldTypeTags);
@@ -14,37 +13,17 @@ export default function Options() {
   const worldGeneralTags = useSectorStore((s) => s.worldGeneralTags);
   const stellarNames = useSectorStore((s) => s.stellarNames);
 
-  const setPresetRows = useSectorStore((s) => s.setPresetRows);
-  const setPresetColumns = useSectorStore((s) => s.setPresetColumns);
-
   if (selectedInfo !== "Options") return null;
 
   return (
     <div className="options">
       <h2>Options Menu</h2>
-      <div className="options__rowsAndColumns">
-        <label htmlFor="options__rows">Reihen</label>
-        <input
-          id="options__rows"
-          type="number"
-          value={presetRows}
-          min={1}
-          max={20}
-          onChange={(e) => setPresetRows(e.target.value)}
-        />
-        <label htmlFor="options__columns">Spalten</label>
-        <input
-          id="options__columns"
-          type="number"
-          value={presetColumns}
-          min={1}
-          max={20}
-          onChange={(e) => setPresetColumns(e.target.value)}
-        />
-      </div>
+      <OptionsRowsAndColumns />
 
-      <h3>Eigenheiten</h3>
-      <p>Komma separierte listen</p>
+      <div>
+        <h3>Eigenheiten</h3>
+        <p className="smallText">(Komma separierte listen)</p>
+      </div>
       <div>
         <label>Sektor: Besonderheiten</label>
         <textarea
