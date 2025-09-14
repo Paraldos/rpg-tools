@@ -1,6 +1,6 @@
 :root {
-  --color-background: black;
-  --color-primary: white;
+  --color-background: white;
+  --color-primary: black;
   --color-offsetDark: rgb(37, 37, 37);
   --color-offsetLight: rgb(209, 209, 209);
 
@@ -11,4 +11,11 @@
   --spacing-l: 20px;
   --spacing-xl: 40px;
   --spacing-xxl: 80px;
+
+  .theme__dark {
+    --color-background: black;
+    --color-primary: white;
+    --color-offsetDark: rgb(37, 37, 37);
+    --color-offsetLight: rgb(209, 209, 209);
+  }
 }
