@@ -1,6 +1,0 @@
-.controlls {
-  width: fit-content;
-  display: flex;
-  gap: var(--spacing-l);
-  justify-content: center;
-}

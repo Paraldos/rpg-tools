@@ -1,16 +1,31 @@
 import "./sectorTitle.css";
 import { useSectorStore } from "../../utils/store";
+import { SvgCog, SvgFloppy, SvgPlus } from "../svgs/Svgs";
 
 export default function SectorTitle() {
   const sector = useSectorStore((s) => s.sector);
   const openSectorInfo = useSectorStore((s) => s.openSectorInfo);
-
-  if (!sector) return;
+  const newSector = useSectorStore((s) => s.newSector);
+  const toggleSaveMenu = useSectorStore((s) => s.toggleSaveMenu);
+  const toggleOptionsMenu = useSectorStore((s) => s.toggleOptionsMenu);
 
   return (
-    <button className="sectorTitle" onClick={openSectorInfo}>
-      <h1>Sektor: {sector.title}</h1>
-      <p>{sector.tags.join(", ")}</p>
-    </button>
+    <div className="sectorTitle">
+      {sector && (
+        <button className="sectorTitle" onClick={openSectorInfo}>
+          <h1>Sektor: {sector.title}</h1>
+          <p>{sector.tags.join(", ")}</p>
+        </button>
+      )}
+      <button onClick={newSector} className="symbolBtn">
+        <SvgPlus />
+      </button>
+      <button onClick={toggleSaveMenu} className="symbolBtn">
+        <SvgFloppy />
+      </button>
+      <button onClick={toggleOptionsMenu} className="symbolBtn">
+        <SvgCog />
+      </button>
+    </div>
   );
 }

@@ -1,26 +1,22 @@
 import "./map.css";
-import { useSectorStore } from "../../utils/store";
+import SectorTitle from "../sectorTitle/SectorTitle";
 import Board from "../board/Board";
-import Controlls from "../controlls/Controlls";
+import InfoBox from "../infoBox/InfoBox";
 import FieldInfo from "../fieldInfo/FieldInfo";
 import WorldInfo from "../worldInfo/WorldInfo";
 import SaveMenu from "../saveMenu/SaveMenu";
-import SectorTitle from "../sectorTitle/SectorTitle";
 import SectorInfo from "../sectorInfo/SectorInfo";
-import { OptionsMenu } from "../optionsMenu/OptionsMenu";
-import InfoBox from "../infoBox/InfoBox";
+import OptionsMenu from "../optionsMenu/OptionsMenu";
+import { useSectorStore } from "../../utils/store";
 
 export default function Map() {
   const sector = useSectorStore((s) => s.sector);
 
   return (
     <div className="map">
-      <div className="map__top">
-        <SectorTitle />
-        <Controlls />
-      </div>
-      <Board sector={sector} className="map__board" />
-      <InfoBox className="map__infobox">
+      <SectorTitle className="map__top" />
+      <Board />
+      <InfoBox>
         <FieldInfo />
         <WorldInfo />
         <SaveMenu />

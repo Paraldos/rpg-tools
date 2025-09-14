@@ -19,7 +19,7 @@ function FieldInfoInner() {
   return (
     <>
       <p className="fieldInfo__baseInfo smallText">
-        Feld: {selectedField.index + 1}, Typ: {selectedField.type}
+        Feld: {selectedFieldIndex + 1}, Typ: {selectedField.type}
       </p>
       {selectedField.type !== "Leere" && <InfoBoxTitle titleType="field" />}
       <FieldInfoListOfWorlds />

@@ -1,9 +1,10 @@
 import "./board.css";
 import Field from "../field/Field";
+import { useSectorStore } from "../../utils/store";
 
-export default function Board({ sector }) {
-  if (!sector)
-    return <h3 className="board__empty">Noch keine Sektor generiert</h3>;
+export default function Board() {
+  const sector = useSectorStore((s) => s.sector);
+  if (!sector) return <h3 className="board">Noch keine Sektor generiert</h3>;
 
   const columns = sector.columns * 4 + 2;
   const rows = sector.rows * 3 - 1;
@@ -16,7 +17,7 @@ export default function Board({ sector }) {
   return (
     <div className="board" style={boardStyles}>
       {sector.fields.map((field, index) => (
-        <Field key={index} field={field} index={index} />
+        <Field key={`field__${index}`} field={field} index={index} />
       ))}
     </div>
   );

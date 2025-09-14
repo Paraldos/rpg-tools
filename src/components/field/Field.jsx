@@ -38,7 +38,7 @@ export default function Field({ field, index }) {
       }}
     >
       <div className="field-inside" onClick={handleClick}></div>
-      <p className="field-number">{field.index + 1}</p>
+      <p className="field-number">{index + 1}</p>
       {svg}
     </div>
   );

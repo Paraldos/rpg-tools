@@ -21,7 +21,7 @@ function WorldInfoInner() {
     <>
       <XBtn onClick={() => setSelectedFieldIndex(selectedWorldIndex[0])} />
       <p className="worldInfo__baseInfo smallText">
-        Feld: {selectedField.index + 1}, Typ: {selectedField.type}
+        Feld: {selectedWorldIndex[0] + 1}, Typ: {selectedField.type}
       </p>
       <InfoBoxTitle titleType="world" />
       <WorldInfoListOfTags />

@@ -3,27 +3,10 @@
   width: 100%;
   max-width: 992px;
   margin: auto;
-  padding: var(--spacing-l);
+  padding: var(--spacing-l) 0;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 290px;
+  grid-template-rows: 60px 1fr;
   gap: var(--spacing-l);
   grid-template-areas: "top top" "board infobox";
-}
-
-.map__top {
-  grid-area: top;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  gap: var(--spacing-l);
-  height: fit-content;
-}
-
-.map__board {
-  grid-area: board;
-}
-
-.map__infobox {
-  grid-area: infobox;
 }

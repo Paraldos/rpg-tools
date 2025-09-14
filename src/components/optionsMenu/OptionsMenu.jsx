@@ -2,7 +2,7 @@ import "./optionsMenu.css";
 import { useSectorStore } from "../../utils/store";
 import XBtn from "../xBtn/XBtn";
 
-export const OptionsMenu = () => {
+export default function OptionsMenu() {
   const selectedInfo = useSectorStore((s) => s.selectedInfo);
   const presetRows = useSectorStore((s) => s.presetRows);
   const presetColumns = useSectorStore((s) => s.presetColumns);
@@ -93,4 +93,4 @@ export const OptionsMenu = () => {
       </div>
     </div>
   );
-};
+}
