@@ -96,16 +96,16 @@ export const useSectorStore = create<SectorStore>((set) => ({
             selectedInfo: "SaveMenu",
           }
     ),
-  toggleOptionsMenu: () =>
+  toggleOptions: () =>
     set((state) =>
-      state.selectedInfo === "OptionsMenu"
+      state.selectedInfo === "Options"
         ? {
             selectedInfo: state.oldselectedInfo ?? null,
             oldselectedInfo: null,
           }
         : {
             oldselectedInfo: state.selectedInfo,
-            selectedInfo: "OptionsMenu",
+            selectedInfo: "Options",
           }
     ),
 }));

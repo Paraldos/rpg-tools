@@ -6,7 +6,7 @@ import FieldInfo from "../fieldInfo/FieldInfo";
 import WorldInfo from "../worldInfo/WorldInfo";
 import SaveMenu from "../saveMenu/SaveMenu";
 import SectorInfo from "../sectorInfo/SectorInfo";
-import OptionsMenu from "../optionsMenu/OptionsMenu";
+import Options from "../options/Options";
 import { useSectorStore } from "../../utils/store";
 
 export default function Map() {
@@ -21,7 +21,7 @@ export default function Map() {
         <WorldInfo />
         <SaveMenu />
         <SectorInfo />
-        <OptionsMenu />
+        <Options />
       </InfoBox>
     </div>
   );

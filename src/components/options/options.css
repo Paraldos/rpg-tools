@@ -1,0 +1,21 @@
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+}
+
+.options__rowsAndColumns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-s);
+}
+
+.options__numberInput {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--spacing-l);
+}
+
+.options__tagList {
+  width: 100%;
+}

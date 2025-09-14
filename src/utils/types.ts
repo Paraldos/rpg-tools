@@ -47,7 +47,7 @@ export type SectorStore = {
   setSelectedWorldIndex: (indices: [number, number] | null) => void;
 
   toggleSaveMenu: () => void;
-  toggleOptionsMenu: () => void;
+  toggleOptions: () => void;
 };
 export type WorldTypes = string[];
 export type SocietyTags = string[];

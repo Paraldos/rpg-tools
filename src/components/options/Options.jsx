@@ -1,8 +1,7 @@
-import "./optionsMenu.css";
+import "./options.css";
 import { useSectorStore } from "../../utils/store";
-import XBtn from "../xBtn/XBtn";
 
-export default function OptionsMenu() {
+export default function Options() {
   const selectedInfo = useSectorStore((s) => s.selectedInfo);
   const presetRows = useSectorStore((s) => s.presetRows);
   const presetColumns = useSectorStore((s) => s.presetColumns);
@@ -18,28 +17,24 @@ export default function OptionsMenu() {
   const setPresetRows = useSectorStore((s) => s.setPresetRows);
   const setPresetColumns = useSectorStore((s) => s.setPresetColumns);
 
-  if (selectedInfo !== "OptionsMenu") return null;
+  if (selectedInfo !== "Options") return null;
 
   return (
-    <div className="optionsMenu">
-      <XBtn />
+    <div className="options">
       <h2>Options Menu</h2>
-
-      <div className="optionsMenu__numberInput">
-        <label htmlFor="optionsMenu__rows">Reihen</label>
+      <div className="options__rowsAndColumns">
+        <label htmlFor="options__rows">Reihen</label>
         <input
-          id="optionsMenu__rows"
+          id="options__rows"
           type="number"
           value={presetRows}
           min={1}
           max={20}
           onChange={(e) => setPresetRows(e.target.value)}
         />
-      </div>
-      <div className="optionsMenu__numberInput">
-        <label htmlFor="optionsMenu__columns">Spalten</label>
+        <label htmlFor="options__columns">Spalten</label>
         <input
-          id="optionsMenu__columns"
+          id="options__columns"
           type="number"
           value={presetColumns}
           min={1}
@@ -53,7 +48,7 @@ export default function OptionsMenu() {
       <div>
         <label>Sektor: Besonderheiten</label>
         <textarea
-          className="optionsMenu__tagList"
+          className="options__tagList"
           value={sectorTags.join(", ")}
           rows="3"
           onChange={(e) => setWorldTypeTags(e.target.value)}
@@ -62,7 +57,7 @@ export default function OptionsMenu() {
       <div>
         <label>Welt: Biome</label>
         <textarea
-          className="optionsMenu__tagList"
+          className="options__tagList"
           value={worldTypeTags.join(", ")}
           rows="3"
         />
@@ -70,7 +65,7 @@ export default function OptionsMenu() {
       <div>
         <label>Welt: Soziale Ordnung</label>
         <textarea
-          className="optionsMenu__tagList"
+          className="options__tagList"
           value={worldSocietyTags.join(", ")}
           rows="3"
         />
@@ -78,7 +73,7 @@ export default function OptionsMenu() {
       <div>
         <label>Welt: Besonderheiten</label>
         <textarea
-          className="optionsMenu__tagList"
+          className="options__tagList"
           value={worldGeneralTags.join(", ")}
           rows="3"
         />
@@ -86,7 +81,7 @@ export default function OptionsMenu() {
       <div>
         <label>Namen</label>
         <textarea
-          className="optionsMenu__tagList"
+          className="options__tagList"
           value={stellarNames.join(", ")}
           rows="3"
         />
