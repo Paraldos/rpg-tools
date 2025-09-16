@@ -15,7 +15,7 @@
   .theme__dark {
     --color-background: black;
     --color-primary: white;
-    --color-offsetDark: rgb(37, 37, 37);
-    --color-offsetLight: rgb(209, 209, 209);
+    --color-offsetLight: rgb(37, 37, 37);
+    --color-offsetDark: rgb(209, 209, 209);
   }
 }

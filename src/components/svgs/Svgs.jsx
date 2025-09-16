@@ -183,12 +183,20 @@ export function SvgX() {
 
 export function SvgPlus() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-      <path
-        fill="#fff"
-        fillRule="evenodd"
-        d="M9 17a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V3a1 1 0 1 0-2 0v6H3a1 1 0 0 0 0 2h6v6z"
-      />
+    <svg
+      fill="#000000"
+      viewBox="0 0 1024 1024"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path d="M576.477 448.471l349.649.621c35.346.041 63.967 28.728 63.926 64.074s-28.728 63.967-64.074 63.926l-349.429-.621.194 349.647c.013 35.346-28.63 64.01-63.977 64.023s-64.01-28.63-64.023-63.977l-.195-349.921-349.622-.621C63.58 575.581 34.959 546.894 35 511.548s28.728-63.967 64.074-63.926l349.402.621-.194-349.361c-.013-35.346 28.63-64.01 63.977-64.023s64.01 28.63 64.023 63.977l.194 349.635z"></path>
+      </g>
     </svg>
   );
 }
@@ -196,7 +204,7 @@ export function SvgPlus() {
 export function SvgCog() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25">
-      <g stroke="#fff" stroke-width="1.2" className="svgCog">
+      <g stroke="#fff" strokeWidth="1.2" className="svgCog">
         <path d="m14.262 5.406-.39-.978a1.477 1.477 0 0 0-2.743 0l-.391.978a1.518 1.518 0 0 1-2.008.832l-.968-.415a1.477 1.477 0 0 0-1.94 1.94l.416.967a1.518 1.518 0 0 1-.832 2.008l-.978.39a1.477 1.477 0 0 0 0 2.743l.978.391a1.518 1.518 0 0 1 .832 2.008l-.415.968a1.477 1.477 0 0 0 1.94 1.94l.967-.416a1.518 1.518 0 0 1 2.008.832l.39.977a1.477 1.477 0 0 0 2.743 0l.391-.977a1.518 1.518 0 0 1 2.008-.832l.968.415a1.477 1.477 0 0 0 1.94-1.94l-.416-.967a1.518 1.518 0 0 1 .832-2.008l.977-.39a1.477 1.477 0 0 0 0-2.743l-.977-.391a1.518 1.518 0 0 1-.832-2.008l.415-.968a1.477 1.477 0 0 0-1.94-1.94l-.967.416a1.518 1.518 0 0 1-2.008-.832Z" />
         <path d="M16.5 12.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" />
       </g>
@@ -221,12 +229,18 @@ export function SvgCheck() {
 
 export function SvgFloppy() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-      <path
-        fill="#fff"
-        fill-rule="evenodd"
-        d="M19 10a1 1 0 0 0 1-1V5a1 1 0 1 0-2 0v4a1 1 0 0 0 1 1Zm11 18a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2h2a2 2 0 0 1 2 2v24ZM8 2h16v9a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V2Zm20-2H4a4 4 0 0 0-4 4v24a4 4 0 0 0 4 4h24a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4Z"
-      />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      stroke="#000"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="1.5"
+      viewBox="0 0 16 16"
+      className="svgFloppy"
+    >
+      <path d="M2.75 2.75v10.5h10.5v-7.5l-3-3z" />
+      <path d="M5.75 13.25v-3.5h4.5v3.5" />
     </svg>
   );
 }

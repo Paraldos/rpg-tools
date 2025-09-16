@@ -1,11 +1,12 @@
 svg {
-  /* fill: var(--color-primary);
-  stroke: var(--color-primary); */
+  fill: var(--color-primary);
+  stroke: var(--color-primary);
 }
 
 .svgCheck,
 .svgChevronVertical,
 .svgBlackHole,
-.svgCog {
+.svgCog,
+.svgFloppy {
   fill: transparent !important;
 }
