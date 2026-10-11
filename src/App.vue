@@ -1,7 +1,7 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/header/Header.vue";
 </script>
 
 <template>
-  <HelloWorld />
+  <Header></Header>
 </template>
